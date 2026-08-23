@@ -108,14 +108,8 @@
     .werk-section { margin-bottom: 96px; }
 
     .werk-entry {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 0 24px;
       border-top: 1px solid var(--c-divider);
       padding-top: 36px;
-    }
-    @media (max-width: 480px) {
-      .werk-entry { grid-template-columns: 36px 1fr; gap: 0 14px; }
     }
 
     .werk-num {
@@ -202,7 +196,6 @@
 <body>
 
 <div class="site-bar" id="site-bar">
-  <span class="bar-name">Henrik Asmus</span>
   <div class="bar-right">
     <nav class="bar-lang" aria-label="Sprache">
       <a href="/" class="on">DE</a>
@@ -215,13 +208,12 @@
 <div class="hw">
   <div class="hero s1">
     <h1 class="name">Henrik Asmus</h1>
-    <p class="tagline">Forschung an Technologie, Infrastruktur und Kapital.</p>
+    <p class="tagline">Student des Wirtschaftsingenieurwesens.<br>Forschung an Technologie, Infrastruktur und Kapital.</p>
   </div>
 
   <section class="werk-section s3" aria-label="Arbeiten">
     <span class="sec-label">Arbeiten</span>
     <div class="werk-entry">
-      <span class="werk-num">01</span>
       <div class="werk-body">
         <span class="wt1">Lastannahmen</span>
         <span class="wt2">Ethereum als fundamentale digitale Infrastruktur</span>

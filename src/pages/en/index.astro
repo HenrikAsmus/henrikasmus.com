@@ -98,14 +98,8 @@
     .werk-section { margin-bottom: 96px; }
 
     .werk-entry {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 0 24px;
       border-top: 1px solid var(--c-divider);
       padding-top: 36px;
-    }
-    @media (max-width: 480px) {
-      .werk-entry { grid-template-columns: 36px 1fr; gap: 0 14px; }
     }
 
     .werk-num { font-size: 10px; letter-spacing: 0.07em; color: var(--c-meta); padding-top: 5px; }
@@ -167,7 +161,6 @@
 <body>
 
 <div class="site-bar" id="site-bar">
-  <span class="bar-name">Henrik Asmus</span>
   <div class="bar-right">
     <nav class="bar-lang" aria-label="Language">
       <a href="/">DE</a>
@@ -180,13 +173,12 @@
 <div class="hw">
   <div class="hero s1">
     <h1 class="name">Henrik Asmus</h1>
-    <p class="tagline">Research on technology, infrastructure and capital.</p>
+    <p class="tagline">Student of industrial engineering.<br>Research on technology, infrastructure and capital.</p>
   </div>
 
   <section class="werk-section s3" aria-label="Works">
     <span class="sec-label">Works</span>
     <div class="werk-entry">
-      <span class="werk-num">01</span>
       <div class="werk-body">
         <span class="wt1">Load Assumptions</span>
         <span class="wt2">Ethereum as Fundamental Digital Infrastructure</span>
