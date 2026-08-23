@@ -50,15 +50,17 @@
 
     .lf-bg {
       position: absolute;
-      font-size: 15px;
-      line-height: 1;
       top: 50%;
       transform: translateY(-50%);
-      opacity: 0.22;
+      opacity: 0.28;
       pointer-events: none;
       user-select: none;
+      display: block;
+      width: 18px;
+      height: auto;
+      border-radius: 2px;
     }
-    .lf-bg-de { left: 8px; }
+    .lf-bg-de { left: 7px; }
     .lf-bg-en { right: 7px; }
 
     .lf-knob {
@@ -73,11 +75,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      line-height: 1;
       pointer-events: none;
       user-select: none;
       transition: left 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .lf-flag {
+      display: block;
+      width: 19px;
+      height: auto;
+      border-radius: 2px;
     }
     /* EN: knob slides to right: 68 - 2(border) - 2(gap) - 26(knob) = 38px */
     .lf-knob--en { left: 38px; }
@@ -194,9 +200,11 @@
 
 <div class="site-bar" id="site-bar">
   <a href="/" class="lang-flip" aria-label="Switch to German">
-    <span class="lf-bg lf-bg-de" aria-hidden="true">🇩🇪</span>
-    <span class="lf-bg lf-bg-en" aria-hidden="true">🇬🇧</span>
-    <span class="lf-knob lf-knob--en" aria-hidden="true">🇬🇧</span>
+    <img src="/flags/de.svg" class="lf-bg lf-bg-de" width="18" height="12" alt="" aria-hidden="true" />
+    <img src="/flags/gb.svg" class="lf-bg lf-bg-en" width="18" height="12" alt="" aria-hidden="true" />
+    <span class="lf-knob lf-knob--en" aria-hidden="true">
+      <img src="/flags/gb.svg" class="lf-flag" width="19" height="13" alt="English" />
+    </span>
   </a>
 </div>
 
