@@ -57,7 +57,7 @@ const homeHref = lang === 'de' ? '/' : '/en/';
       </div>
 
       <!-- Command palette -->
-      <div id="cmd-overlay" class="cmd-overlay" hidden aria-modal="true" role="dialog" aria-label={lang === 'de' ? 'Kapitelsuche' : 'Chapter search'}>
+      <div id="cmd-overlay" class="cmd-overlay" aria-modal="true" role="dialog" aria-label={lang === 'de' ? 'Kapitelsuche' : 'Chapter search'}>
         <div class="cmd-backdrop" id="cmd-backdrop"></div>
         <div class="cmd-box">
           <input
@@ -155,13 +155,13 @@ const homeHref = lang === 'de' ? '/' : '/en/';
 
         function openCmd() {
           if (!cmdOverlay) return;
-          cmdOverlay.hidden = false;
+          cmdOverlay.classList.add('cmd-open');
           setTimeout(function () { if (cmdInput) cmdInput.focus(); }, 10);
           renderList('');
         }
 
         function closeCmd() {
-          if (cmdOverlay) cmdOverlay.hidden = true;
+          if (cmdOverlay) cmdOverlay.classList.remove('cmd-open');
           if (cmdInput) cmdInput.value = '';
         }
 
@@ -201,9 +201,9 @@ const homeHref = lang === 'de' ? '/' : '/en/';
         document.addEventListener('keydown', function (e) {
           if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
             e.preventDefault();
-            if (cmdOverlay && !cmdOverlay.hidden) { closeCmd(); } else { openCmd(); }
+            if (cmdOverlay && cmdOverlay.classList.contains('cmd-open')) { closeCmd(); } else { openCmd(); }
           }
-          if (e.key === 'Escape' && cmdOverlay && !cmdOverlay.hidden) closeCmd();
+          if (e.key === 'Escape' && cmdOverlay && cmdOverlay.classList.contains('cmd-open')) closeCmd();
         });
 
         /* ⌘K hint only if we have chapters */

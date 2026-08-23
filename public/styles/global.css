@@ -767,13 +767,17 @@ html {
 /* ── Command palette ────────────────────────────────────── */
 
 .cmd-overlay {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 500;
-  display: flex;
   align-items: flex-start;
   justify-content: center;
   padding-top: 96px;
+}
+
+.cmd-overlay.cmd-open {
+  display: flex;
 }
 
 .cmd-backdrop {
