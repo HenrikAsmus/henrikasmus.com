@@ -16,6 +16,7 @@ const kapitel = alle
   lang="en"
   canonicalDE="/lastannahmen/"
   canonicalEN="/en/load-assumptions/"
+  overview
 >
   <div class="werk-block">
     <span class="werk-titel-1">Load Assumptions</span>
@@ -23,24 +24,62 @@ const kapitel = alle
     <p class="meta">Master's thesis · Self-published · July 2026 · 299 pages</p>
   </div>
 
-  <!-- Body text to follow -->
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn tab-active" role="tab" data-tab="kapitel">Chapter overview</button>
+    <button class="tab-btn" role="tab" data-tab="pdf-de">PDF German</button>
+    <button class="tab-btn" role="tab" data-tab="pdf-en">PDF English</button>
+  </div>
 
-  <nav class="verzeichnis" aria-label="Chapter overview">
-    {kapitel.map(k => (
-      <a href={`/en/load-assumptions/${k.slug}/`} class="verzeichnis-eintrag">
-        <span class="verzeichnis-label">
-          {k.data.nummer === 0 ? 'Preface' : `Chapter ${k.data.nummer}`}
-        </span>
-        <span class="verzeichnis-name">{k.data.titel}</span>
-        <p class="verzeichnis-befund">{k.data.befund}</p>
+  <div class="tab-panel tab-active" id="tab-kapitel">
+    <nav class="verzeichnis verzeichnis-grid" aria-label="Chapter overview">
+      {kapitel.map(k => (
+        <a href={`/en/load-assumptions/${k.slug}/`} class="verzeichnis-eintrag">
+          <span class="verzeichnis-label">
+            {k.data.nummer === 0 ? 'Preface' : `Chapter ${k.data.nummer}`}
+          </span>
+          <span class="verzeichnis-name">{k.data.titel}</span>
+          <p class="verzeichnis-befund">{k.data.befund}</p>
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="tab-panel" id="tab-pdf-de">
+    <div class="pdf-dl-cards">
+      <a href="/pdf/Lastannahmen.pdf" class="pdf-dl-card">
+        <span class="pdf-dl-lang">Deutsch</span>
+        <span class="pdf-dl-name">Lastannahmen.pdf</span>
+        <span class="pdf-dl-meta">324 Seiten · 1.1 MB</span>
       </a>
-    ))}
-  </nav>
+    </div>
+  </div>
 
-  <div class="werk-links" style="margin-top: 48px;">
-    <a href="/pdf/Lastannahmen.pdf" class="pdf">PDF Deutsch</a>
-    <a href="/pdf/Load-Assumptions.pdf" class="pdf">PDF English</a>
+  <div class="tab-panel" id="tab-pdf-en">
+    <div class="pdf-dl-cards">
+      <a href="/pdf/Load-Assumptions.pdf" class="pdf-dl-card">
+        <span class="pdf-dl-lang">English</span>
+        <span class="pdf-dl-name">Load-Assumptions.pdf</span>
+        <span class="pdf-dl-meta">299 pages · 1.0 MB</span>
+      </a>
+    </div>
   </div>
 
   <p class="back-link"><a href="/en/">← Henrik Asmus</a></p>
+
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('.tab-btn');
+      var panels = document.querySelectorAll('.tab-panel');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.dataset.tab;
+          btns.forEach(function (b) { b.classList.remove('tab-active'); });
+          panels.forEach(function (p) { p.classList.remove('tab-active'); });
+          btn.classList.add('tab-active');
+          var panel = document.getElementById('tab-' + id);
+          if (panel) panel.classList.add('tab-active');
+        });
+      });
+    })();
+  </script>
 </Layout>

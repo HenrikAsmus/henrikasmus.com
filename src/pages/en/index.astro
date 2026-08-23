@@ -1,29 +1,219 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 ---
-<Layout
-  title="Henrik Asmus"
-  lang="en"
-  canonicalDE="/"
-  canonicalEN="/en/"
->
-  <h1 class="name"><span class="initial">H<svg class="figur" viewBox="0 0 30 38" fill="none" stroke="#000000" stroke-width="2.1" stroke-linecap="round" vector-effect="non-scaling-stroke" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="6" r="4"/><path d="M13 10 V22"/><path d="M13 14 L6 21"/><path d="M13 14 L19 19"/><path d="M13 22 L20 24"/><path class="bein" d="M20 24 L20 34"/></svg></span>enrik Asmus</h1>
-  <p class="subtitle">Industrial engineering student. Curious.</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henrik Asmus</title>
+  <link rel="canonical" href="https://henrikasmus.com/en/" />
+  <link rel="alternate" hreflang="de" href="https://henrikasmus.com/" />
+  <link rel="alternate" hreflang="en" href="https://henrikasmus.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://henrikasmus.com/" />
+  <link rel="stylesheet" href="/styles/global.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <p class="rubrik">Work</p>
+    .site-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 40px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    .site-bar.scrolled { border-bottom-color: var(--c-divider); }
+    @media (max-width: 639px) { .site-bar { padding: 13px 20px; } }
 
-  <div class="werk-block">
-    <span class="werk-titel-1">Load Assumptions</span>
-    <span class="werk-titel-2">Ethereum as Fundamental Digital Infrastructure</span>
-    <p class="meta">Master's thesis, self-published, July 2026, 299 pages</p>
-    <p class="fliesstext">The study examines Ethereum against twelve criteria for fundamental infrastructure, in two states: the current one, as of March 2026, and the one that would result from full implementation of the roadmap. It was not submitted to any university. Written for corporate decision-makers, capital allocators, technical architects and policy-makers, not for the crypto scene.</p>
-    <div class="werk-links">
-      <a href="/en/load-assumptions/">Read more</a>
-      <a href="/pdf/Lastannahmen.pdf" class="pdf">PDF Deutsch</a>
-      <a href="/pdf/Load-Assumptions.pdf" class="pdf">PDF English</a>
-    </div>
+    .bar-name {
+      font-size: 12.5px;
+      letter-spacing: -0.006em;
+      color: var(--c-text);
+      font-family: 'Geist', Inter, system-ui, sans-serif;
+    }
+    .bar-right { display: flex; align-items: center; gap: 20px; }
+    .bar-lang {
+      font-size: 11.5px;
+      letter-spacing: -0.002em;
+      display: flex;
+      align-items: center;
+      font-family: 'Geist', Inter, system-ui, sans-serif;
+    }
+    .bar-lang a { color: var(--c-meta); text-decoration: none; }
+    .bar-lang a.on { color: var(--c-text); }
+    .bar-lang a:hover { color: var(--c-text); }
+    .bar-lang-sep { color: var(--c-divider); margin: 0 6px; }
+
+    .hw {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 88px 40px 160px;
+      font-family: 'Geist', Inter, system-ui, sans-serif;
+      color: var(--c-text);
+    }
+    @media (max-width: 639px) { .hw { padding: 64px 20px 120px; } }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes fi { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+      .s1 { animation: fi 480ms 0ms ease both; }
+      .s3 { animation: fi 480ms 200ms ease both; }
+      .s4 { animation: fi 480ms 310ms ease both; }
+    }
+
+    .hero { margin-bottom: 96px; }
+
+    .name {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 96px;
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      color: var(--c-text);
+    }
+    @media (max-width: 639px) { .name { font-size: 64px; } }
+
+    .tagline {
+      margin-top: 18px;
+      font-size: 14.5px;
+      letter-spacing: -0.006em;
+      line-height: 1.55;
+      color: var(--c-sub);
+    }
+
+    .sec-label {
+      font-size: 9.5px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-meta);
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    .werk-section { margin-bottom: 96px; }
+
+    .werk-entry {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 24px;
+      border-top: 1px solid var(--c-divider);
+      padding-top: 36px;
+    }
+    @media (max-width: 480px) {
+      .werk-entry { grid-template-columns: 36px 1fr; gap: 0 14px; }
+    }
+
+    .werk-num { font-size: 10px; letter-spacing: 0.07em; color: var(--c-meta); padding-top: 5px; }
+
+    .wt1, .wt2 {
+      display: block;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+    }
+    .wt1 { color: var(--c-text); }
+    .wt2 {
+      background: linear-gradient(100deg, #78828A 0%, #C3CACF 48%, #78828A 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    @media (max-width: 639px) { .wt1, .wt2 { font-size: 20px; } }
+
+    .werk-meta { margin-top: 14px; font-size: 12px; letter-spacing: 0.003em; color: var(--c-meta); }
+
+    .werk-desc {
+      margin-top: 16px;
+      font-size: 14px;
+      letter-spacing: -0.005em;
+      line-height: 1.72;
+      color: var(--c-body);
+      max-width: 540px;
+    }
+
+    .werk-actions {
+      margin-top: 24px;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px 28px;
+    }
+
+    .werk-read { font-size: 13px; letter-spacing: -0.004em; color: var(--c-text); text-decoration: none; }
+    .werk-read:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .werk-pdfs { display: flex; gap: 16px; flex-wrap: wrap; }
+    .werk-pdf-a { font-size: 12px; letter-spacing: -0.002em; color: var(--c-meta); text-decoration: none; }
+    .werk-pdf-a:hover { color: var(--c-sub); }
+
+    .contact-section { border-top: 1px solid var(--c-divider); padding-top: 36px; }
+    .contact-email {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 14px;
+      letter-spacing: -0.006em;
+      color: var(--c-text);
+      text-decoration: none;
+    }
+    .contact-email:hover { text-decoration: underline; text-underline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="site-bar" id="site-bar">
+  <span class="bar-name">Henrik Asmus</span>
+  <div class="bar-right">
+    <nav class="bar-lang" aria-label="Language">
+      <a href="/">DE</a>
+      <span class="bar-lang-sep" aria-hidden="true">/</span>
+      <a href="/en/" class="on">EN</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hw">
+  <div class="hero s1">
+    <h1 class="name">Henrik Asmus</h1>
+    <p class="tagline">Research on technology, infrastructure and capital.</p>
   </div>
 
-  <p class="rubrik">Contact</p>
-  <p class="kontakt"><a href="mailto:HenrikAsmus@proton.me">HenrikAsmus@proton.me</a></p>
-</Layout>
+  <section class="werk-section s3" aria-label="Works">
+    <span class="sec-label">Works</span>
+    <div class="werk-entry">
+      <span class="werk-num">01</span>
+      <div class="werk-body">
+        <span class="wt1">Load Assumptions</span>
+        <span class="wt2">Ethereum as Fundamental Digital Infrastructure</span>
+        <p class="werk-meta">Master's thesis · Self-published · July 2026 · 299 pages</p>
+        <p class="werk-desc">The study examines Ethereum against twelve criteria for fundamental infrastructure, in two states: the current one as of March 2026, and the one that would result from full implementation of the roadmap. Written for corporate decision-makers, capital allocators, technical architects and policymakers.</p>
+        <div class="werk-actions">
+          <a href="/en/load-assumptions/" class="werk-read">Read online →</a>
+          <div class="werk-pdfs">
+            <a href="/pdf/Lastannahmen.pdf" class="werk-pdf-a">PDF · Deutsch ↓</a>
+            <a href="/pdf/Load-Assumptions.pdf" class="werk-pdf-a">PDF · English ↓</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section s4" id="contact" aria-label="Contact">
+    <span class="sec-label">Contact</span>
+    <a href="mailto:HenrikAsmus@proton.me" class="contact-email">HenrikAsmus@proton.me</a>
+  </section>
+</div>
+
+<script is:inline>
+  window.addEventListener('scroll', function () {
+    var bar = document.getElementById('site-bar');
+    if (bar) bar.classList.toggle('scrolled', window.scrollY > 16);
+  }, { passive: true });
+</script>
+</body>
+</html>

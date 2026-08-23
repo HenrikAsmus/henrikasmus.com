@@ -5,9 +5,13 @@ interface Props {
   canonicalDE: string;
   canonicalEN: string;
   breit?: boolean;
+  overview?: boolean;
 }
-const { title, lang, canonicalDE, canonicalEN, breit = false } = Astro.props;
+const { title, lang, canonicalDE, canonicalEN, breit = false, overview = false } = Astro.props;
 const base = 'https://henrikasmus.com';
+const backHref = lang === 'de' ? '/lastannahmen/' : '/en/load-assumptions/';
+const backLabel = lang === 'de' ? '← Übersicht' : '← Overview';
+const homeHref = lang === 'de' ? '/' : '/en/';
 ---
 <!doctype html>
 <html lang={lang}>
@@ -22,47 +26,191 @@ const base = 'https://henrikasmus.com';
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
 <body>
-  <main class={breit ? 'kapitel-column' : 'column'}>
-    <header class="header">
-      <svg
-        class="symbol"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        width="18"
-        height="18"
-        aria-hidden="true"
-        fill="none"
-      >
-        <defs>
-          <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"   stop-color="#D6DCE0" />
-            <stop offset="45%"  stop-color="#6E777E" />
-            <stop offset="100%" stop-color="#AAB2B8" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M10 3 L16.5 14 H3.5 Z"
-          stroke="url(#sg)"
-          stroke-width="1.4"
-          stroke-linejoin="round"
-          fill="none"
-        />
-        <line
-          x1="2" y1="17" x2="18" y2="17"
-          stroke="url(#sg)"
-          stroke-width="1.4"
-          stroke-linecap="round"
-        />
-      </svg>
+  {breit ? (
+    <Fragment>
+      <div class="reading-progress"><div class="reading-progress-fill" id="rp-fill"></div></div>
 
-      <nav class="lang-switcher" aria-label="Sprache / Language">
-        <a href={canonicalDE} class={lang === 'de' ? 'active' : ''} aria-label="Deutsch">DE</a>
-        <span class="slash" aria-hidden="true">/</span>
-        <a href={canonicalEN} class={lang === 'en' ? 'active' : ''} aria-label="English">EN</a>
-      </nav>
-    </header>
+      <div class="kapitel-layout">
+        <aside class="kapitel-sidebar">
+          <a href={homeHref} class="sidebar-home">Henrik Asmus</a>
+          <a href={backHref} class="sidebar-back">{backLabel}</a>
+          <div class="sidebar-ctx" id="sidebar-ctx"></div>
+          <nav class="sidebar-toc" id="sidebar-toc" aria-label={lang === 'de' ? 'Abschnitte' : 'Sections'}></nav>
+          <div class="sidebar-cmd-hint" id="sidebar-cmd-hint" aria-hidden="true">
+            <span class="cmd-key">⌘K</span>
+          </div>
+        </aside>
 
-    <slot />
-  </main>
+        <main class="kapitel-main">
+          <header class="header">
+            <div class="header-mobile-left">
+              <a href={backHref} class="kapitel-mobile-back">{backLabel}</a>
+            </div>
+            <nav class="lang-switcher" aria-label="Sprache / Language">
+              <a href={canonicalDE} class={lang === 'de' ? 'active' : ''} aria-label="Deutsch">DE</a>
+              <span class="slash" aria-hidden="true">/</span>
+              <a href={canonicalEN} class={lang === 'en' ? 'active' : ''} aria-label="English">EN</a>
+            </nav>
+          </header>
+          <slot />
+        </main>
+      </div>
+
+      <!-- Command palette -->
+      <div id="cmd-overlay" class="cmd-overlay" hidden aria-modal="true" role="dialog" aria-label={lang === 'de' ? 'Kapitelsuche' : 'Chapter search'}>
+        <div class="cmd-backdrop" id="cmd-backdrop"></div>
+        <div class="cmd-box">
+          <input
+            id="cmd-input"
+            class="cmd-input"
+            type="search"
+            placeholder={lang === 'de' ? 'Kapitel suchen …' : 'Search chapters …'}
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <div id="cmd-list" class="cmd-list" role="listbox"></div>
+        </div>
+      </div>
+    </Fragment>
+  ) : (
+    <main class={overview ? 'overview-column' : 'column'}>
+      <header class="header">
+        <nav class="lang-switcher" aria-label="Sprache / Language">
+          <a href={canonicalDE} class={lang === 'de' ? 'active' : ''} aria-label="Deutsch">DE</a>
+          <span class="slash" aria-hidden="true">/</span>
+          <a href={canonicalEN} class={lang === 'en' ? 'active' : ''} aria-label="English">EN</a>
+        </nav>
+      </header>
+      <slot />
+    </main>
+  )}
+
+  {breit && (
+    <script is:inline>
+      (function () {
+        /* ── Reading progress ── */
+        var fill = document.getElementById('rp-fill');
+        function upd() {
+          var total = document.documentElement.scrollHeight - window.innerHeight;
+          if (fill && total > 0) fill.style.width = (window.scrollY / total * 100) + '%';
+        }
+        window.addEventListener('scroll', upd, { passive: true });
+        upd();
+
+        /* ── Sidebar chapter context ── */
+        var ctx = document.getElementById('sidebar-ctx');
+        if (ctx) {
+          var nr = document.querySelector('.kapitel-nr');
+          var ttl = document.querySelector('.kapitel-titel');
+          if (nr) {
+            var nrEl = document.createElement('span');
+            nrEl.className = 'sidebar-ctx-nr';
+            nrEl.textContent = nr.textContent;
+            ctx.appendChild(nrEl);
+          }
+          if (ttl) {
+            var ttlEl = document.createElement('span');
+            ttlEl.className = 'sidebar-ctx-ttl';
+            ttlEl.textContent = ttl.textContent;
+            ctx.appendChild(ttlEl);
+          }
+        }
+
+        /* ── Sidebar TOC ── */
+        var toc = document.getElementById('sidebar-toc');
+        if (toc) {
+          var headings = Array.from(document.querySelectorAll('.kapitel-body h2'));
+          headings.forEach(function (h, i) {
+            if (!h.id) h.id = 'h' + i;
+            var a = document.createElement('a');
+            a.href = '#' + h.id;
+            a.textContent = h.textContent;
+            toc.appendChild(a);
+          });
+
+          var links = toc.querySelectorAll('a');
+          var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                links.forEach(function (l) { l.classList.remove('toc-active'); });
+                var active = toc.querySelector('a[href="#' + e.target.id + '"]');
+                if (active) active.classList.add('toc-active');
+              }
+            });
+          }, { rootMargin: '-5% 0px -82% 0px' });
+          headings.forEach(function (h) { obs.observe(h); });
+        }
+
+        /* ── Command palette ── */
+        var cmdOverlay = document.getElementById('cmd-overlay');
+        var cmdInput = document.getElementById('cmd-input');
+        var cmdList = document.getElementById('cmd-list');
+        var cmdBackdrop = document.getElementById('cmd-backdrop');
+        var chapters = [];
+
+        var dataEl = document.getElementById('__chapters');
+        if (dataEl) {
+          try { chapters = JSON.parse(dataEl.textContent); } catch(e) {}
+        }
+
+        function openCmd() {
+          if (!cmdOverlay) return;
+          cmdOverlay.hidden = false;
+          setTimeout(function () { if (cmdInput) cmdInput.focus(); }, 10);
+          renderList('');
+        }
+
+        function closeCmd() {
+          if (cmdOverlay) cmdOverlay.hidden = true;
+          if (cmdInput) cmdInput.value = '';
+        }
+
+        function renderList(q) {
+          if (!cmdList) return;
+          var filtered = chapters.filter(function (c) {
+            var s = q.toLowerCase();
+            return !s || c.label.toLowerCase().includes(s) || c.titel.toLowerCase().includes(s);
+          });
+          cmdList.innerHTML = '';
+          filtered.forEach(function (c) {
+            var a = document.createElement('a');
+            a.href = c.href;
+            a.className = 'cmd-item';
+            a.setAttribute('role', 'option');
+            a.innerHTML =
+              '<span class="cmd-item-nr">' + c.label + '</span>' +
+              '<span class="cmd-item-ttl">' + c.titel + '</span>';
+            a.addEventListener('click', closeCmd);
+            cmdList.appendChild(a);
+          });
+        }
+
+        if (cmdInput) {
+          cmdInput.addEventListener('input', function () { renderList(cmdInput.value); });
+          cmdInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeCmd();
+            if (e.key === 'Enter') {
+              var first = cmdList && cmdList.querySelector('.cmd-item');
+              if (first) { first.click(); }
+            }
+          });
+        }
+
+        if (cmdBackdrop) cmdBackdrop.addEventListener('click', closeCmd);
+
+        document.addEventListener('keydown', function (e) {
+          if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            if (cmdOverlay && !cmdOverlay.hidden) { closeCmd(); } else { openCmd(); }
+          }
+          if (e.key === 'Escape' && cmdOverlay && !cmdOverlay.hidden) closeCmd();
+        });
+
+        /* ⌘K hint only if we have chapters */
+        var hint = document.getElementById('sidebar-cmd-hint');
+        if (hint && chapters.length > 0) hint.style.display = 'block';
+      })();
+    </script>
+  )}
 </body>
 </html>

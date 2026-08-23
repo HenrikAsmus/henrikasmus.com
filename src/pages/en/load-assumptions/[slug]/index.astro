@@ -22,12 +22,12 @@ export async function getStaticPaths() {
 
     return {
       params: { slug },
-      props: { entry, naechstes, naechstesSlug, deSlug },
+      props: { entry, naechstes, naechstesSlug, deSlug, alleEn: en },
     };
   });
 }
 
-const { entry, naechstes, naechstesSlug, deSlug } = Astro.props;
+const { entry, naechstes, naechstesSlug, deSlug, alleEn } = Astro.props;
 const { Content } = await render(entry);
 const slug = Astro.params.slug;
 
@@ -35,6 +35,14 @@ const kapitelLabel = entry.data.nummer === 0 ? 'Preface' : `Chapter ${entry.data
 const naechstesLabel = naechstes
   ? (naechstes.data.nummer === 0 ? 'Preface' : `Chapter ${naechstes.data.nummer}`)
   : null;
+
+const chaptersJson = JSON.stringify(
+  alleEn.map(e => ({
+    label: e.data.nummer === 0 ? 'Preface' : `Chapter ${e.data.nummer}`,
+    titel: e.data.titel,
+    href: `/en/load-assumptions/${e.id.replace(/^en\/\d+-/, '').replace(/\.md$/, '')}/`,
+  }))
+);
 ---
 
 <Layout
@@ -44,6 +52,14 @@ const naechstesLabel = naechstes
   canonicalEN={`/en/load-assumptions/${slug}/`}
   breit
 >
+  <script type="application/json" id="__chapters" set:html={chaptersJson}></script>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/en/load-assumptions/">Load Assumptions</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{kapitelLabel}</span>
+  </nav>
+
   <p class="kapitel-nr">{kapitelLabel}</p>
   <h1 class="kapitel-titel">{entry.data.titel}</h1>
 
