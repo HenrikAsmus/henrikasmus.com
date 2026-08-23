@@ -240,6 +240,11 @@
 </div>
 
 <script is:inline>
+  localStorage.setItem('lang-pref', 'en');
+  var flip = document.querySelector('.lang-flip');
+  if (flip) flip.addEventListener('click', function() {
+    localStorage.setItem('lang-pref', 'de');
+  });
   window.addEventListener('scroll', function () {
     var bar = document.getElementById('site-bar');
     if (bar) bar.classList.toggle('scrolled', window.scrollY > 16);
