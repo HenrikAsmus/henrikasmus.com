@@ -32,28 +32,54 @@
     .site-bar.scrolled { border-bottom-color: var(--c-divider); }
     @media (max-width: 639px) { .site-bar { padding: 13px 20px; } }
 
-    .bar-name {
-      font-size: 12.5px;
-      letter-spacing: -0.006em;
-      color: var(--c-text);
-      font-family: 'Geist', Inter, system-ui, sans-serif;
+    /* ── Flag toggle ── */
+    .lang-flip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 68px;
+      height: 32px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid var(--c-divider);
+      text-decoration: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.15s;
     }
-    .bar-right {
+    .lang-flip:hover { border-color: var(--c-sub); }
+
+    .lf-bg {
+      position: absolute;
+      font-size: 15px;
+      line-height: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.22;
+      pointer-events: none;
+      user-select: none;
+    }
+    .lf-bg-de { left: 8px; }
+    .lf-bg-en { right: 7px; }
+
+    .lf-knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18), 0 0 0 0.5px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      transition: left 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .bar-lang {
-      font-size: 11.5px;
-      letter-spacing: -0.002em;
-      display: flex;
-      align-items: center;
-      font-family: 'Geist', Inter, system-ui, sans-serif;
-    }
-    .bar-lang a { color: var(--c-meta); text-decoration: none; }
-    .bar-lang a.on { color: var(--c-text); }
-    .bar-lang a:hover { color: var(--c-text); }
-    .bar-lang-sep { color: var(--c-divider); margin: 0 6px; }
 
     /* ── Main layout ── */
     .hw {
@@ -196,13 +222,11 @@
 <body>
 
 <div class="site-bar" id="site-bar">
-  <div class="bar-right">
-    <nav class="bar-lang" aria-label="Sprache">
-      <a href="/" class="on">DE</a>
-      <span class="bar-lang-sep" aria-hidden="true">/</span>
-      <a href="/en/">EN</a>
-    </nav>
-  </div>
+  <a href="/en/" class="lang-flip" aria-label="Zu Englisch wechseln">
+    <span class="lf-bg lf-bg-de" aria-hidden="true">🇩🇪</span>
+    <span class="lf-bg lf-bg-en" aria-hidden="true">🇬🇧</span>
+    <span class="lf-knob" aria-hidden="true">🇩🇪</span>
+  </a>
 </div>
 
 <div class="hw">
