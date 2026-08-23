@@ -91,11 +91,11 @@
     .hw {
       max-width: 860px;
       margin: 0 auto;
-      padding: 88px 40px 160px;
+      padding: 48px 40px 160px;
       font-family: 'Geist', Inter, system-ui, sans-serif;
       color: var(--c-text);
     }
-    @media (max-width: 639px) { .hw { padding: 64px 20px 120px; } }
+    @media (max-width: 639px) { .hw { padding: 36px 20px 120px; } }
 
     @media (prefers-reduced-motion: no-preference) {
       @keyframes fi { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -106,7 +106,11 @@
     }
 
     /* ── Hero ── */
-    .hero { margin-bottom: 96px; }
+    .hero {
+      border-top: 1px solid var(--c-divider);
+      padding-top: 36px;
+      margin-bottom: 64px;
+    }
 
     .name {
       font-family: 'Pinyon Script', cursive;
@@ -132,16 +136,21 @@
       letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--c-meta);
-      margin-bottom: 36px;
+      margin-bottom: 0;
       display: block;
     }
 
     /* ── Work entry ── */
-    .werk-section { margin-bottom: 96px; }
+    .werk-section {
+      border-top: 1px solid var(--c-divider);
+      padding-top: 28px;
+      margin-bottom: 72px;
+    }
 
     .werk-entry {
       border-top: 1px solid var(--c-divider);
-      padding-top: 36px;
+      padding-top: 28px;
+      margin-top: 20px;
     }
 
     .werk-num {
