@@ -1,5 +1,5 @@
 ---
-titel: IST-Bewertung — Ethereum im operativen Zustand Q1 2026
+titel: Istzustand — Ethereum im operativen Zustand Q1 2026
 nummer: 4
 befund: "Wie schlägt sich Ethereum im Betrieb gegen die zwölf Bewertungskriterien? Das Kapitel liefert die IST-Bewertung — Ausgangspunkt für den Zielzustands-Vergleich."
 sprache: de
