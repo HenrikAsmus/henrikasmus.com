@@ -14,177 +14,137 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Sticky site bar ── */
+    /* ── Site bar ── */
     .site-bar {
       position: sticky;
       top: 0;
       z-index: 100;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 13px 40px;
+      justify-content: flex-end;
+      padding: 14px 40px;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s;
     }
     .site-bar.scrolled { border-bottom-color: var(--c-divider); }
-    @media (max-width: 639px) { .site-bar { padding: 13px 20px; } }
+    @media (max-width: 639px) { .site-bar { padding: 14px 20px; } }
 
-    /* ── Flag toggle ── */
-    .lang-flip {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      width: 68px;
-      height: 32px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.04);
-      border: 1px solid var(--c-divider);
-      text-decoration: none;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: border-color 0.15s;
-    }
-    .lang-flip:hover { border-color: var(--c-sub); }
-
-    .lf-bg {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.28;
-      pointer-events: none;
-      user-select: none;
-      display: block;
-      width: 18px;
-      height: auto;
-      border-radius: 2px;
-    }
-    .lf-bg-de { left: 7px; }
-    .lf-bg-en { right: 7px; }
-
-    .lf-knob {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.18), 0 0 0 0.5px rgba(0,0,0,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      user-select: none;
-      transition: left 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .lf-flag {
-      display: block;
-      width: 19px;
-      height: auto;
-      border-radius: 2px;
-    }
-
-    /* ── Main layout ── */
+    /* ── Page wrapper ── */
     .hw {
-      max-width: 860px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 88px 40px 160px;
+      padding: 52px 40px 160px;
       font-family: 'Geist', Inter, system-ui, sans-serif;
       color: var(--c-text);
     }
-    @media (max-width: 639px) { .hw { padding: 64px 20px 120px; } }
+    @media (max-width: 639px) { .hw { padding: 36px 20px 120px; } }
 
     @media (prefers-reduced-motion: no-preference) {
-      @keyframes fi { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-      .s1 { animation: fi 480ms 0ms ease both; }
-      .s2 { animation: fi 480ms 90ms ease both; }
-      .s3 { animation: fi 480ms 200ms ease both; }
-      .s4 { animation: fi 480ms 310ms ease both; }
+      @keyframes fi { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+      .s1 { animation: fi 500ms 0ms ease both; }
+      .s3 { animation: fi 500ms 160ms ease both; }
+      .s4 { animation: fi 500ms 260ms ease both; }
     }
 
-    /* ── Hero ── */
-    .hero { margin-bottom: 96px; }
+    /* ── Hero: asymmetric split grid ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 56px;
+      align-items: center;
+      border: 1px solid var(--c-divider);
+      padding: 52px 48px;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; gap: 28px 0; padding: 36px 28px; }
+    }
+    @media (max-width: 440px) { .hero { padding: 28px 20px; } }
 
     .name {
       font-family: 'Pinyon Script', cursive;
-      font-size: 96px;
+      font-size: 80px;
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: 0.01em;
       color: var(--c-text);
     }
-    @media (max-width: 639px) { .name { font-size: 64px; } }
+    @media (max-width: 700px) { .name { font-size: 68px; } }
+    @media (max-width: 440px) { .name { font-size: 56px; } }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-tag {
+      display: block;
+      font-family: ui-monospace, 'SF Mono', 'Courier New', Courier, monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      color: var(--c-meta);
+      margin-bottom: 14px;
+    }
 
     .tagline {
-      margin-top: 18px;
-      font-size: 14.5px;
-      letter-spacing: -0.006em;
-      line-height: 1.55;
+      font-size: 14px;
+      letter-spacing: -0.005em;
+      line-height: 1.68;
       color: var(--c-sub);
     }
 
     /* ── Section label ── */
     .sec-label {
+      display: block;
       font-size: 9.5px;
       letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--c-meta);
-      margin-bottom: 36px;
-      display: block;
+      margin-bottom: 0;
     }
 
-    /* ── Work entry ── */
-    .werk-section { margin-bottom: 96px; }
+    /* ── Work section ── */
+    .werk-section { margin-bottom: 72px; }
 
     .werk-entry {
       border-top: 1px solid var(--c-divider);
-      padding-top: 36px;
-    }
-
-    .werk-num {
-      font-size: 10px;
-      letter-spacing: 0.07em;
-      color: var(--c-meta);
-      padding-top: 5px;
+      padding-top: 28px;
+      margin-top: 28px;
     }
 
     .wt1, .wt2 {
       display: block;
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 500;
       letter-spacing: -0.03em;
-      line-height: 1.18;
+      line-height: 1.20;
     }
     .wt1 { color: var(--c-text); }
-    .wt2 {
-      background: linear-gradient(100deg, #78828A 0%, #C3CACF 48%, #78828A 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    @media (max-width: 639px) { .wt1, .wt2 { font-size: 20px; } }
+    .wt2 { color: var(--c-sub); }
+    @media (max-width: 639px) { .wt1, .wt2 { font-size: 19px; } }
 
     .werk-meta {
-      margin-top: 14px;
-      font-size: 12px;
-      letter-spacing: 0.003em;
+      margin-top: 12px;
+      font-size: 11.5px;
+      letter-spacing: 0.002em;
       color: var(--c-meta);
     }
 
     .werk-desc {
-      margin-top: 16px;
+      margin-top: 14px;
       font-size: 14px;
       letter-spacing: -0.005em;
       line-height: 1.72;
       color: var(--c-body);
-      max-width: 540px;
+      max-width: 500px;
     }
 
     .werk-actions {
-      margin-top: 24px;
+      margin-top: 22px;
       display: flex;
       align-items: baseline;
       flex-wrap: wrap;
@@ -208,15 +168,23 @@
     }
     .werk-pdf-a:hover { color: var(--c-sub); }
 
-    /* ── Kontakt ── */
+    /* ── Contact ── */
     .contact-section {
       border-top: 1px solid var(--c-divider);
-      padding-top: 36px;
+      padding-top: 28px;
+    }
+
+    .contact-label {
+      display: block;
+      font-size: 9.5px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-meta);
+      margin-bottom: 12px;
     }
 
     .contact-email {
       display: inline-block;
-      margin-top: 14px;
       font-size: 14px;
       letter-spacing: -0.006em;
       color: var(--c-text);
@@ -228,42 +196,41 @@
 <body>
 
 <div class="site-bar" id="site-bar">
-  <a href="/en/" class="lang-flip" aria-label="Zu Englisch wechseln">
-    <img src="/flags/de.svg" class="lf-bg lf-bg-de" width="18" height="12" alt="" aria-hidden="true" />
-    <img src="/flags/gb.svg" class="lf-bg lf-bg-en" width="18" height="12" alt="" aria-hidden="true" />
-    <span class="lf-knob" aria-hidden="true">
-      <img src="/flags/de.svg" class="lf-flag" width="19" height="13" alt="Deutsch" />
-    </span>
-  </a>
+  <nav class="lang-switcher" aria-label="Sprache">
+    <a href="/" class="active" aria-current="page">DE</a>
+    <span class="slash" aria-hidden="true">/</span>
+    <a href="/en/">EN</a>
+  </nav>
 </div>
 
 <div class="hw">
   <div class="hero s1">
     <h1 class="name">Henrik Asmus</h1>
-    <p class="tagline">Student des Wirtschaftsingenieurwesens.<br>Forschung an Technologie, Infrastruktur und Kapital.</p>
+    <div class="hero-right">
+      <span class="hero-tag">// Wirtschaftsingenieurwesen</span>
+      <p class="tagline">Forschung an Technologie,<br>Infrastruktur und Kapital.</p>
+    </div>
   </div>
 
   <section class="werk-section s3" aria-label="Arbeiten">
     <span class="sec-label">Arbeiten</span>
     <div class="werk-entry">
-      <div class="werk-body">
-        <span class="wt1">Lastannahmen</span>
-        <span class="wt2">Ethereum als fundamentale digitale Infrastruktur</span>
-        <p class="werk-meta">Masterarbeit · Eigenverlag · Juli 2026 · 324 Seiten</p>
-        <p class="werk-desc">Die Arbeit prüft Ethereum an zwölf Kriterien für fundamentale Infrastruktur, in zwei Zuständen: im heutigen, Stand März 2026, und in dem, der sich bei vollständig umgesetzter Roadmap ergäbe. Geschrieben für Entscheider in Unternehmen, Kapitalgeber, technische Architekten und Politik.</p>
-        <div class="werk-actions">
-          <a href="/lastannahmen/" class="werk-read">Online lesen →</a>
-          <div class="werk-pdfs">
-            <a href="/pdf/Lastannahmen.pdf" class="werk-pdf-a">PDF · Deutsch ↓</a>
-            <a href="/pdf/Load-Assumptions.pdf" class="werk-pdf-a">PDF · English ↓</a>
-          </div>
+      <span class="wt1">Lastannahmen</span>
+      <span class="wt2">Ethereum als fundamentale digitale Infrastruktur</span>
+      <p class="werk-meta">Masterarbeit · Eigenverlag · Juli 2026 · 324 Seiten</p>
+      <p class="werk-desc">Die Arbeit prüft Ethereum an zwölf Kriterien für fundamentale Infrastruktur, in zwei Zuständen: im heutigen, Stand März 2026, und in dem, der sich bei vollständig umgesetzter Roadmap ergäbe. Geschrieben für Entscheider in Unternehmen, Kapitalgeber, technische Architekten und Politik.</p>
+      <div class="werk-actions">
+        <a href="/lastannahmen/" class="werk-read">Online lesen →</a>
+        <div class="werk-pdfs">
+          <a href="/pdf/Lastannahmen.pdf" class="werk-pdf-a">PDF · Deutsch ↓</a>
+          <a href="/pdf/Load-Assumptions.pdf" class="werk-pdf-a">PDF · English ↓</a>
         </div>
       </div>
     </div>
   </section>
 
   <section class="contact-section s4" id="kontakt" aria-label="Kontakt">
-    <span class="sec-label">Kontakt</span>
+    <span class="contact-label">Kontakt</span>
     <a href="mailto:HenrikAsmus@proton.me" class="contact-email">HenrikAsmus@proton.me</a>
   </section>
 </div>
