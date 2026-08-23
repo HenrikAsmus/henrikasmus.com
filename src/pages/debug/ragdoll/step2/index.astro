@@ -1,0 +1,575 @@
+---
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ragdoll Debug — Step 2</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #eee; font-family: 'Courier New', monospace; font-size: 12px;
+           display: flex; gap: 20px; padding: 20px; justify-content: flex-start; }
+    #wrap { flex: 0 0 auto; }
+    svg#fig { background: #fff; border: 1px solid #bbb; display: block; }
+    #panel { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 420px; }
+    #fps { font-size: 18px; font-weight: bold; }
+    #warn { color: #c04000; font-weight: bold; font-size: 13px; min-height: 18px; }
+    .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    button { padding: 6px 14px; font-family: inherit; cursor: pointer;
+             background: #222; color: #fff; border: none; font-size: 12px; }
+    button.off { background: #888; }
+    h3 { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+         color: #888; margin-top: 4px; }
+    .box { background: #fff; border: 1px solid #ccc; padding: 8px; }
+    #phys { font-size: 11px; line-height: 1.8; white-space: pre; }
+    #pd   { font-size: 11px; line-height: 1.8; white-space: pre; }
+    #pts  { white-space: pre; font-size: 11px; line-height: 1.7; }
+    .srow { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    .srow label { flex: 0 0 200px; font-size: 11px; }
+    .srow input[type=range] { flex: 1; }
+    .srow span { flex: 0 0 36px; font-size: 11px; text-align: right;
+                 font-variant-numeric: tabular-nums; }
+    table { border-collapse: collapse; width: 100%; background: #fff;
+            border: 1px solid #ccc; font-size: 11px; }
+    td, th { padding: 2px 8px; border: 1px solid #ddd; text-align: right;
+             font-variant-numeric: tabular-nums; }
+    th { background: #e8e8e8; text-align: left; font-size: 10px; }
+    td:first-child { text-align: left; }
+    tr.gh td { background: #d8d8d8; font-weight: bold; font-size: 10px; color: #555; }
+    .ok  { color: #333; }
+    .hi  { color: #c04000; font-weight: bold; }
+    .lo  { color: #0040c0; font-weight: bold; }
+    td.pk.hi { color: #c04000; font-weight: bold; }
+    td.pk    { color: #777; }
+  </style>
+</head>
+<body>
+
+<div id="wrap">
+  <svg id="fig" viewBox="0 0 60 80" width="420" height="560"
+       fill="none" xmlns="http://www.w3.org/2000/svg">
+  </svg>
+</div>
+
+<div id="panel">
+  <div id="fps">FPS: —</div>
+  <div id="warn"></div>
+
+  <div class="btns">
+    <button id="toggleBtn">Regler: AN</button>
+    <button id="nudge2Btn">Anstoßen 2 px/step</button>
+    <button id="nudge5Btn">Anstoßen 5 px/step</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+
+  <h3>Stützstreben — Steifigkeit (0 = schlaff · 1 = starr)</h3>
+  <div class="box">
+    <div class="srow">
+      <label>Beine &nbsp;<code>foot↔pelvis</code></label>
+      <input type="range" id="kLeg"   min="0" max="1" step="0.01" value="0.5">
+      <span id="kLegVal">0.50</span>
+    </div>
+    <div class="srow">
+      <label>Rumpf <code>foot↔neck</code></label>
+      <input type="range" id="kTorso" min="0" max="1" step="0.01" value="0.35">
+      <span id="kTorsoVal">0.35</span>
+    </div>
+    <div class="srow">
+      <label>Arme &nbsp;<code>elbow Chiralität</code></label>
+      <input type="range" id="kArm"   min="0" max="1" step="0.01" value="0.25">
+      <span id="kArmVal">0.25</span>
+    </div>
+  </div>
+
+  <h3>Physik-Parameter</h3>
+  <div class="box"><div id="phys">—</div></div>
+
+  <h3>PD-Regler — Echtzeit</h3>
+  <div class="box"><div id="pd">—</div></div>
+
+  <h3>Punkte</h3>
+  <div class="box"><div id="pts">—</div></div>
+
+  <h3>Segmentlängen — Soll / Ist / Δ% / Peak Δ%</h3>
+  <table>
+    <thead><tr><th>Segment</th><th>Soll</th><th>Ist</th><th>Δ %</th><th>Peak</th></tr></thead>
+    <tbody id="segTable"></tbody>
+  </table>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var DEBUG = window.location.search.indexOf('debug=1') >= 0;
+
+  if (!DEBUG) {
+    document.getElementById('panel').style.display = 'none';
+    document.body.style.justifyContent = 'center';
+  }
+
+  var GRAVITY  = 0.35;
+  var DAMPING  = 0.98;
+  var ITER     = 30;
+  var STEP_MS  = 16.67;
+  var Y_FLOOR  = 73;
+  var Kp       = 0.06;
+  var Kd       = 0.35;
+  var HEAD_R   = 7;
+  var HEAD_OFF = HEAD_R * 0.9;   // 6.3 above neck — overlaps spine by only 0.7
+
+  var COLOR = '#121517';
+  var NS    = 'http://www.w3.org/2000/svg';
+
+  var INIT = [
+    ['footL',  23.0, 73.0, true ],
+    ['footR',  37.0, 73.0, true ],
+    ['kneeL',  24.5, 58.0, false],
+    ['kneeR',  35.5, 58.0, false],
+    ['pelvis', 30.0, 43.5, false],
+    ['neck',   30.0, 24.0, false],
+    ['elbowL', 23.5, 35.3, false],
+    ['elbowR', 36.5, 35.3, false],
+    ['handL',  21.5, 48.1, false],
+    ['handR',  38.5, 48.1, false],
+  ];
+
+  function mk(x, y, pin) { return { x: x, y: y, px: x, py: y, pinned: !!pin }; }
+
+  var p = {};
+  INIT.forEach(function (row) { p[row[0]] = mk(row[1], row[2], row[3]); });
+  var all = Object.values(p);
+  var ptNames = INIT.map(function (r) { return r[0]; });
+
+  function restLen(a, b) {
+    var dx = b.x - a.x, dy = b.y - a.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  // ── Constraints ──────────────────────────────────────────────────────────────
+
+  var segDefs = [
+    { g: 'Rumpf', name: 'neck→pelvis',  a: p.neck,   b: p.pelvis  },
+    { g: 'Arme',  name: 'neck→elbowL',  a: p.neck,   b: p.elbowL  },
+    { g: null,    name: 'elbowL→handL', a: p.elbowL, b: p.handL   },
+    { g: null,    name: 'neck→elbowR',  a: p.neck,   b: p.elbowR  },
+    { g: null,    name: 'elbowR→handR', a: p.elbowR, b: p.handR   },
+    { g: 'Beine', name: 'pelvis→kneeL', a: p.pelvis, b: p.kneeL   },
+    { g: null,    name: 'pelvis→kneeR', a: p.pelvis, b: p.kneeR   },
+  ];
+  var C_main = segDefs.map(function (s) { return [s.a, s.b, restLen(s.a, s.b)]; });
+
+  var feetDefs = [
+    { g: 'Füße', name: 'kneeL→footL', a: p.kneeL, b: p.footL },
+    { g: null,   name: 'kneeR→footR', a: p.kneeR, b: p.footR },
+  ];
+  var C_feet = feetDefs.map(function (s) { return [s.a, s.b, restLen(s.a, s.b)]; });
+
+  var strutDefs = [
+    { g: 'Stützstreben', name: 'footL↔pelvis', a: p.footL, b: p.pelvis, kKey: 'leg'   },
+    { g: null,           name: 'footR↔pelvis', a: p.footR, b: p.pelvis, kKey: 'leg'   },
+    { g: null,           name: 'footL↔neck',   a: p.footL, b: p.neck,   kKey: 'torso' },
+    { g: null,           name: 'footR↔neck',   a: p.footR, b: p.neck,   kKey: 'torso' },
+  ];
+  strutDefs.forEach(function (s) { s.rest = restLen(s.a, s.b); });
+
+  var kLeg = 0.5, kTorso = 0.35, kArm = 0.25;
+  function strutK(s) {
+    return s.kKey === 'leg' ? kLeg : kTorso;
+  }
+
+  var allDefs = segDefs.concat(strutDefs).concat(feetDefs);
+  var peakDev = allDefs.map(function () { return 0; });
+
+  var pdOn = true, prevCoMx = 30;
+  var liveDx = 0, liveVx = 0, liveF = 0, liveOn = true;
+
+  function resetSim() {
+    INIT.forEach(function (row) {
+      var q = p[row[0]];
+      q.x = row[1]; q.y = row[2]; q.px = row[1]; q.py = row[2];
+    });
+    prevCoMx = 30; liveDx = 0; liveVx = 0; liveF = 0;
+    peakDev = allDefs.map(function () { return 0; });
+    document.getElementById('warn').textContent = '';
+  }
+
+  function nudge(v) {
+    all.forEach(function (q) { if (!q.pinned) q.px -= v; });
+    peakDev = allDefs.map(function () { return 0; });
+    document.getElementById('warn').textContent = '';
+  }
+
+  // ── Physics ──────────────────────────────────────────────────────────────────
+
+  function applyC(a, b, r, k) {
+    var dx = b.x - a.x, dy = b.y - a.y;
+    var dist = Math.sqrt(dx * dx + dy * dy) || 1e-9;
+    var corr = (dist - r) / dist;
+    if (a.pinned && b.pinned) return;
+    if (a.pinned) {
+      b.x -= dx * corr * k; b.y -= dy * corr * k;
+    } else if (b.pinned) {
+      a.x += dx * corr * k; a.y += dy * corr * k;
+    } else {
+      var h = corr * 0.5 * k;
+      a.x += dx * h; a.y += dy * h;
+      b.x -= dx * h; b.y -= dy * h;
+    }
+  }
+
+  function holdElbowOut(neck, elbow, isLeft, strength) {
+    var err = isLeft
+      ? elbow.x - (neck.x - 6.5)
+      : (neck.x + 6.5) - elbow.x;
+    if (err > 0) elbow.x += (isLeft ? -1 : 1) * err * strength;
+  }
+
+  function holdHandOut(neck, hand, isLeft, strength) {
+    var err = isLeft
+      ? hand.x - (neck.x - 8.5)
+      : (neck.x + 8.5) - hand.x;
+    if (err > 0) hand.x += (isLeft ? -1 : 1) * err * strength;
+  }
+
+  function correctElbow(neck, elbow, hand, expectNeg, strength) {
+    var ex = elbow.x - neck.x,  ey = elbow.y - neck.y;
+    var fx = hand.x  - elbow.x, fy = hand.y  - elbow.y;
+    var cross = ex * fy - ey * fx;
+    if (expectNeg ? cross < 0 : cross > 0) return;
+    var lx = hand.x - neck.x, ly = hand.y - neck.y;
+    var len2 = lx * lx + ly * ly;
+    if (len2 < 1e-9) return;
+    var t = ((elbow.x - neck.x) * lx + (elbow.y - neck.y) * ly) / len2;
+    var px = neck.x + t * lx, py = neck.y + t * ly;
+    elbow.x += strength * (2 * px - 2 * elbow.x);
+    elbow.y += strength * (2 * py - 2 * elbow.y);
+  }
+
+  function integrate() {
+    for (var i = 0; i < all.length; i++) {
+      var q = all[i];
+      if (q.pinned) continue;
+      var vx = (q.x - q.px) * DAMPING, vy = (q.y - q.py) * DAMPING;
+      q.px = q.x; q.py = q.y;
+      q.x += vx; q.y += vy + GRAVITY;
+    }
+  }
+
+  function solve() {
+    for (var it = 0; it < ITER; it++) {
+      for (var c = 0; c < C_main.length; c++)
+        applyC(C_main[c][0], C_main[c][1], C_main[c][2], 1.0);
+      holdElbowOut(p.neck, p.elbowL, true,  kArm);
+      holdElbowOut(p.neck, p.elbowR, false, kArm);
+      holdHandOut(p.neck, p.handL, true,  kArm * 0.6);
+      holdHandOut(p.neck, p.handR, false, kArm * 0.6);
+      correctElbow(p.neck, p.elbowL, p.handL, true,  kArm);
+      correctElbow(p.neck, p.elbowR, p.handR, false, kArm);
+      for (var s = 0; s < strutDefs.length; s++)
+        applyC(strutDefs[s].a, strutDefs[s].b, strutDefs[s].rest, strutK(strutDefs[s]));
+      for (var i = 0; i < all.length; i++)
+        if (!all[i].pinned && all[i].y > Y_FLOOR) all[i].y = Y_FLOOR;
+      for (var f = 0; f < C_feet.length; f++)
+        applyC(C_feet[f][0], C_feet[f][1], C_feet[f][2], 1.0);
+    }
+    for (var j = 0; j < all.length; j++) {
+      var q = all[j];
+      if (!q.pinned && q.y >= Y_FLOOR && (q.y - q.py) > 0) q.py = q.y;
+    }
+  }
+
+  function applyBalance() {
+    var sumX = 0;
+    for (var i = 0; i < all.length; i++) sumX += all[i].x;
+    var coMx = sumX / all.length;
+    var midX = (p.footL.x + p.footR.x) * 0.5;
+    var dx   = coMx - midX;
+    var vx   = coMx - prevCoMx;
+    prevCoMx = coMx;
+    var span   = Math.abs(p.footR.x - p.footL.x);
+    var active = pdOn && Math.abs(dx) <= span;
+    liveDx = dx; liveVx = vx; liveOn = active;
+    if (!active) { liveF = 0; return; }
+    var F = -(Kp * dx + Kd * vx);
+    liveF = F; p.pelvis.x += F;
+  }
+
+  // ── SVG elements ─────────────────────────────────────────────────────────────
+
+  var svg = document.getElementById('fig');
+
+  function mkPath() {
+    var el = document.createElementNS(NS, 'path');
+    el.setAttribute('stroke', COLOR);
+    el.setAttribute('stroke-width', '3.5');
+    el.setAttribute('stroke-linecap', 'round');
+    el.setAttribute('stroke-linejoin', 'round');
+    el.setAttribute('fill', 'none');
+    svg.appendChild(el);
+    return el;
+  }
+
+  function mkLine() {
+    var el = document.createElementNS(NS, 'line');
+    el.setAttribute('stroke', COLOR);
+    el.setAttribute('stroke-width', '3.5');
+    el.setAttribute('stroke-linecap', 'round');
+    el.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(el);
+    return el;
+  }
+
+  // Render order: legs → spine → arms → head (head covers neck junction)
+  var legL    = mkPath();
+  var legR    = mkPath();
+  var spineEl = mkLine();
+  var armL    = mkPath();
+  var armR    = mkPath();
+
+  var headEl = document.createElementNS(NS, 'circle');
+  headEl.setAttribute('fill', COLOR);
+  headEl.setAttribute('stroke', 'none');
+  headEl.setAttribute('r', String(HEAD_R));
+  svg.appendChild(headEl);
+
+  // ── Debug overlays — created only when ?debug=1 ───────────────────────────
+
+  var dbgMain = [], dbgStrut = [], dbgFeet = [];
+  var ptDots = {}, ptLabels = {};
+
+  if (DEBUG) {
+    var floorLine = document.createElementNS(NS, 'line');
+    floorLine.setAttribute('x1', '0');   floorLine.setAttribute('y1', String(Y_FLOOR));
+    floorLine.setAttribute('x2', '60');  floorLine.setAttribute('y2', String(Y_FLOOR));
+    floorLine.setAttribute('stroke', '#aaa');
+    floorLine.setAttribute('stroke-width', '0.5');
+    floorLine.setAttribute('stroke-dasharray', '2,2');
+    svg.appendChild(floorLine);
+
+    dbgMain = C_main.map(function () {
+      var el = document.createElementNS(NS, 'line');
+      el.setAttribute('stroke-width', '0.5'); el.setAttribute('opacity', '0.5');
+      svg.appendChild(el); return el;
+    });
+    dbgStrut = strutDefs.map(function () {
+      var el = document.createElementNS(NS, 'line');
+      el.setAttribute('stroke-width', '0.4');
+      el.setAttribute('stroke-dasharray', '1,1');
+      el.setAttribute('opacity', '0.45');
+      svg.appendChild(el); return el;
+    });
+    dbgFeet = C_feet.map(function () {
+      var el = document.createElementNS(NS, 'line');
+      el.setAttribute('stroke-width', '0.5'); el.setAttribute('opacity', '0.5');
+      svg.appendChild(el); return el;
+    });
+
+    ptNames.forEach(function (name) {
+      var dot = document.createElementNS(NS, 'circle');
+      dot.setAttribute('r',    p[name].pinned ? '1.5' : '1.2');
+      dot.setAttribute('fill', p[name].pinned ? '#e00' : '#f90');
+      dot.setAttribute('stroke', 'none');
+      svg.appendChild(dot); ptDots[name] = dot;
+      var lbl = document.createElementNS(NS, 'text');
+      lbl.setAttribute('font-size', '2.2');
+      lbl.setAttribute('fill', '#555');
+      lbl.setAttribute('font-family', 'monospace');
+      svg.appendChild(lbl); ptLabels[name] = lbl;
+    });
+  }
+
+  // ── Rendering ────────────────────────────────────────────────────────────────
+
+  function setLine(el, a, b) {
+    el.setAttribute('x1', a.x.toFixed(2)); el.setAttribute('y1', a.y.toFixed(2));
+    el.setAttribute('x2', b.x.toFixed(2)); el.setAttribute('y2', b.y.toFixed(2));
+  }
+
+  function qbez(el, P0, ctrl, P2) {
+    el.setAttribute('d',
+      'M '  + P0.x.toFixed(2)   + ' ' + P0.y.toFixed(2) +
+      ' Q ' + ctrl.x.toFixed(2) + ' ' + ctrl.y.toFixed(2) +
+      ' '   + P2.x.toFixed(2)   + ' ' + P2.y.toFixed(2));
+  }
+
+  function devCol(cur, rest) {
+    var d = (cur - rest) / rest;
+    return Math.abs(d) < 0.02 ? '#888' : (d > 0 ? '#e06000' : '#0060e0');
+  }
+
+  function render() {
+    headEl.setAttribute('cx', p.neck.x.toFixed(2));
+    headEl.setAttribute('cy', (p.neck.y - HEAD_OFF).toFixed(2));
+    setLine(spineEl, p.neck, p.pelvis);
+    qbez(armL, p.handL, p.elbowL, p.neck);
+    qbez(armR, p.handR, p.elbowR, p.neck);
+    qbez(legL, p.footL, p.kneeL,  p.pelvis);
+    qbez(legR, p.footR, p.kneeR,  p.pelvis);
+
+    if (!DEBUG) return;
+
+    C_main.forEach(function (c, i) {
+      var dx = c[1].x - c[0].x, dy = c[1].y - c[0].y;
+      dbgMain[i].setAttribute('stroke', devCol(Math.sqrt(dx*dx+dy*dy), c[2]));
+      setLine(dbgMain[i], c[0], c[1]);
+    });
+    strutDefs.forEach(function (s, i) {
+      var dx = s.b.x - s.a.x, dy = s.b.y - s.a.y;
+      dbgStrut[i].setAttribute('stroke', devCol(Math.sqrt(dx*dx+dy*dy), s.rest));
+      setLine(dbgStrut[i], s.a, s.b);
+    });
+    C_feet.forEach(function (c, i) {
+      var dx = c[1].x - c[0].x, dy = c[1].y - c[0].y;
+      dbgFeet[i].setAttribute('stroke', devCol(Math.sqrt(dx*dx+dy*dy), c[2]));
+      setLine(dbgFeet[i], c[0], c[1]);
+    });
+    ptNames.forEach(function (name) {
+      var q = p[name];
+      ptDots[name].setAttribute('cx', q.x.toFixed(2));
+      ptDots[name].setAttribute('cy', q.y.toFixed(2));
+      ptLabels[name].setAttribute('x', (q.x + 1.5).toFixed(2));
+      ptLabels[name].setAttribute('y', (q.y - 0.5).toFixed(2));
+      ptLabels[name].textContent = name;
+    });
+  }
+
+  // ── Panel UI ─────────────────────────────────────────────────────────────────
+
+  document.getElementById('phys').textContent =
+    'GRAVITY  : ' + GRAVITY.toFixed(2) + ' px/step²\n' +
+    'DAMPING  : ' + DAMPING.toFixed(2) + '\n' +
+    'ITER     : ' + ITER + '\n' +
+    'STEP_MS  : ' + STEP_MS.toFixed(2) + ' ms\n' +
+    'Y_FLOOR  : ' + Y_FLOOR + '\n' +
+    'HEAD_R   : ' + HEAD_R + '  (gefüllt, kein stroke)\n' +
+    'HEAD_OFF : ' + HEAD_OFF.toFixed(2) + '  (= HEAD_R × 0.9, fest nach oben)\n' +
+    'Kp / Kd  : ' + Kp + ' / ' + Kd;
+
+  function wireSlider(id, valId, onChange) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', function () {
+      var v = parseFloat(this.value);
+      onChange(v);
+      document.getElementById(valId).textContent = v.toFixed(2);
+    });
+  }
+  wireSlider('kLeg',   'kLegVal',   function (v) { kLeg   = v; });
+  wireSlider('kTorso', 'kTorsoVal', function (v) { kTorso = v; });
+  wireSlider('kArm',   'kArmVal',   function (v) { kArm   = v; });
+
+  var toggleBtn = document.getElementById('toggleBtn');
+  toggleBtn.addEventListener('click', function () {
+    pdOn = !pdOn;
+    toggleBtn.textContent = 'Regler: ' + (pdOn ? 'AN' : 'AUS');
+    toggleBtn.className   = pdOn ? '' : 'off';
+  });
+  document.getElementById('nudge2Btn').addEventListener('click', function () { nudge(2); });
+  document.getElementById('nudge5Btn').addEventListener('click', function () { nudge(5); });
+  document.getElementById('resetBtn').addEventListener('click', resetSim);
+
+  // Build segment table
+  var tbody    = document.getElementById('segTable');
+  var warnEl   = document.getElementById('warn');
+  var segRows  = [];
+
+  allDefs.forEach(function (def, i) {
+    if (def.g !== null) {
+      var gh = document.createElement('tr');
+      gh.className = 'gh';
+      gh.innerHTML = '<td colspan="5">' + def.g + '</td>';
+      tbody.appendChild(gh);
+    }
+    var si = i - segDefs.length;
+    var fi = si - strutDefs.length;
+    var rest = (i < segDefs.length)         ? C_main[i][2] :
+               (si < strutDefs.length)      ? strutDefs[si].rest :
+                                              C_feet[fi][2];
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + def.name + '</td>' +
+                   '<td>' + rest.toFixed(2) + '</td>' +
+                   '<td class="cur ok">—</td>' +
+                   '<td class="dev ok">—</td>' +
+                   '<td class="pk">—</td>';
+    tbody.appendChild(tr);
+    segRows.push({ def: def, rest: rest, tr: tr, isStrut: (si >= 0 && fi < 0) });
+  });
+
+  var fpsEl = document.getElementById('fps');
+  var pdEl  = document.getElementById('pd');
+  var ptsEl = document.getElementById('pts');
+  var fpsN = 0, fpsA = 0, fpsL = 0;
+
+  function updateStats(ts) {
+    fpsN++; fpsA += ts - (fpsL || ts); fpsL = ts;
+    if (fpsA >= 500) {
+      fpsEl.textContent = 'FPS: ' + Math.round(fpsN / fpsA * 1000);
+      fpsN = 0; fpsA = 0;
+    }
+
+    var sumX = 0;
+    all.forEach(function (q) { sumX += q.x; });
+    var coMx = sumX / all.length;
+
+    pdEl.textContent =
+      'coMx  : ' + coMx.toFixed(4) + '\n' +
+      'midX  : ' + ((p.footL.x + p.footR.x) * 0.5).toFixed(4) + '\n' +
+      'dx    : ' + (liveDx >= 0 ? '+' : '') + liveDx.toFixed(4) + '\n' +
+      'vx    : ' + (liveVx >= 0 ? '+' : '') + liveVx.toFixed(4) + '\n' +
+      'F     : ' + (liveF  >= 0 ? '+' : '') + liveF.toFixed(4)  + '\n' +
+      'Regler: ' + (liveOn ? 'AKTIV' : (pdOn ? 'ABGESCHALTET (CoM außerhalb)' : 'AUS'));
+
+    ptsEl.textContent = ptNames.map(function (name) {
+      var q = p[name];
+      return (name + (q.pinned ? ' [PIN]' : '      ')).padEnd(13) +
+             ' x=' + q.x.toFixed(2).padStart(6) + '  y=' + q.y.toFixed(2).padStart(6);
+    }).join('\n');
+
+    var anyOver = false;
+    segRows.forEach(function (row, i) {
+      var dx = row.def.b.x - row.def.a.x, dy = row.def.b.y - row.def.a.y;
+      var cur = Math.sqrt(dx * dx + dy * dy);
+      var dev = (cur - row.rest) / row.rest * 100;
+      var abs = Math.abs(dev);
+      if (abs > peakDev[i]) peakDev[i] = abs;
+      if (!row.isStrut && peakDev[i] >= 2) anyOver = true;
+      var cls = abs < 2 ? 'ok' : (dev > 0 ? 'hi' : 'lo');
+      row.tr.querySelector('.cur').textContent = cur.toFixed(2);
+      row.tr.querySelector('.cur').className   = 'cur ' + cls;
+      row.tr.querySelector('.dev').textContent = (dev >= 0 ? '+' : '') + dev.toFixed(1) + '%';
+      row.tr.querySelector('.dev').className   = 'dev ' + cls;
+      row.tr.querySelector('.pk').textContent  = peakDev[i].toFixed(1) + '%';
+      row.tr.querySelector('.pk').className    = 'pk' + (peakDev[i] >= (row.isStrut ? 15 : 2) ? ' hi' : '');
+    });
+    warnEl.textContent = anyOver ? '⚠ Normales Segment Peak über 2 %' : '';
+  }
+
+  // ── Main loop ────────────────────────────────────────────────────────────────
+
+  // Small initial rightward nudge so figure is visibly alive on load
+  all.forEach(function (q) { if (!q.pinned) q.px -= 0.4; });
+
+  var acc = 0, lastT = null, rafId = null;
+
+  function loop(ts) {
+    rafId = requestAnimationFrame(loop);
+    if (!lastT) lastT = ts;
+    var dt = Math.min(ts - lastT, 200);
+    lastT = ts;
+    acc += dt;
+    while (acc >= STEP_MS) { integrate(); solve(); applyBalance(); acc -= STEP_MS; }
+    render();
+    if (DEBUG) updateStats(ts);
+  }
+
+  rafId = requestAnimationFrame(loop);
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { cancelAnimationFrame(rafId); rafId = null; }
+    else { lastT = null; rafId = requestAnimationFrame(loop); }
+  });
+})();
+</script>
+</body>
+</html>

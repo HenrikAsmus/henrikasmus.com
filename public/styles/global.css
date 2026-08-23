@@ -1,0 +1,521 @@
+@font-face {
+  font-family: 'Pinyon Script';
+  src: url('/fonts/PinyonScript-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-ext-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02AF, U+0300-0301, U+0303-0304, U+0308-0309, U+0323,
+    U+0329, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-ext-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02AF, U+0300-0301, U+0303-0304, U+0308-0309, U+0323,
+    U+0329, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: light only;
+  --c-text:     #121517;
+  --c-body:     #61686E;
+  --c-sub:      #8A9197;
+  --c-meta:     #AAB1B6;
+  --c-pdf:      #9BA2A8;
+  --c-inactive: #A9B0B5;
+  --c-divider:  #DFE3E6;
+}
+
+html {
+  background: #FFFFFF;
+  color: var(--c-text);
+  font-family: 'Geist', Inter, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    animation: fadein 400ms ease both;
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+.column {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 96px 24px 140px;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+
+.symbol {
+  display: block;
+  flex-shrink: 0;
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+
+.lang-switcher .slash {
+  color: var(--c-divider);
+  margin: 0 6px;
+}
+
+.lang-switcher a {
+  color: var(--c-inactive);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.lang-switcher a.active {
+  color: var(--c-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lang-switcher a:hover {
+    color: var(--c-text);
+  }
+}
+
+/* ── Name block ─────────────────────────────────────────── */
+
+.name {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.05;
+  color: var(--c-text);
+}
+
+.initial {
+  position: relative;
+  display: inline-block;
+}
+
+.initial .figur {
+  position: absolute;
+  width: 0.62em;
+  height: 0.78em;
+  left: 0.16em;
+  bottom: 0.05em;
+  overflow: visible;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bein {
+    transform-origin: 20px 24px;
+    animation: bein-swing 3.4s ease-in-out infinite alternate;
+  }
+  @keyframes bein-swing {
+    from { transform: rotate(-7deg); }
+    to   { transform: rotate(11deg); }
+  }
+}
+
+@media (max-width: 639px) {
+  .initial .figur { display: none; }
+}
+
+@media (max-width: 639px) {
+  .name {
+    font-size: 30px;
+  }
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  line-height: 1.55;
+  color: var(--c-sub);
+  margin-top: 14px;
+}
+
+/* ── Section heading ────────────────────────────────────── */
+
+.rubrik {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--c-meta);
+  margin-top: 80px;
+}
+
+/* ── Work title ─────────────────────────────────────────── */
+
+.werk-block {
+  margin-top: 20px;
+}
+
+.werk-titel-1 {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.22;
+  color: var(--c-text);
+  display: block;
+}
+
+.werk-titel-2 {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.22;
+  display: block;
+  background: linear-gradient(100deg, #78828A 0%, #C3CACF 50%, #78828A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 639px) {
+  .werk-titel-1,
+  .werk-titel-2 {
+    font-size: 19px;
+  }
+}
+
+/* ── Meta ───────────────────────────────────────────────── */
+
+.meta {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--c-meta);
+  margin-top: 16px;
+}
+
+/* ── Body text ──────────────────────────────────────────── */
+
+.fliesstext {
+  max-width: 540px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.007em;
+  line-height: 1.72;
+  color: var(--c-body);
+  margin-top: 20px;
+}
+
+/* ── Link row ───────────────────────────────────────────── */
+
+.werk-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  margin-top: 24px;
+}
+
+.werk-links a {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+.werk-links a.pdf {
+  color: var(--c-pdf);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .werk-links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ── Contact ────────────────────────────────────────────── */
+
+.kontakt {
+  margin-top: 18px;
+}
+
+.kontakt a {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kontakt a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ── Back link ──────────────────────────────────────────── */
+
+.back-link {
+  margin-top: 80px;
+}
+
+.back-link a {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  color: var(--c-pdf);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .back-link a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ── Chapter column ─────────────────────────────────────── */
+
+.kapitel-column {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px 24px 140px;
+}
+
+/* ── Chapter page ───────────────────────────────────────── */
+
+.kapitel-nr {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--c-meta);
+  margin-bottom: 12px;
+}
+
+.kapitel-titel {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.18;
+  color: var(--c-text);
+  margin-bottom: 48px;
+}
+
+@media (max-width: 639px) {
+  .kapitel-titel { font-size: 21px; }
+}
+
+.kapitel-body {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.007em;
+  line-height: 1.72;
+  color: var(--c-body);
+}
+
+.kapitel-body p {
+  margin-bottom: 1.4em;
+}
+
+.kapitel-body p:last-child {
+  margin-bottom: 0;
+}
+
+.kapitel-body h2 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--c-text);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+}
+
+.kapitel-body h3 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.008em;
+  color: var(--c-text);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+/* Footnote anchors in text */
+.kapitel-body sup a {
+  color: var(--c-meta);
+  text-decoration: none;
+  font-size: 0.72em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kapitel-body sup a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+/* Footnote list */
+.fn-list {
+  margin-top: 4em;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.65;
+  color: var(--c-meta);
+}
+
+.fn-list ol {
+  padding-left: 1.4em;
+}
+
+.fn-list li {
+  margin-bottom: 0.6em;
+}
+
+.fn-back {
+  color: var(--c-meta);
+  text-decoration: none;
+  margin-left: 0.3em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fn-back:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+/* ── Next chapter navigation ────────────────────────────── */
+
+.kapitel-nav {
+  margin-top: 80px;
+}
+
+.kapitel-weiter {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kapitel-weiter:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ── Chapter directory ──────────────────────────────────── */
+
+.verzeichnis {
+  margin-top: 48px;
+}
+
+.verzeichnis-eintrag {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 40px;
+}
+
+.verzeichnis-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--c-meta);
+  margin-bottom: 4px;
+}
+
+.verzeichnis-name {
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--c-text);
+  margin-bottom: 8px;
+}
+
+.verzeichnis-befund {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.007em;
+  line-height: 1.65;
+  color: var(--c-body);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .verzeichnis-eintrag:hover .verzeichnis-name {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ── Chapter figures ─────────────────────────────────────── */
+
+.kapitel-figure {
+  margin: 2.5em 0;
+}
+
+.kapitel-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.kapitel-figure figcaption {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.6;
+  color: var(--c-meta);
+  margin-top: 0.75em;
+}

@@ -1,0 +1,466 @@
+---
+// V1E — v1c als Basis. Zwei kreative Ergänzungen:
+// 1. Name in Playfair Display (editorial, grand)
+// 2. Strichmännchen driftet den rechten Bildschirmrand herunter (CSS, kein JS)
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henrik Asmus — V1E</title>
+  <link rel="stylesheet" href="/styles/global.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 52px 28px 160px;
+      font-family: 'Geist', Inter, system-ui, sans-serif;
+      color: #121517;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes fi { from { opacity: 0; } to { opacity: 1; } }
+      .s0 { animation: fi 400ms ease both; }
+      .s1 { animation: fi 400ms 70ms ease both; }
+      .s2 { animation: fi 400ms 160ms ease both; }
+      .s3 { animation: fi 400ms 260ms ease both; }
+      .s4 { animation: fi 400ms 360ms ease both; }
+      .s5 { animation: fi 400ms 460ms ease both; }
+    }
+
+    /* Strichmännchen auf Kachelrand */
+    .werk-card {
+      position: relative;
+    }
+    .card-figur {
+      position: absolute;
+      top: -16px;
+      right: 36px;
+      width: 22px;
+      height: 28px;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card-figur .bein {
+        transform-origin: 20px 25px;
+        animation: bein-swing 3.4s ease-in-out infinite alternate;
+      }
+      @keyframes bein-swing {
+        from { transform: rotate(-7deg); }
+        to   { transform: rotate(11deg); }
+      }
+
+      .wink-arm {
+        transform-origin: 13px 14px;
+      }
+      .wave-lines {
+        opacity: 0;
+        transition: opacity 180ms ease;
+      }
+      .werk-card:has(.read-link:hover) .wave-lines {
+        opacity: 0.4;
+      }
+      .werk-card:has(.read-link:hover) .wink-arm {
+        animation: wave 1.8s ease-in-out infinite;
+      }
+      @keyframes wave {
+        0%   { transform: rotate(0deg);   }
+        10%  { transform: rotate(-66deg); }
+        20%  { transform: rotate(-42deg); }
+        30%  { transform: rotate(-66deg); }
+        40%  { transform: rotate(-42deg); }
+        50%  { transform: rotate(-66deg); }
+        60%  { transform: rotate(-42deg); }
+        70%  { transform: rotate(-66deg); }
+        80%  { transform: rotate(-42deg); }
+        90%  { transform: rotate(-66deg); }
+        100% { transform: rotate(0deg);   }
+      }
+    }
+
+    /* ── Abseil-Easter-Egg ───────────────────────────────── */
+    .rope {
+      position: absolute;
+      right: 49px;
+      top: 0;
+      width: 1.5px;
+      background: #8A9197;
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .card-figur.walking .bein {
+        transform-origin: 20px 25px;
+        animation: walk-bein 0.26s ease-in-out infinite alternate;
+      }
+      @keyframes walk-bein {
+        from { transform: rotate(-20deg); }
+        to   { transform: rotate(20deg); }
+      }
+      .card-figur.pressing .wink-arm {
+        transform-origin: 13px 14px;
+        animation: press-wave 0.25s ease-in-out infinite alternate;
+      }
+      @keyframes press-wave {
+        from { transform: rotate(-55deg); }
+        to   { transform: rotate(-40deg); }
+      }
+      .werk-card.agent-active .wave-lines { opacity: 0; }
+      .werk-card.agent-active .wink-arm { animation: none; }
+    }
+
+    @media (max-width: 639px) {
+      .name { font-size: 58px; }
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 80px;
+    }
+    .lang {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+    }
+    .lang a { color: #B0B8BD; text-decoration: none; }
+    .lang a.on { color: #121517; }
+    .lang a:hover { color: #121517; }
+    .lang-sl { color: #E0E4E7; margin: 0 7px; }
+
+    /* ── Name — Pinyon Script ────────────────────────────── */
+    .name {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 88px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.0;
+      color: #121517;
+      font-style: normal;
+    }
+
+    .tagline {
+      margin-top: 20px;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -0.009em;
+      line-height: 1.5;
+      color: #8A9197;
+    }
+
+    /* ── Sektion ─────────────────────────────────────────── */
+    .werk { margin-top: 96px; }
+    .werk-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .sec-label {
+      font-size: 10.5px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C8CED2;
+    }
+    .werk-year {
+      font-size: 12px;
+      font-weight: 400;
+      color: #C8CED2;
+    }
+
+    /* ── Kachel ──────────────────────────────────────────── */
+    .werk-card {
+      border: 1px solid #ECEEF0;
+      border-radius: 10px;
+      padding: 28px 28px 24px;
+    }
+
+    .t1 {
+      display: block;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.032em;
+      line-height: 1.2;
+      color: #121517;
+    }
+    .t2 {
+      display: block;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.032em;
+      line-height: 1.2;
+      background: linear-gradient(100deg, #78828A 0%, #C3CACF 50%, #78828A 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .meta-strip {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .meta-strip span {
+      font-size: 12px;
+      letter-spacing: 0.005em;
+      color: #B8BFC4;
+    }
+    .meta-strip span + span::before {
+      content: '·';
+      margin: 0 8px;
+      color: #DDE1E4;
+    }
+
+    .lead {
+      margin-top: 24px;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.006em;
+      line-height: 1.72;
+      color: #61686E;
+    }
+
+    .read-link {
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: -0.004em;
+      color: #121517;
+      text-decoration: none;
+    }
+    .read-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .card-divider {
+      margin: 22px 0;
+      height: 1px;
+      background: #F2F4F5;
+    }
+
+    .pdf-sublabel {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C8CED2;
+      margin-bottom: 12px;
+    }
+    .pdf-rows { display: flex; flex-direction: column; gap: 9px; }
+    .pdf-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .pdf-row a {
+      font-size: 13px;
+      letter-spacing: -0.005em;
+      color: #121517;
+      text-decoration: none;
+    }
+    .pdf-row a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .pdf-row span {
+      font-size: 12px;
+      letter-spacing: 0.005em;
+      color: #B8BFC4;
+      white-space: nowrap;
+    }
+
+    /* ── Kontakt ─────────────────────────────────────────── */
+    .contact { margin-top: 80px; }
+    .email {
+      margin-top: 16px;
+      display: inline-block;
+      font-size: 15px;
+      letter-spacing: -0.007em;
+      color: #121517;
+      text-decoration: none;
+    }
+    .email:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (max-width: 639px) {
+      .name { font-size: 58px; }
+      .t1, .t2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <!-- Kopfzeile -->
+  <div class="head s0">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+      <defs><linearGradient id="sge" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#D6DCE0"/>
+        <stop offset="45%" stop-color="#6E777E"/>
+        <stop offset="100%" stop-color="#AAB2B8"/>
+      </linearGradient></defs>
+      <path d="M10 3 L16.5 14 H3.5 Z" stroke="url(#sge)" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+      <line x1="2" y1="17" x2="18" y2="17" stroke="url(#sge)" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <nav class="lang" aria-label="Sprache">
+      <a href="/v1e/" class="on">DE</a><span class="lang-sl" aria-hidden="true">/</span><a href="/en/">EN</a>
+    </nav>
+  </div>
+
+  <h1 class="name s1">Henrik Asmus</h1>
+  <p class="tagline s2">Student des Wirtschaftsingenieurwesens. Neugierig.</p>
+
+  <div class="werk s3">
+    <div class="werk-header">
+      <span class="sec-label">Arbeiten</span>
+      <span class="werk-year">2026</span>
+    </div>
+    <div class="werk-card">
+      <div class="rope" aria-hidden="true"></div>
+      <svg class="card-figur" viewBox="0 0 30 38" fill="none" stroke="#8A9197" stroke-width="1.6" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="13" cy="6" r="4"/>
+        <path d="M13 10 V22"/>
+        <path d="M13 14 L6 21"/>
+        <path class="wink-arm" d="M13 14 L19 19"/>
+        <g class="wave-lines" stroke="#8A9197" stroke-width="0.9" fill="none" stroke-linecap="round">
+          <path d="M21 10 Q24.5 12.5 21 15"/>
+          <path d="M23.5 9.5 Q27 12.5 23.5 15.5"/>
+        </g>
+        <path d="M13 22 L7 25"/>
+        <path d="M7 25 L7 34"/>
+        <path d="M13 22 L20 25"/>
+        <path class="bein" d="M20 25 L20 34"/>
+      </svg>
+      <span class="t1">Lastannahmen</span>
+      <span class="t2">Ethereum als fundamentale digitale Infrastruktur</span>
+      <div class="meta-strip">
+        <span>Masterarbeit</span>
+        <span>Eigenverlag</span>
+        <span>Juli 2026</span>
+        <span>324 Seiten</span>
+      </div>
+      <p class="lead">Die Arbeit prüft Ethereum an zwölf Kriterien für fundamentale Infrastruktur, in zwei Zuständen: im heutigen, Stand März 2026, und in dem, der sich bei vollständig umgesetzter Roadmap ergäbe. Sie ist an keiner Hochschule eingereicht. Geschrieben für Entscheider in Unternehmen, Kapitalgeber, technische Architekten und Politik, nicht für die Szene.</p>
+      <a class="read-link" href="/lastannahmen/">Zur Arbeit →</a>
+      <div class="card-divider" aria-hidden="true"></div>
+      <p class="pdf-sublabel">Verfügbar als</p>
+      <div class="pdf-rows">
+        <div class="pdf-row">
+          <a href="/pdf/Lastannahmen.pdf">Lastannahmen.pdf</a>
+          <span>Deutsch · 324 Seiten</span>
+        </div>
+        <div class="pdf-row">
+          <a href="/pdf/Load-Assumptions.pdf">Load-Assumptions.pdf</a>
+          <span>English · 299 pages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact s4">
+    <span class="sec-label">Kontakt</span>
+    <a class="email" href="mailto:HenrikAsmus@proton.me">HenrikAsmus@proton.me</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var card = document.querySelector('.werk-card');
+  if (!card) return;
+  var fig  = card.querySelector('.card-figur');
+  var rope = card.querySelector('.rope');
+  var link = card.querySelector('.read-link');
+  if (!fig || !rope || !link) return;
+
+  var timer  = null;
+  var active = false;
+
+  link.addEventListener('mouseenter', function () {
+    if (active) return;
+    timer = setTimeout(startRappel, 1500);
+  });
+
+  link.addEventListener('mouseleave', function () {
+    clearTimeout(timer);
+    timer = null;
+  });
+
+  function startRappel() {
+    active = true;
+    card.classList.add('agent-active');
+
+    var cardRect = card.getBoundingClientRect();
+    var figRect  = fig.getBoundingClientRect();
+    var linkRect = link.getBoundingClientRect();
+    var figH = figRect.height;
+    var figW = figRect.width;
+
+    // Descend until hip (22/38 of height) is at link vertical centre
+    var hipY    = figRect.top + figH * (22 / 38);
+    var targetY = linkRect.top + linkRect.height / 2;
+    var rappelDy = targetY - hipY;
+
+    // Rope grows from card top to link centre
+    var ropeH = linkRect.top + linkRect.height / 2 - cardRect.top;
+
+    rope.style.transition = 'none';
+    rope.style.height = '0';
+    rope.style.opacity = '1';
+    rope.offsetHeight; // force reflow
+    rope.style.transition = 'height 1500ms linear, opacity 100ms ease';
+    rope.style.height = ropeH + 'px';
+
+    fig.style.transition = 'transform 1500ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    fig.style.transform  = 'translateY(' + rappelDy + 'px)';
+
+    setTimeout(function () { startWalk(rappelDy, figRect, linkRect); }, 1550);
+  }
+
+  function startWalk(rappelDy, figRect, linkRect) {
+    rope.style.transition = 'opacity 300ms ease';
+    rope.style.opacity = '0';
+
+    var figW = figRect.width;
+    // After scaleX(-1), body centre (originally at 13/30) lands at 17/30 from figure left
+    var bodyCenterAfterFlip = figRect.left + figW * (17 / 30);
+    var linkTargetX = linkRect.left + linkRect.width * 0.8;
+    var walkDx = linkTargetX - bodyCenterAfterFlip;
+
+    var dist   = Math.abs(walkDx);
+    var walkMs = Math.min(Math.max(dist * 7, 700), 2500);
+
+    fig.classList.add('walking');
+    fig.style.transition = 'transform ' + walkMs + 'ms linear';
+    fig.style.transform  = 'translateY(' + rappelDy + 'px) translateX(' + walkDx + 'px) scaleX(-1)';
+
+    setTimeout(function () { doPress(); }, walkMs + 80);
+  }
+
+  function doPress() {
+    fig.classList.remove('walking');
+    fig.classList.add('pressing');
+    fig.style.transition = '';
+
+    // Flash the link to simulate button press
+    var flashes = [0.2, 1, 0.2, 1];
+    link.style.transition = 'opacity 80ms ease';
+    flashes.forEach(function (v, i) {
+      setTimeout(function () { link.style.opacity = String(v); }, i * 150);
+    });
+
+    setTimeout(function () {
+      window.location.href = link.getAttribute('href');
+    }, 850);
+  }
+})();
+</script>
+</body>
+</html>

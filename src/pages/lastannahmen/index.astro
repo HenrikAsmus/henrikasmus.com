@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const alle = await getCollection('kapitel');
+const kapitel = alle
+  .filter(e => e.id.startsWith('de/'))
+  .sort((a, b) => a.data.nummer - b.data.nummer)
+  .map(e => ({
+    ...e,
+    slug: e.id.replace(/^de\/\d+-/, '').replace(/\.md$/, ''),
+  }));
+---
+<Layout
+  title="Lastannahmen — Henrik Asmus"
+  lang="de"
+  canonicalDE="/lastannahmen/"
+  canonicalEN="/en/load-assumptions/"
+>
+  <div class="werk-block">
+    <span class="werk-titel-1">Lastannahmen</span>
+    <span class="werk-titel-2">Ethereum als fundamentale digitale Infrastruktur</span>
+    <p class="meta">Masterarbeit · Eigenverlag · Juli 2026 · 324 Seiten</p>
+  </div>
+
+  <!-- Fließtext folgt -->
+
+  <nav class="verzeichnis" aria-label="Kapitelübersicht">
+    {kapitel.map(k => (
+      <a href={`/lastannahmen/${k.slug}/`} class="verzeichnis-eintrag">
+        <span class="verzeichnis-label">
+          {k.data.nummer === 0 ? 'Vorwort' : `Kapitel ${k.data.nummer}`}
+        </span>
+        <span class="verzeichnis-name">{k.data.titel}</span>
+        <p class="verzeichnis-befund">{k.data.befund}</p>
+      </a>
+    ))}
+  </nav>
+
+  <div class="werk-links" style="margin-top: 48px;">
+    <a href="/pdf/Lastannahmen.pdf" class="pdf">PDF Deutsch</a>
+    <a href="/pdf/Load-Assumptions.pdf" class="pdf">PDF English</a>
+  </div>
+
+  <p class="back-link"><a href="/">← Henrik Asmus</a></p>
+</Layout>

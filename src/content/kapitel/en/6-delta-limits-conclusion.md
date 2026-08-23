@@ -1,0 +1,212 @@
+---
+titel: Delta, Limits, and Overall Assessment
+nummer: 6
+befund: "The gap between the current and the target state, the persistent limits of the system, and the limits of the evaluation framework itself. The chapter answers the research question."
+sprache: en
+---
+
+## 6.1 The Delta
+
+### 6.1-A The Profile Comparison
+
+The current-state assessment from Chapter 4 and the target-state assessment from Chapter 5 yield two numerical profiles that differ substantially in composition but must be read with precision in their implications.
+
+The current-state profile reads 0-11-1-0: no criterion at "Met," eleven criteria at "Met with Qualification," one criterion at "Conditionally Met" (Neutrality and Censorship Resistance, II.1), no criterion at "Open."<a href="#fn-1" id="fnref-1"><sup>1</sup></a> The target-state profile reads 6-6-0-0: six criteria at "Met," six at "Met with Qualification," no criterion at "Conditionally Met," no criterion at "Open."<a href="#fn-2" id="fnref-2"><sup>2</sup></a>
+
+| Criterion | Current State | Target State | Change |
+|---|---|---|---|
+| I.1 Functional Indispensability | Met with Qualification | Met | ↑ |
+| I.2 Security and Trust Load | Met with Qualification | Met with Qualification | — |
+| I.3 Coordination Function | Met with Qualification | Met | ↑ |
+| I.4 Minimal Viable Guarantees | Met with Qualification | Met | ↑ |
+| II.1 Neutrality and Censorship Resistance | Conditionally Met | Met with Qualification | ↑↑ |
+| II.2 Open Generativity | Met with Qualification | Met with Qualification | — |
+| II.3 Independent Verifiability | Met with Qualification | Met with Qualification | — |
+| II.4 Low-Barrier Inclusivity | Met with Qualification | Met with Qualification | — |
+| III.1 Long-Term Stability | Met with Qualification | Met | ↑ |
+| III.2 Adaptive Governance | Met with Qualification | Met | ↑ |
+| III.3 Sovereign Portability | Met with Qualification | Met | ↑ |
+| III.4 Hardware Agnosticism | Met with Qualification | Met with Qualification | — |
+
+Seven criteria improve, five remain unchanged, none deteriorate.
+
+### 6.1-B The Leap at II.1
+
+The most important individual change between the current and target states is the rise of Neutrality and Censorship Resistance (II.1) from "Conditionally Met" to "Met with Qualification." This rise is not gradual — it marks the transition from a structural defect to a qualified strength.
+
+In the current state, neutrality is emergent: no protocol mechanism enforces transaction inclusion. Transaction uptake depends on the market structure of block builders, whose concentration among three actors stood at 93.3 percent.<a href="#fn-3" id="fnref-3"><sup>3</sup></a> That is "Conditionally Met" in the M3 cascade: the core property of a protocol-level neutrality guarantee is recognizably targeted but not yet realized.
+
+In the target state, a three-layer system forms the protocol foundation. FOCIL (EIP-7805) enforces inclusion through a 2,000-member committee whose 1-of-N honesty model makes corruption structurally unattractive.<a href="#fn-4" id="fnref-4"><sup>4</sup></a> ePBS (EIP-7732) eliminates relay dependency and separates proposers and builders into distinct, protocol-coordinated roles.<a href="#fn-5" id="fnref-5"><sup>5</sup></a> The Encrypted Mempool addresses pre-inclusion privacy as a research reserve and closes the remaining disclosure channel.<a href="#fn-6" id="fnref-6"><sup>6</sup></a>
+
+The rise is structurally significant because it removes the second cascade cap in the M3 logic. In the current state, one Critical Condition pushed the verdict to "Suitable under Considerable Conditions." In the target state, no Critical Condition remains at "Conditionally Met" — the cap falls away, and the overall verdict can rise by one level.
+
+### 6.1-C The Six Improvements at Structural and Qualitative Level
+
+Six criteria rise from "Met with Qualification" to "Met." These rises follow different drivers.
+
+**I.1 Functional Indispensability.** The target-state improvement rests on two mutually reinforcing mechanisms. Native Rollups (EIP-8079) bind L2 execution to L1 at the protocol level — a rollup using native verification cannot migrate to another L1 without fundamentally altering its security model.<a href="#fn-7" id="fnref-7"><sup>7</sup></a> At the same time, reach expands: the L1-zkEVM (EIP-8025) makes L1 blocks lightweight-verifiable, opening usage categories that are structurally inaccessible in the current state. The EVM standard has incorporated all top-10 L2s and is therefore no longer merely a nominal standard.
+
+**I.3 Coordination Function.** The layered finality stack (Based Preconfirmations, Fast Confirmation Rule, Three-Slot Finality) delivers in the target state a coordination infrastructure across all time horizons that does not exist in the current state.<a href="#fn-8" id="fnref-8"><sup>8</sup></a> Native Rollups structurally raise switching costs: tokenized values secured through EXECUTE verification are systemically anchored in Ethereum.
+
+**I.4 Minimal Viable Guarantees.** The rise rests on three independent mechanisms that operate redundantly. FOCIL guarantees censorship resistance at the protocol level. The Inactivity Leak ensures automated self-healing without external coordination. The layered finality stack delivers economic finalization within two seconds — faster than any clearing infrastructure in the traditional financial system.<a href="#fn-9" id="fnref-9"><sup>9</sup></a>
+
+**III.1 Long-Term Stability.** The Tiered State (Active, Hibernated, Dead) addresses the state growth problem structurally, not merely through accelerated decommissioning.<a href="#fn-10" id="fnref-10"><sup>10</sup></a> History Expiry (EIP-4444, Phase 1 DEPL) reduces node storage requirements. The Fusaka upgrade cycle kept to a semi-annual schedule for the first time — a maturity indicator for upgrade coordination.
+
+**III.2 Adaptive Governance.** The strategic pivot (February 2026) is the strongest evidence: a paradigmatic change of direction — from rollup-centric to L1-first — was executed without crisis, without fork, and without withdrawal of authority.<a href="#fn-11" id="fnref-11"><sup>11</sup></a> That is operational proof of governance capacity beyond the track record of tactical forks. The Lean Ethereum process demonstrates the ability to self-slim, not only to add.
+
+**III.3 Sovereign Portability.** The target-state roadmap resolves three documented current-state dependencies: relay dependency through ePBS, L2 proof-system dependency through Native Rollups, and RPC dependency through Stateless Clients and Trustless RPC.<a href="#fn-12" id="fnref-12"><sup>12</sup></a> These three resolutions transform operative soft lock-ins into dependencies eliminated at the protocol level.
+
+### 6.1-D The Five Continuities
+
+Five criteria remain at "Met with Qualification." In four of the five cases, the substance of fulfillment improves without crossing the threshold.
+
+**I.2 Security and Trust Load.** ePBS and the L1-zkEVM address trust minimization substantially. The remaining qualification lies at two residual factors: the proving conjecture (the security of the SNARK system depends on soundness assumptions that have no formal verification equivalent to ECDSA) and the access layer (Helios and Trustless RPC are DEPL and PLAN respectively, not broadly deployed).
+
+**II.2 Open Generativity.** The target-state roadmap expands generative capacity at three levels: compute (RISC-V as an alternative execution environment, RES), UX (NAA and Passkeys, DEPL), and L2 creation (Native Rollups). The qualification remains because RISC-V has no governance anchoring and EOF — the most significant EVM extension package — was withdrawn from Fusaka.<a href="#fn-13" id="fnref-13"><sup>13</sup></a>
+
+**II.3 Independent Verifiability.** The Execution Layer Specification (ELS) as an executable reference implementation is a substantial advance. The qualification lies at a methodological boundary: the formal verification of a complete zkEVM prover exceeds the state of current methods.<a href="#fn-14" id="fnref-14"><sup>14</sup></a> That is not a roadmap gap — it is a limit of the field.
+
+**II.4 Low-Barrier Inclusivity.** The NAA transformation (EIP-7702, EIP-8141) and the PeerDAS bandwidth model substantially improve inclusivity at the user and verifier level. The 32-ETH solo-staking threshold remains unchanged. Rainbow Staking — the only conceptual resolution path — is Research Reserve with no implementation commitment. This is the only criterion for which the current-state deficit goes unaddressed by the target-state roadmap.
+
+**III.4 Hardware Agnosticism.** Protocol-level hardware agnosticism is further improved in the target state by PeerDAS (bandwidth reduction ~85%) and Stateless Clients. Cloud concentration (~59% across three providers) remains unchanged — ePBS and the zkEVM address the protocol layer, not the physical infrastructure layer.
+
+### 6.1-E The Verdict Shift
+
+The M3 cascade in the target state runs through five steps.<a href="#fn-15" id="fnref-15"><sup>15</sup></a> No Critical Condition stands at "Open" — the cascade passes the first step. No Critical Condition stands at "Conditionally Met" — the second cap that in the current state pushed the verdict to "Suitable under Considerable Conditions" falls away. The three Structural Conditions (I.1, I.3, III.1) all stand at "Met" — the third step sets no cap. I.2 and II.1 stand at "Met with Qualification," not at full "Met" — the verdict remains below the unqualified "Suitable." The result is "Suitable with Conditions."
+
+The grade is determined separately. The six Qualitative Criteria (I.2, II.1, II.2, II.3, II.4, III.4) all stand at least at "Met with Qualification" — the grade remains "Good."<a href="#fn-16" id="fnref-16"><sup>16</sup></a>
+
+The shift lies in the foundation of suitability, not in its quality. The grade does not change — the system satisfies the Qualitative Criteria at the same strength as in the current state. What changes is the security of the foundation: the transition from "Suitable under Considerable Conditions" to "Suitable with Conditions" means that the core functions of the infrastructure rest on a more protocol-foundational basis in the target state.
+
+## 6.2 Persistent Limits of the System
+
+### 6.2-A The Crisis-Response Gap
+
+A pattern runs through three criteria of the target-state profile and forms a cross-cutting gap that is not localized in any single criterion of the target-state verdict but carries systemic relevance.
+
+**Builder concentration.** ePBS resolves the protocol-level relay dependency and enforces correct payment settlement between proposers and builders. What ePBS does not address are the economic roots of builder concentration: latency advantages from geographic proximity to exchange systems, cross-domain arbitrage capacity, and exclusive order flow that accounts for approximately 54 percent of block value.<a href="#fn-17" id="fnref-17"><sup>17</sup></a> Even with ePBS fully activated, three to five builders can control more than 70 percent of block production through economic superiority. Attested Program Sequencing (APS) and MEV Burn are Research Reserve and offer no operative resolution path.<a href="#fn-18" id="fnref-18"><sup>18</sup></a>
+
+**Liquid staking.** Lido holds approximately 23 percent of staked ETH — down from over 32 percent. A protocol-level cap that sets a structural feedback limit at a given market share does not exist.<a href="#fn-19" id="fnref-19"><sup>19</sup></a> DVT (Obol, SSV) is growing — 547,968 ETH under DVT at Lido alone, plus 57 percent QoQ growth — but DVT is a decentralization measure at the validator level, not a substitute for a staking cap at the operator level. Rainbow Staking (RES) could offer a structural resolution but has no implementation commitment.
+
+**Emergency Response Plan.** The Ethereum ecosystem demonstrated in the response to the Prysm bug in December 2025 that rapid coordination is possible — but the coordination occurred through informal networks and EF communication channels, not through a protocol-anchored mechanism.<a href="#fn-20" id="fnref-20"><sup>20</sup></a> The Emergency Response Plan is documented; the coordination obligation is not enforceable. In a system that presents itself as sovereignty-resistant infrastructure, informal crisis coordination is a structural gap between claim and reality.
+
+These three findings run across II.1, III.1, and III.2. The target-state verdict is "Suitable with Conditions, Grade Good" — the Crisis-Response Gap does not push any of these findings to a lower level, but qualifies each of them. The question of whether Ethereum can, in a systemic crisis — a coordinated staker exit, a critical bug in a dominant client, a simultaneous attack across multiple layers — demonstrate the resilience that a fundamental infrastructure claim requires remains answered within the target-state framework, but under qualification.
+
+### 6.2-B The Post-Quantum Gap
+
+The post-quantum migration is the only limit in the target-state profile for which an exogenous time dimension determines relevance.
+
+The architecture is fully laid out. For the consensus layer, the Beam Chain (RES, post-2029) delivers SNARK-based consensus proofs with leanXMSS as a hash-based, PQ-secure signature layer.<a href="#fn-21" id="fnref-21"><sup>21</sup></a> For the data layer, the KZG-to-STARK migration in the Full Danksharding end state resolves the commitment problem.<a href="#fn-22" id="fnref-22"><sup>22</sup></a> For the execution layer, the combination of EIP-7702, EIP-8141 (Validation Frames, CFI Hegotá), and NAA provides an ECDSA exit path.<a href="#fn-23" id="fnref-23"><sup>23</sup></a>
+
+Implementation is structurally unsecured. The Beam Chain is Research Reserve — no fork date, no implementation deadline. Validation Frames (EIP-8141) is CFI Non-Headliner — under observation in consensus but not in the delivery path. ML-DSA signatures are 2.4 to 4.6 kilobytes, compared to 64 bytes for ECDSA — the state-bloat factor at full migration is approximately 59 times.<a href="#fn-24" id="fnref-24"><sup>24</sup></a>
+
+The time dimension is non-trivial. The Metaculus forecast assigns a probability of approximately 20 percent to the availability of a cryptographically relevant quantum computer by 2030.<a href="#fn-25" id="fnref-25"><sup>25</sup></a> The Beam Chain has no delivery target before 2029. The window between the emergence of a relevant quantum computer and the completion of the PQ migration is unknown. This finding qualifies the target-state verdict in I.2 and III.1 but does not change it — the risk is priced in, not externalized.
+
+### 6.2-C Residual Infrastructure Risks
+
+Three further limits of the target-state profile are not addressed by the roadmap but qualify the existing qualifications on existing criteria.
+
+**Cloud concentration.** Approximately 59 percent of hosted execution-layer nodes run on three cloud providers. The AWS outage in October 2025 showed that the network absorbed the situation without finality loss — but the operative corridor between normal operation and finality loss narrowed.<a href="#fn-26" id="fnref-26"><sup>26</sup></a> The target-state roadmap does not directly address cloud concentration. Stateless Clients lower the access threshold for home staking, but home staking also depends on the 32-ETH barrier and network latency.
+
+**Solo-staking barrier.** The 32-ETH minimum deposit corresponds to approximately 67,000 USD at Q1 2026 price levels. Rainbow Staking — the only conceptual resolution path — has no implementation commitment in the current roadmap. This is the only one of the twelve criteria for which the current-state deficit remains unchanged in the target state.
+
+**L2 Stage-2 deficit.** No major rollup had reached Stage 2 in early 2026. Stage 2 is the level at which the Security Council holds no veto position and the system runs purely on protocol rules. Native Rollups and Based Sequencing address the structural L2 security architecture — but reaching Stage 2 depends not only on protocol technology, but on the decision of individual rollup operators to relinquish control.<a href="#fn-27" id="fnref-27"><sup>27</sup></a>
+
+## 6.3 Limits of the Evaluation Framework
+
+### 6.3-A What the Framework Does Not Capture
+
+The evaluation framework defined in Chapter 2 is a technical-structural framework. It examines whether Ethereum possesses the properties of fundamental infrastructure — not whether Ethereum should be adopted in a given market or regulatory context. This delimitation is a methodological decision, not a gap: the framework makes the assessment reproducible and comparable by decoupling it from contextually variable factors.<a href="#fn-28" id="fnref-28"><sup>28</sup></a>
+
+**Price risk.** The ETH exchange rate influences validator economics, the effective height of the 32-ETH barrier, and the network's economic security. A sharp price decline would shift the economic security threshold without any technical defect having occurred. The framework captures the structural security architecture — Casper, Inactivity Leak, EIP-1559 — but not the market variable that scales their effectiveness.
+
+**Regulatory risk.** The GENIUS Act (July 2025) and EU MiCA create regulatory frameworks that directly affect the stablecoin market on Ethereum.<a href="#fn-29" id="fnref-29"><sup>29</sup></a> The framework examines technical compliance capability — not whether current or future regulation restricts or compels adoption.
+
+**Competitive positioning.** The assessment is absolute, not relative. It does not produce a ranking between Ethereum and competing settlement layers. Decision-makers requiring relative positioning must apply the framework to alternative systems and compare the profiles.
+
+### 6.3-B Data Limits and Maturity Volatility
+
+The current-state assessment has a reference date: March 2026. EIP status, market shares, and network data are snapshots. The decline in Lido's market share from over 32 percent (2023) to approximately 23 percent (March 2026) illustrates the dynamic: an assessment dated 2023 would have positioned the same data point differently.<a href="#fn-30" id="fnref-30"><sup>30</sup></a>
+
+The target-state assessment has a structurally different uncertainty character. It examines the state at full roadmap implementation — not by a date, but under a condition. The withdrawal of EOF from Fusaka illustrates the maturity volatility problem: an EIP with status PLAN or CFI can be withdrawn, delayed, or redesigned in the next upgrade cycle. The target-state assessment is therefore not to be read as a forecast, but as a counterfactual analysis.
+
+### 6.3-C Methodological Limits
+
+The framework operates with an ordinal scale in four levels and an interval-free verdict scale in five categories. The distances between levels are not metrically defined: "Met with Qualification" can in substance be very close to "Met" or very close to "Conditionally Met." This imprecision is visible in the individual assessments — the governance qualification in III.2 (absence of mechanical guarantees for extreme conflicts) is of different severity than the inclusivity qualification in II.4 (32-ETH barrier), although both carry the same label.<a href="#fn-31" id="fnref-31"><sup>31</sup></a>
+
+The Critical, Structural, and Qualitative Criteria form an implicit weighting that becomes operative in the M3 cascade. This weighting is methodologically grounded but not free of value judgments: the framework sets neutrality (II.1) as more critical than generativity (II.2) because the neutrality property is constitutive for the infrastructure definition.<a href="#fn-32" id="fnref-32"><sup>32</sup></a>
+
+## 6.4 Overall Assessment and Research Question
+
+### 6.4-A Answer to the Research Question
+
+The study poses an empirical question: is Ethereum suitable as fundamental digital infrastructure? The answer follows from the assessment in two states.
+
+**In the current state (as of March 2026), the verdict is: Suitable under Considerable Conditions, Grade Good.**
+
+The central condition is the implementation of a protocol mechanism that decouples transaction inclusion from the market structure of block builders. Without this condition, the neutrality guarantee remains operatively present but structurally unsecured. All other criteria stand at "Met with Qualification" — the system addresses the infrastructure requirements broadly, but has not yet fully synchronized operative usage reality with protocol-level possibility.
+
+**In the target state (fully implemented roadmap), the verdict is: Suitable with Conditions, Grade Good.**
+
+The conditions under which the verdict holds are explicit in the target-state profile: ePBS (EIP-7732) must be activated for relay neutrality to become protocol-level; the L1-zkEVM (EIP-8025) must be in production for independent verification without re-execution to be possible; Stateless Clients must be deployed for the access threshold for independent verification to fall; the Tiered State must be operative for state growth to find an equilibrium path. These conditions are not speculative wishes — they are actively developed protocol mechanisms with documented maturity paths.
+
+### 6.4-B What the Verdict Rests On
+
+The verdict "Suitable with Conditions, Grade Good" rests on four structural strengths that hold unchanged across both the current and target states.
+
+**Economic security.** The Casper finality gadget with 964,768 validators (post-Pectra consolidation) and a staked ETH share of 30.8 percent delivers an economic security threshold no comparable decentralized system reaches. The Inactivity Leak enables automated self-healing without external coordination.<a href="#fn-33" id="fnref-33"><sup>33</sup></a>
+
+**Open generativity.** The permissionless smart-contract layer with 31,869 active developers and a DeFi TVL that exceeds the aggregate market capitalization of all competing L1s is the strongest empirical signal for the network effect the infrastructure generates.<a href="#fn-34" id="fnref-34"><sup>34</sup></a>
+
+**Upgrade track record.** Four successful hard forks since the Merge (Shanghai, Dencun, Pectra, Fusaka), no chain split, full backward compatibility: contracts from 2017 run unchanged. The operative governance performance exceeds formal institutionalization — in comparative infrastructure research, that qualifies as an exceptional state.<a href="#fn-35" id="fnref-35"><sup>35</sup></a>
+
+**Atomic coordination.** The ability to atomically coordinate value movements across heterogeneous pools, protocols, and — in the target state — rollup layers within a single transaction block is realized in no other infrastructure — neither in the traditional financial system nor in competing blockchain architectures.<a href="#fn-36" id="fnref-36"><sup>36</sup></a>
+
+### 6.4-C Robustness and Time Dimension
+
+The verdict is robust against the persistent limits described in Section 6.2 — the Crisis-Response Gap, the Post-Quantum Gap, and the residual infrastructure risks do not push the verdict out of the "Suitable with Conditions" category. They qualify the conditions. That is the precise meaning of the verdict label: suitability under conditions is not non-suitability under more favorable assumptions — it is suitability with explicitly named prerequisites.
+
+The time dimension is the structurally most difficult variable. The target-state profile is not a forecast but a counterfactual assessment: it describes the state that results when the roadmap is fully implemented. Implementation sequence, speed, and completeness are independent risk factors that the framework does not quantify. The post-quantum migration is the only limit for which an exogenous time variable — the availability of a cryptographically relevant quantum computer — interferes with the endogenous pace of implementation.
+
+For the corporate decision-makers, capital allocators, technical architects, and policy institutions for whom this study is written, the finding can be stated in a single sentence: Ethereum satisfies in the current state the technical prerequisites of fundamental digital infrastructure under considerable conditions, and the roadmap is structured such that these conditions — at full implementation — are reduced to the level of conditions without the qualifier "considerable," at unchanged quality. The question the framework does not answer is the pace of implementation. That is the question that remains after reading this study.
+
+<div class="fn-list">
+<ol>
+<li id="fn-1">Cf. Section 4.10, overall synthesis and current-state verdict. The numerical profile 0-11-1-0 is the compressed representation of the twelve individual assessments from Sections 4.7 to 4.9. <a href="#fnref-1">↩</a></li>
+<li id="fn-2">Cf. Section 5.7-C, target-state overall profile. The profile 6-6-0-0 follows from the three-tier criterion structure and the target-state assessment of the twelve individual criteria in Section 5.7. <a href="#fnref-2">↩</a></li>
+<li id="fn-3">relayscan.io: Builder and relay market shares (retrieved 27 March 2026). Cf. Section 4.7, Dimension II synthesis: the HHI value exceeds the DOJ threshold for highly concentrated markets by a multiple. <a href="#fnref-3">↩</a></li>
+<li id="fn-4">FOCIL (EIP-7805): Fork-Choice Enforced Inclusion List. Status PLAN, SFI Hegotá Headliner. The 1-of-N honesty model requires that at least one member of the 2,000-member inclusion-list committee acts honestly. Cf. Section 5.5-A. <a href="#fnref-4">↩</a></li>
+<li id="fn-5">ePBS (EIP-7732): Enshrined Proposer-Builder Separation. Status PLAN, SFI Glamsterdam. Cf. Section 5.5-A: ePBS eliminates the relay trust assumption and is simultaneously a prerequisite for the proving window of the L1-zkEVM. <a href="#fnref-5">↩</a></li>
+<li id="fn-6">Encrypted Mempool: Status RES. The concept targets pre-inclusion privacy: transaction contents become known to the proposer only after inclusion in the block. Cf. Section 5.1-B. <a href="#fnref-6">↩</a></li>
+<li id="fn-7">Native Rollups (EIP-8079): EXECUTE precompile, Status RES. Cf. Section 5.6-A: the binding is structural because the security proof is tied to the L1 state transition function — migrating to another L1 requires migration to a different STF framework. <a href="#fnref-7">↩</a></li>
+<li id="fn-8">The layered finality stack comprises Based Preconfirmations (~2s, DEPL, economically secured), Fast Confirmation Rule (~13s, PLAN), and Three-Slot Finality (~36s, RES). Cf. Section 5.6-C. <a href="#fnref-8">↩</a></li>
+<li id="fn-9">For comparison: SWIFT settlement takes 1–3 days, ACH 2–3 days, SEPA transfers typically 1 business day. Ethereum's Based Preconfirmations (~2s) are faster than any traditional clearing infrastructure. Cf. Section 4.8. <a href="#fnref-9">↩</a></li>
+<li id="fn-10">Tiered State (Active, Hibernated, Dead): Status RES. The critical difference from History Expiry (EIP-4444) is that the Tiered State does not delete state entries but transfers them to a state from which they can be restored with a witness. Cf. Section 5.4-A. <a href="#fnref-10">↩</a></li>
+<li id="fn-11">Buterin, Vitalik (X posts, 3 and 5 February 2026); Ethereum Foundation: Protocol Priorities, January/February 2026. The pivot from rollup-centric to L1-first fundamentally shifted resource allocation, roadmap priorities, and EIP evaluation criteria. Cf. Section 5.1-A. <a href="#fnref-11">↩</a></li>
+<li id="fn-12">ePBS → relay independence: Section 5.5-A. Native Rollups → proof independence: Section 5.6-A. Stateless Clients and Trustless RPC → RPC independence: Section 5.3-B. <a href="#fnref-12">↩</a></li>
+<li id="fn-13">EOF (Ethereum Object Format): discussed for the Fusaka upgrade and withdrawn in spring 2026. The decision reflects the Lean Ethereum prioritization. Cf. Section 5.2-C. <a href="#fnref-13">↩</a></li>
+<li id="fn-14">The formal verification of a complete zkEVM prover requires machine-verified correctness of a complex arithmetic circuit and exceeds the current state of formal verification methods. KEVM (Hildenbrandt et al. 2018) formally verified EVM semantics — the step to verifying the prover that proves this semantics is qualitatively different. Cf. Section 5.7-B. <a href="#fnref-14">↩</a></li>
+<li id="fn-15">Cf. Section 2.3.3 on the M3 cascade and Section 5.8 for the complete target-state cascade execution. <a href="#fnref-15">↩</a></li>
+<li id="fn-16">Cf. Section 2.3.3 on grade definition: the grade is "Good" when all six Qualitative Criteria stand at least at "Met with Qualification." <a href="#fnref-16">↩</a></li>
+<li id="fn-17">Exclusive order flow: estimate ~54% of block value based on Flashbots data and order-flow analysis, March 2026. Cf. Section 5.5-B: builder concentration declined from >90% (top-3, 2024) to ~70–80% but remains structural. <a href="#fnref-17">↩</a></li>
+<li id="fn-18">APS (Attested Program Sequencing) and MEV Burn: Status RES. MEV Burn would limit MEV extraction using an EIP-1559-equivalent logic for the block-space market. Cf. Section 5.5-B. <a href="#fnref-18">↩</a></li>
+<li id="fn-19">Dune Analytics / CCN (5 March 2026): Lido staking market share, ~22.8–23 percent. The Lido DAO voted against a self-imposed market-share cap via Snapshot vote in June 2022. Cf. Section 5.5-C. <a href="#fnref-19">↩</a></li>
+<li id="fn-20">Cointelegraph (2025): Ethereum sees 25% validation drop post-Fusaka as Prysm bug affects network participation. December 2025. Coordination occurred via EF social-media channels, ACD Discord, and direct developer communication — functionally effective but not protocol-anchored. <a href="#fnref-20">↩</a></li>
+<li id="fn-21">Beam Chain: concept presented by Justin Drake, Devcon 7, November 2024. Status RES. leanXMSS: post-quantum-secure signature based on the eXtended Merkle Signature Scheme with lean optimization. Cf. Section 5.5-D. <a href="#fnref-21">↩</a></li>
+<li id="fn-22">KZG → STARK: in the Full Danksharding end state, KZG commitments are replaced by STARK-based polynomial commitments. STARKs require only collision-resistant hash functions and are thus quantum-resistant. Cf. Section 5.2-D. <a href="#fnref-22">↩</a></li>
+<li id="fn-23">EIP-7702 (DEPL, Pectra): temporary EOA delegation. EIP-8141 Validation Frames (CFI Hegotá, Non-Headliner): full NAA. The ECDSA exit path uses the account-abstraction infrastructure to switch signatures to PQ-secure algorithms without a hard fork. Cf. Sections 5.3-C and 5.3-E. <a href="#fnref-23">↩</a></li>
+<li id="fn-24">ML-DSA (CRYSTALS-Dilithium): signature sizes 2.4–4.6 KB depending on security level. ECDSA (secp256k1): 64 bytes. State-bloat factor: (2,400 B / 64 B) ≈ 37.5x to (4,600 B / 64 B) ≈ 72x, median ~59x. Cf. Section 5.3-D. <a href="#fnref-24">↩</a></li>
+<li id="fn-25">Metaculus: forecast on the availability of a cryptographically relevant quantum computer (CRQC) by 2030, as of spring 2026: ~20 percent. A CRQC in this forecast's terms is a quantum computer capable of breaking ECDSA 256-bit keys within a security-critical time frame. Cf. Section 5.7-A. <a href="#fnref-25">↩</a></li>
+<li id="fn-26">Ethernodes (early 2026): cloud concentration estimate ~59% on AWS (35.5%), Hetzner (13.8%), and OVHcloud (9.7%). AWS outage October 2025: the Ethereum network absorbed the failure of an AWS region without finality loss. Cf. Sections 4.9 and 5.7-B. <a href="#fnref-26">↩</a></li>
+<li id="fn-27">L2BEAT: stage classifications, as of early 2026. Stage 2 requires relinquishing the Security Council veto position and full dependence on on-chain proof systems. Cf. Section 5.6-A. <a href="#fnref-27">↩</a></li>
+<li id="fn-28">The methodology follows the approach described in Chapter 2: Frischmann (2012) for the infrastructure definition, Van Schewick (2010) for the architecture-innovation dimension, Mayntz (1993) for the governance dimension. Decoupling from market and regulatory variables is a prerequisite for cross-temporal comparability. Cf. Section 2.1. <a href="#fnref-28">↩</a></li>
+<li id="fn-29">GENIUS Act: Guiding and Establishing National Innovation for U.S. Stablecoins Act. Signed 18 July 2025. EU MiCA: Markets in Crypto-Assets Regulation, fully in force since December 2024. Cf. Section 4.6. <a href="#fnref-29">↩</a></li>
+<li id="fn-30">Dune Analytics / CCN (5 March 2026): Lido market share ~22.8–23 percent; prior-year peak >32 percent (2023). The dynamic illustrates that structural findings (no protocol cap exists) are more stable than quantitative measurements (current market share). <a href="#fnref-30">↩</a></li>
+<li id="fn-31">Cf. Section 2.3 on the definition of verdict levels. The imprecision of the ordinal scale is a well-known problem in empirical infrastructure assessment. Cf. Mayntz 1993 in the context of technical systems. <a href="#fnref-31">↩</a></li>
+<li id="fn-32">Cf. Section 2.2 on criterion hierarchy: the Critical Conditions (I.2, I.4, II.1) are defined as constitutive for the infrastructure claim — failure at these criteria negates the system's basic suitability. The prioritization is grounded but not axiomatic. <a href="#fnref-32">↩</a></li>
+<li id="fn-33">beaconcha.in: validator statistics (retrieved 27 March 2026). Post-Pectra consolidation through EIP-7251: 964,768 validators at 30.8% staked ETH share. CoinDesk (18 February 2026): Ethereum Staking Rate Reaches 30.8% of Total Supply. Cf. Section 4.8. <a href="#fnref-33">↩</a></li>
+<li id="fn-34">Electric Capital: Developer Report, September 2025: 31,869 active developers. DefiLlama: Ethereum DeFi TVL (retrieved 27 March 2026). Cf. Section 4.7. <a href="#fnref-34">↩</a></li>
+<li id="fn-35">Cf. Van Schewick 2010 and Frischmann 2012 on infrastructure governance research. The combination of open-source protocol, decentralized developer actor structure, and demonstrated hard-fork coordination without chain split has no direct precedent in academic infrastructure research. <a href="#fnref-35">↩</a></li>
+<li id="fn-36">Cf. Section 4.8 (current state) and Sections 5.6-C and 5.6-D (target state). Atomic coordination across heterogeneous liquidity pools is the comparative distinguishing feature that sets Ethereum apart from SWIFT, TARGET2, and competing L1s. <a href="#fnref-36">↩</a></li>
+</ol>
+</div>

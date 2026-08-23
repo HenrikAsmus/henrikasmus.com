@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const alle = await getCollection('kapitel');
+  const de = alle
+    .filter(e => e.id.startsWith('de/'))
+    .sort((a, b) => a.data.nummer - b.data.nummer);
+  const en = alle.filter(e => e.id.startsWith('en/'));
+
+  return de.map((entry, i) => {
+    const slug = entry.id.replace(/^de\/\d+-/, '').replace(/\.md$/, '');
+    const naechstes = de[i + 1] ?? null;
+    const naechstesSlug = naechstes
+      ? naechstes.id.replace(/^de\/\d+-/, '').replace(/\.md$/, '')
+      : null;
+    const enEntry = en.find(e => e.data.nummer === entry.data.nummer);
+    const enSlug = enEntry
+      ? enEntry.id.replace(/^en\/\d+-/, '').replace(/\.md$/, '')
+      : null;
+
+    return {
+      params: { slug },
+      props: { entry, naechstes, naechstesSlug, enSlug },
+    };
+  });
+}
+
+const { entry, naechstes, naechstesSlug, enSlug } = Astro.props;
+const { Content } = await render(entry);
+const slug = Astro.params.slug;
+
+const kapitelLabel = entry.data.nummer === 0 ? 'Vorwort' : `Kapitel ${entry.data.nummer}`;
+const naechstesLabel = naechstes
+  ? (naechstes.data.nummer === 0 ? 'Vorwort' : `Kapitel ${naechstes.data.nummer}`)
+  : null;
+---
+
+<Layout
+  title={`${entry.data.titel} — Lastannahmen — Henrik Asmus`}
+  lang="de"
+  canonicalDE={`/lastannahmen/${slug}/`}
+  canonicalEN={enSlug ? `/en/load-assumptions/${enSlug}/` : '/en/load-assumptions/'}
+  breit
+>
+  <p class="kapitel-nr">{kapitelLabel}</p>
+  <h1 class="kapitel-titel">{entry.data.titel}</h1>
+
+  <div class="kapitel-body">
+    <Content />
+  </div>
+
+  {naechstes && naechstesSlug && (
+    <nav class="kapitel-nav">
+      <a href={`/lastannahmen/${naechstesSlug}/`} class="kapitel-weiter">
+        Weiter: {naechstesLabel} — {naechstes.data.titel} →
+      </a>
+    </nav>
+  )}
+
+  <p class="back-link"><a href="/lastannahmen/">← Lastannahmen</a></p>
+</Layout>
