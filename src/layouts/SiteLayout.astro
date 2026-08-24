@@ -1,0 +1,46 @@
+---
+interface Props {
+  lang: 'de' | 'en';
+  title?: string;
+  canonicalDE: string;
+  canonicalEN: string;
+}
+const { lang, title = 'Henrik Asmus', canonicalDE, canonicalEN } = Astro.props;
+const base = 'https://loadassumptions.xyz';
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <link rel="canonical" href={lang === 'de' ? `${base}${canonicalDE}` : `${base}${canonicalEN}`} />
+  <link rel="alternate" hreflang="de" href={`${base}${canonicalDE}`} />
+  <link rel="alternate" hreflang="en" href={`${base}${canonicalEN}`} />
+  <link rel="alternate" hreflang="x-default" href={`${base}${canonicalDE}`} />
+  <link rel="stylesheet" href="/styles/site.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <svg class="zeichen" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="zg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#D6DCE0"/>
+            <stop offset="0.45" stop-color="#6E777E"/>
+            <stop offset="1" stop-color="#AAB2B8"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 3 L16.5 14 H3.5 Z" stroke="url(#zg)" stroke-width="1.4" stroke-linejoin="round"/>
+        <line x1="2" y1="17" x2="18" y2="17" stroke="url(#zg)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <nav class="lang-switch" aria-label={lang === 'de' ? 'Sprache' : 'Language'}>
+        <a href={canonicalDE} class={lang === 'de' ? 'active' : ''}>DE</a>
+        <span class="slash" aria-hidden="true">/</span>
+        <a href={canonicalEN} class={lang === 'en' ? 'active' : ''}>EN</a>
+      </nav>
+    </header>
+    <slot />
+  </div>
+</body>
+</html>

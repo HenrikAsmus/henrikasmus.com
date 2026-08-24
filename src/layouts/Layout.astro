@@ -8,7 +8,7 @@ interface Props {
   overview?: boolean;
 }
 const { title, lang, canonicalDE, canonicalEN, breit = false, overview = false } = Astro.props;
-const base = 'https://henrikasmus.com';
+const base = 'https://loadassumptions.xyz';
 const backHref = lang === 'de' ? '/lastannahmen/' : '/en/load-assumptions/';
 const backLabel = lang === 'de' ? '← Übersicht' : '← Overview';
 const homeHref = lang === 'de' ? '/' : '/en/';
