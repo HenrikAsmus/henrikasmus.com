@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 ---
 <!doctype html>
 <html lang="en">
@@ -199,7 +200,7 @@
 <body>
 
 <div class="site-bar" id="site-bar">
-  <a href="/" class="lang-flip" aria-label="Switch to German">
+  <a href="/" class="lang-flip" aria-label="Switch to German" onclick="document.cookie='lang=de;path=/;max-age=31536000;SameSite=Lax'">
     <img src="/flags/de.svg" class="lf-bg lf-bg-de" width="18" height="12" alt="" aria-hidden="true" />
     <img src="/flags/gb.svg" class="lf-bg lf-bg-en" width="18" height="12" alt="" aria-hidden="true" />
     <span class="lf-knob lf-knob--en" aria-hidden="true">

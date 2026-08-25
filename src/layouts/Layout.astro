@@ -47,9 +47,9 @@ const homeHref = lang === 'de' ? '/' : '/en/';
               <a href={backHref} class="kapitel-mobile-back">{backLabel}</a>
             </div>
             <nav class="lang-switcher" aria-label="Sprache / Language">
-              <a href={canonicalDE} class={lang === 'de' ? 'active' : ''} aria-label="Deutsch">DE</a>
+              <a href={canonicalDE} class={lang === 'de' ? 'active' : ''} aria-label="Deutsch" onclick="document.cookie='lang=de;path=/;max-age=31536000;SameSite=Lax'">DE</a>
               <span class="slash" aria-hidden="true">/</span>
-              <a href={canonicalEN} class={lang === 'en' ? 'active' : ''} aria-label="English">EN</a>
+              <a href={canonicalEN} class={lang === 'en' ? 'active' : ''} aria-label="English" onclick="document.cookie='lang=en;path=/;max-age=31536000;SameSite=Lax'">EN</a>
             </nav>
           </header>
           <slot />
