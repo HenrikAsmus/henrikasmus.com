@@ -128,7 +128,7 @@ Die Prüfung zeigt schließlich eine Eigenschaft, die bewusst kein Kriterium wir
 Das übergreifende Ergebnis bestätigt das Meta-Muster, das Kapitel 2 als zweites Grundprinzip der Bewertungslogik eingeführt hat: Die Ausprägung muss zum Anspruch passen. Keine der sieben Infrastrukturen erfüllt alle Anforderungen in maximaler Ausprägung, und dieser Befund verhindert den Fehlschluss, dass ein System jedes Kriterium maximal erfüllen muss, um als Infrastruktur zu gelten. Für ein System, das den Anspruch einer neutralen, permissionless, zensurresistenten Infrastruktur erhebt, sind die Anforderungen an Neutralität, Zugang und Zensurresistenz höher als für ein System ohne diesen Anspruch. Zehn der zwölf Kriterien finden in etablierter Infrastruktur Halt, in unterschiedlicher Form und mit einer Varianz, die ihre Unterscheidungskraft belegt. Das zwölfte erweist sich als anspruchsspezifische Anforderung, die gerade dort greift, wo die Referenzsysteme kein Gegenstück bieten.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-3-1.png" alt="Die zwölf Kriterien im Spiegel der sieben Referenzinfrastrukturen — Übersichtstabelle" loading="lazy" />
+<img src="/kapitel/abb-3-1-full.png" alt="Die zwölf Kriterien im Spiegel der sieben Referenzinfrastrukturen — Übersichtstabelle" loading="lazy" />
 <figcaption>Abbildung 3.1 — Die zwölf Kriterien im Spiegel der sieben Referenzinfrastrukturen. Wo der Text zu einem System nichts sagt, bleibt die Zelle leer. Der Zusatz Spektrum bedeutet, dass die Gesamtaussage alle verorteten Systeme zählt, auch die am gegenläufigen Ende.</figcaption>
 </figure>
 

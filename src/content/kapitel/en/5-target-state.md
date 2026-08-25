@@ -575,7 +575,7 @@ A Without Pivot Gas Limit 60M 0.6–0.8 TB
 
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-5-4.png" alt="State Growth Scenarios A, B, and C" loading="lazy" />
+<img src="/kapitel/abb-5-5.png" alt="State Growth Scenarios A, B, and C" loading="lazy" />
 <figcaption>Figure 5.4-B.1 — State Growth Scenarios. Three projections under different assumptions about network growth and State solution maturity.</figcaption>
 </figure>
 
