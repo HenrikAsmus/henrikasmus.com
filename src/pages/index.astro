@@ -168,7 +168,11 @@ export const prerender = false;
       letter-spacing: -0.03em;
       line-height: 1.18;
     }
-    .wt1 { color: var(--c-text); }
+    .werk-body { position: relative; cursor: pointer; }
+    .wt1 { color: var(--c-text); text-decoration: none; }
+    .wt1::after { content: ''; position: absolute; inset: 0; }
+    .werk-body:hover .wt1 { text-decoration: underline; text-underline-offset: 3px; }
+    .werk-pdfs { position: relative; z-index: 1; }
     .wt2 {
       background: linear-gradient(100deg, #78828A 0%, #C3CACF 48%, #78828A 100%);
       -webkit-background-clip: text;
@@ -257,7 +261,7 @@ export const prerender = false;
     <span class="sec-label">Arbeiten</span>
     <div class="werk-entry">
       <div class="werk-body">
-        <span class="wt1">Lastannahmen</span>
+        <a href="/lastannahmen/" class="wt1">Lastannahmen</a>
         <span class="wt2">Ethereum als fundamentale digitale Infrastruktur</span>
         <p class="werk-meta">Masterarbeit · Eigenverlag · Juli 2026 · 324 Seiten</p>
         <p class="werk-desc">Die Arbeit prüft Ethereum an zwölf Kriterien für fundamentale Infrastruktur, in zwei Zuständen: im heutigen, Stand März 2026, und in dem, der sich bei vollständig umgesetzter Roadmap ergäbe. Geschrieben für Entscheider in Unternehmen, Kapitalgeber, technische Architekten und Politik.</p>

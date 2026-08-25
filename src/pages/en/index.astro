@@ -159,7 +159,11 @@ export const prerender = false;
       letter-spacing: -0.03em;
       line-height: 1.18;
     }
-    .wt1 { color: var(--c-text); }
+    .werk-body { position: relative; cursor: pointer; }
+    .wt1 { color: var(--c-text); text-decoration: none; }
+    .wt1::after { content: ''; position: absolute; inset: 0; }
+    .werk-body:hover .wt1 { text-decoration: underline; text-underline-offset: 3px; }
+    .werk-pdfs { position: relative; z-index: 1; }
     .wt2 {
       background: linear-gradient(100deg, #78828A 0%, #C3CACF 48%, #78828A 100%);
       -webkit-background-clip: text;
@@ -228,7 +232,7 @@ export const prerender = false;
     <span class="sec-label">Works</span>
     <div class="werk-entry">
       <div class="werk-body">
-        <span class="wt1">Load Assumptions</span>
+        <a href="/en/load-assumptions/" class="wt1">Load Assumptions</a>
         <span class="wt2">Ethereum as Fundamental Digital Infrastructure</span>
         <p class="werk-meta">Master's thesis · Self-published · July 2026 · 299 pages</p>
         <p class="werk-desc">The study examines Ethereum against twelve criteria for fundamental infrastructure, in two states: the current one as of March 2026, and the one that would result from full implementation of the roadmap. Written for corporate decision-makers, capital allocators, technical architects and policymakers.</p>
