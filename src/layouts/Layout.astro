@@ -4,6 +4,7 @@ interface Props {
   lang: 'de' | 'en';
   canonicalDE: string;
   canonicalEN: string;
+  description?: string;
   breit?: boolean;
   overview?: boolean;
 }
@@ -12,6 +13,11 @@ const base = 'https://loadassumptions.xyz';
 const backHref = lang === 'de' ? '/lastannahmen/' : '/en/load-assumptions/';
 const backLabel = lang === 'de' ? '← Übersicht' : '← Overview';
 const homeHref = lang === 'de' ? '/' : '/en/';
+const canonicalUrl = lang === 'de' ? `${base}${canonicalDE}` : `${base}${canonicalEN}`;
+const defaultDescription = lang === 'de'
+  ? 'Ethereum als fundamentale digitale Infrastruktur — Masterarbeit von Henrik Asmus'
+  : 'Ethereum as Fundamental Digital Infrastructure — Master\'s thesis by Henrik Asmus';
+const description = Astro.props.description ?? defaultDescription;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -19,10 +25,19 @@ const homeHref = lang === 'de' ? '/' : '/en/';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
-  <link rel="canonical" href={lang === 'de' ? `${base}${canonicalDE}` : `${base}${canonicalEN}`} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
   <link rel="alternate" hreflang="de" href={`${base}${canonicalDE}`} />
   <link rel="alternate" hreflang="en" href={`${base}${canonicalEN}`} />
   <link rel="alternate" hreflang="x-default" href={`${base}${canonicalDE}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
 <body>

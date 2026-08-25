@@ -46,10 +46,11 @@ const chaptersJson = JSON.stringify(
 ---
 
 <Layout
-  title={`${entry.data.titel} — Load Assumptions — Henrik Asmus`}
+  title={`${entry.data.titel} — Load Assumptions`}
   lang="en"
   canonicalDE={deSlug ? `/lastannahmen/${deSlug}/` : '/lastannahmen/'}
   canonicalEN={`/en/load-assumptions/${slug}/`}
+  description={entry.data.befund}
   breit
 >
   <script type="application/json" id="__chapters" set:html={chaptersJson}></script>
