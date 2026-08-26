@@ -137,6 +137,11 @@ The cascade rule in the second step was added during the application of the eval
 
 The cascade produces five possible judgment categories, whose definitions clarify what a category means and what it excludes. The degree is determined for each category reached by the Qualitative Criteria. It differentiates suitability within the category reached without shifting the category itself. "Suitable" means that all Critical and Structural Conditions stand at least at "Met". It expressly does not mean operational readiness for deployment, global scaling, or completeness, because these factors describe market and adoption dynamics, not infrastructure properties. "Suitable with Conditions" means that at least one Critical Condition or exactly one Structural Condition exhibits a limitation, as long as no capping rule of a higher level applies. The limitation qualifies the claim without fundamentally undermining it. "Suitable under Substantial Conditions" means that at least one Critical Condition stands at "Conditionally Met": the core property of the infrastructure claim is not yet secured at the required level, and suitability is tied to named, verifiable conditions. "Conditionally Suitable" means that at least one Critical Condition stands at "Open" and a fundamental requirement is missed, for which, however, a recognizable path to fulfillment exists. "Not Suitable" means that fundamental requirements are missed without a recognizable path to fulfillment.
 
+<figure class="kapitel-figure">
+<img src="/kapitel/en/abb-2-1.png" alt="The M3 Cascade — flowchart of the five evaluation steps" loading="lazy" />
+<figcaption>Figure 2.1 — The M3 Cascade. The sequence in which the twelve individual assessments converge into an overall judgment. The marked path is that of the current state.</figcaption>
+</figure>
+
 ### 2.3.4 Scope and Boundaries
 
 The evaluation framework operates within explicit boundaries that define its informative value and demarcate its applicability.

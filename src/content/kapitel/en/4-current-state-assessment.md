@@ -34,7 +34,7 @@ The December 2025 incident at Fusaka provides empirical validation of this desig
 39 percent of nodes are located in the USA, 14.5 percent in Germany, and 14 percent in China. Of the hosted Execution Layer nodes, 59 percent run on three cloud providers: AWS with 35.5 percent, Hetzner with 13.8 percent, and OVHcloud with 9.7 percent.<a href="#fn-6" id="fnref-6"><sup>6</sup></a>
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-1-full.png" alt="Ethereum's layer model — Consensus Layer, Execution Layer, and Data Availability Layer" loading="lazy" />
+<img src="/kapitel/en/abb-4-1-full.png" alt="Ethereum's layer model — Consensus Layer, Execution Layer, and Data Availability Layer" loading="lazy" />
 <figcaption>Figure 4.1 — Ethereum's layer model. Consensus Layer and Execution Layer, connected via the Engine API, plus the data availability layer. Five independent implementations per layer, in five languages, from five teams.</figcaption>
 </figure>
 
@@ -59,7 +59,7 @@ Everything that Ethereum as a system stores resides in a data structure called t
 The State amounts to 150 to 200 GB in the compressed storage form of the clients. The total size of a full node is 1,579 GB.<a href="#fn-9" id="fnref-9"><sup>9</sup></a> The hardware requirements for operating a full node include at least 2 TB SSD storage, 16 GB RAM, and a stable internet connection with at least 25 megabits per second. The permanent growth of State is the central long-term problem of the Ethereum architecture: every deployed contract, every new wallet, every stored storage slot accumulates permanently on all full nodes, without inactive entries expiring or being compressed.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-2-full.png" alt="The Merkle Patricia Trie — four nested tries and the World State Root" loading="lazy" />
+<img src="/kapitel/en/abb-4-2-full.png" alt="The Merkle Patricia Trie — four nested tries and the World State Root" loading="lazy" />
 <figcaption>Figure 4.2 — The Merkle Patricia Trie. Four nested tries and the World State Root anchored in the block header. A Merkle Proof demonstrates with logarithmic effort that a state entry is present or absent — this is the foundation of independent verifiability.</figcaption>
 </figure>
 
@@ -76,7 +76,7 @@ Every operation on the EVM consumes a defined quantity of Gas. The cost structur
 The fee model EIP-1559, active since August 2021, divides the transaction fee into two components.<a href="#fn-11" id="fnref-11"><sup>11</sup></a> The Base Fee is determined algorithmically and adjusts dynamically to block utilization: if the preceding block consumed more than half its Gas Limit, the Base Fee rises by up to 12.5 percent. If utilization falls below that, it falls by the same maximum factor. The Base Fee is burned — cumulatively since August 2021, over 4.6 million ETH have been removed from circulation. The Priority Fee is freely chosen by the user and flows to the block's proposer.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-3-full.png" alt="The fee market under EIP-1559 — Base Fee and Priority Fee, their objectives, and the adjustment rule" loading="lazy" />
+<img src="/kapitel/en/abb-4-3-full.png" alt="The fee market under EIP-1559 — Base Fee and Priority Fee, their objectives, and the adjustment rule" loading="lazy" />
 <figcaption>Figure 4.3 — The fee market under EIP-1559. Base Fee and Priority Fee, their objectives, and the rule by which the Base Fee adjusts.</figcaption>
 </figure>
 
@@ -85,7 +85,7 @@ The fee model EIP-1559, active since August 2021, divides the transaction fee in
 The signed transaction is propagated via the peer-to-peer network. There is no single central mempool — each node maintains a local view of the transactions it has received from its peers. This decentralized mempool architecture creates an informational asymmetry that is constitutive for the MEV phenomenon: builders who have privileged connections to more nodes or receive private order flows have a more complete view of pending transactions than average nodes.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-4-full.png" alt="The mempool views — each node knows a different subset of pending transactions" loading="lazy" />
+<img src="/kapitel/en/abb-4-4-full.png" alt="The mempool views — each node knows a different subset of pending transactions" loading="lazy" />
 <figcaption>Figure 4.4 — The mempool views. Each node maintains its own view of pending transactions. Which ones it sees depends on network topology, propagation times, and individual filtering rules. From this inequality of views arises the informational asymmetry constitutive for the MEV phenomenon.</figcaption>
 </figure>
 
@@ -102,7 +102,7 @@ The architectural response to separating block production from block validation 
 15 percent of blocks run through Relays that operate explicitly OFAC-compliant.<a href="#fn-15" id="fnref-15"><sup>15</sup></a> In November 2022, 79 percent of blocks ran through OFAC-compliant Relays. The decline to 15 percent occurred without protocol intervention, driven by market dynamics. FOCIL (EIP-7805), a validator-committee-based inclusion list system, is intended to replace this emergent censorship resistance with a protocol guarantee and carries status PLAN.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-5-full.png" alt="Proposer-Builder Separation — the path of a block from the Builder via the Relay to the Proposer" loading="lazy" />
+<img src="/kapitel/en/abb-4-5-full.png" alt="Proposer-Builder Separation — the path of a block from the Builder via the Relay to the Proposer" loading="lazy" />
 <figcaption>Figure 4.5 — Proposer-Builder Separation. The path of a block from the Builder via the Relay to the Proposer, who blindly selects the highest bid. The Relays are off-chain intermediaries and thus the only point in the chain requiring trust.</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ Each attestation a validator submits contains three simultaneous votes: the head
 The empirical record of the consensus mechanism since the Merge is remarkably stable. Of 287,000 produced epochs, 13 were not finalized, a finality rate of over 99.99 percent.<a href="#fn-18" id="fnref-18"><sup>18</sup></a> All 13 non-finalized epochs occurred in May 2023. That incident was simultaneously the first and to date only Mainnet test of the Inactivity Leak, an automatic degradation mode activated when finalization is absent for more than four epochs. Self-healing took 96 minutes, without any external intervention being required.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-6-full.png" alt="The attestation — three votes in a single message entering two different consensus mechanisms" loading="lazy" />
+<img src="/kapitel/en/abb-4-6-full.png" alt="The attestation — three votes in a single message entering two different consensus mechanisms" loading="lazy" />
 <figcaption>Figure 4.6 — The attestation. Three votes in a single message entering two different consensus mechanisms. The head vote feeds into LMD-GHOST; source vote and target vote feed into Casper FFG.</figcaption>
 </figure>
 
@@ -186,7 +186,7 @@ A Rollup delegates transaction execution to an independent system but anchors th
 The verification of State Roots follows one of two approaches. Optimistic Rollups assume the submitted states are correct and grant a seven-day challenge period in which any participant can submit a Fraud Proof. Security rests on the 1-of-N honest verifier assumption. ZK-Rollups mathematically prove the correctness of the submitted state before its acceptance through a validity proof that a verifier contract on Layer 1 checks in constant time. Arbitrum One, Base, and OP Mainnet are Optimistic Rollups. Starknet and zkSync Era are ZK-based.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-7-full.png" alt="The rollup-centric architecture — Layer 1 carries settlement and data availability, Rollups carry execution" loading="lazy" />
+<img src="/kapitel/en/abb-4-7-full.png" alt="The rollup-centric architecture — Layer 1 carries settlement and data availability, Rollups carry execution" loading="lazy" />
 <figcaption>Figure 4.7 — The rollup-centric architecture. Layer 1 carries settlement and data availability, Rollups carry execution. Two confirmation stages: the sequencer confirms in seconds without a finality guarantee; the full guarantees of the base layer are inherited only upon L1 finalization.</figcaption>
 </figure>
 
@@ -199,7 +199,7 @@ The L2BEAT Stage framework measures the degree of decentralization of Rollups on
 Arbitrum One (Stage 1, 17.5 billion USD), Base (Stage 1, 11 billion USD), and OP Mainnet (Stage 1) share the Optimism proof infrastructure. Starknet has reached Stage 1 with the Stwo proof system. zkSync Era remains at Stage 0. Stage 2 exists only for immutable projects with minimal transaction volume such as Aztec v1 (2.95 million USD). Exit windows vary drastically: 17 days at Arbitrum, but zero days at Base and OP Mainnet.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-8-full.png" alt="The L2BEAT Stage Framework — the requirements of the three tiers and the Rollups that achieve them" loading="lazy" />
+<img src="/kapitel/en/abb-4-8-full.png" alt="The L2BEAT Stage Framework — the requirements of the three tiers and the Rollups that achieve them" loading="lazy" />
 <figcaption>Figure 4.8 — The L2BEAT Stage Framework. The requirements of the three tiers and the Rollups that achieve them, with secured value. Stage 2 is reached only by an immutable project with a fraction of the value that Arbitrum One carries.</figcaption>
 </figure>
 
@@ -226,7 +226,7 @@ Ethereum Improvement Proposals are the formal standardization mechanism for prot
 EIP Editors check formal correctness. Substantive decisions are made in the AllCoreDevs Calls — biweekly video conferences of the client developer teams publicly streamed, recorded, and documented. The procedure is transparent, documented, and selective, but operates without formal authority: no body can force a decision, no voting mechanism can bind a majority. Ethereum has deliberately not implemented on-chain governance. The decision-making principle follows the model that the Internet has shaped: Rough Consensus and Running Code, a formulation of the Internet Engineering Task Force.<a href="#fn-32" id="fnref-32"><sup>32</sup></a>
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-9-full.png" alt="The Ethereum governance process — formal status of a proposal and the instances where decisions actually lie" loading="lazy" />
+<img src="/kapitel/en/abb-4-9-full.png" alt="The Ethereum governance process — formal status of a proposal and the instances where decisions actually lie" loading="lazy" />
 <figcaption>Figure 4.9 — The Ethereum governance process. The formal status of a proposal and the instances where decisions actually lie. No body can force a decision, no voting mechanism binds a majority. Ethereum has deliberately not implemented on-chain governance. In 2025, over 230 EIPs were submitted, 37 accepted.</figcaption>
 </figure>
 
@@ -357,7 +357,7 @@ The 32-ETH minimum deposit for solo staking is the deficit shaping the entire in
 L2 transaction costs document the strongest improvement. Median costs on the leading L2s have fallen below 0.01 US dollars per transaction after EIP-4844. Usability without cryptographic prior knowledge has improved substantially through EIP-7702 (Pectra), but the UX transformation is not yet complete.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-10-full.png" alt="Current-state assessment profile Dimensions I and II — the eight individual assessments with hierarchy level and assessment label" loading="lazy" />
+<img src="/kapitel/en/abb-4-10-full.png" alt="Current-state assessment profile Dimensions I and II — the eight individual assessments with hierarchy level and assessment label" loading="lazy" />
 <figcaption>Figure 4.10 — Current-state assessment profile Dimensions I and II. The eight individual assessments with hierarchy level and assessment label. Seven of eight criteria carry the same label. II.1 is the only outlier and simultaneously critical in the cascade.</figcaption>
 </figure>
 
@@ -422,7 +422,7 @@ All four criteria stand at "Fulfilled with qualification." The third dimension s
 The twelve individual assessments of Sections 4.7 through 4.9 yield a profile that is as revealing in its consistency as in its single deviation. No criterion achieves "Fulfilled" without qualification. Eleven of twelve criteria stand at "Fulfilled with qualification." One — Neutrality and Censorship Resistance (II.1) — stands at "Conditionally fulfilled." None stands at "Open." The numerical profile 0-11-1-0 describes a system that addresses the infrastructure requirements in breadth, but in which operational reality has not yet fully delivered on the protocol-level possibilities.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-4-11-full.png" alt="Current-state profile of all twelve criteria — assessment label by hierarchy level and dimension" loading="lazy" />
+<img src="/kapitel/en/abb-4-11-full.png" alt="Current-state profile of all twelve criteria — assessment label by hierarchy level and dimension" loading="lazy" />
 <figcaption>Figure 4.11 — Current-state profile of all twelve criteria. Assessment label by hierarchy level and dimension. Zero times Fulfilled, eleven times Fulfilled with qualification, once Conditionally fulfilled, zero times Open.</figcaption>
 </figure>
 

@@ -1,4 +1,4 @@
----
+﻿---
 titel: The Target State
 nummer: 5
 befund: "What would Ethereum become if its roadmap were fully implemented? The study describes the target state, evaluates it against the same twelve criteria, and arrives at a target-state assessment."
@@ -135,7 +135,7 @@ The chain is directed. An undirected relationship would be incorrect.
 
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-5-1.png" alt="Dependency Chain of L1 Execution Scaling" loading="lazy" />
+<img src="/kapitel/en/abb-5-1.png" alt="Dependency Chain of L1 Execution Scaling" loading="lazy" />
 <figcaption>Figure 5.2-A.1 — Dependency Chain of L1 Execution Scaling. BALs parallelize execution for provers and validators; ePBS creates the proving window in Slot N+1; the L1-zkEVM closes the chain as the verification layer.</figcaption>
 </figure>
 
@@ -202,7 +202,7 @@ The increasing distance is the point. Scaling does not become uniformly harder, 
 
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-5-2.png" alt="Graduated Scaling Path as Sequential Pipeline" loading="lazy" />
+<img src="/kapitel/en/abb-5-2.png" alt="Graduated Scaling Path as Sequential Pipeline" loading="lazy" />
 <figcaption>Figure 5.2-B.1 — Graduated Scaling Path. Five thresholds from below 100M Gas to 300–500M Gas, each conditioned on ePBS activation, zkEVM maturity, and Full Danksharding infrastructure.</figcaption>
 </figure>
 
@@ -273,10 +273,14 @@ The gap between the achieved value and the ceiling conveys the point.
 
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-5-3.png" alt="Blob Parameter Path from Dencun to Full Danksharding" loading="lazy" />
+<img src="/kapitel/en/abb-5-3.png" alt="Blob Parameter Path from Dencun to Full Danksharding" loading="lazy" />
 <figcaption>Figure 5.2-D.1 — Blob Parameter Path. Dencun (3/6) → Pectra (6/9) → BPO1 (10/15) → BPO2 (14/21), with theoretical 1D PeerDAS ceiling at 64–128 Blobs per block.</figcaption>
 </figure>
 
+<figure class="kapitel-figure">
+<img src="/kapitel/en/abb-5-4.png" alt="PeerDAS Architecture — Peer-to-Peer Sampling instead of full Blob download" loading="lazy" />
+<figcaption>Figure 5.2-D.2 — PeerDAS Architecture. Validators download samples rather than complete Blobs, verifying availability statistically via KZG commitments. Approximately 85 percent bandwidth reduction compared to the full-load model.</figcaption>
+</figure>
 
 Beyond the 1D maximum, the long-term path of the data resource lies in a two-dimensional extension of the same architecture. Full Danksharding (RES, no fork assignment) extends PeerDAS from one-dimensional to two-dimensional sampling by adding a vertical Reed-Solomon extension to the horizontal one. The reconstructibility of data scales quadratically rather than linearly, and a node grasps Blob completeness from a considerably smaller sample fraction. In this matrix, nodes download individual cells (matrix cells) rather than entire columns, so that the data volume per node remains constant as Blob count grows. Validator requirements are structurally decoupled from the scaling objective.<a href="#fn-79" id="fnref-79"><sup>79</sup></a> The capacity projection is 64 Blobs Target and 256 Maximum, corresponding to roughly 32 MB of data throughput per slot.<a href="#fn-80" id="fnref-80"><sup>80</sup></a> The technical prerequisite is efficient bivariate polynomial interpolation that reconstructs the complete matrix from a partial subset of samples. This reconstruction has been mathematically defined for some time. What remains open is the production-ready implementation, because the computational load per reconstruction currently exceeds the hardware budgets of prover and validator infrastructure.<a href="#fn-81" id="fnref-81"><sup>81</sup></a> Full Danksharding thus depends on an engineering bottleneck whose solution is expected but not scheduled. Under the L1-first pivot, the path is not critical as long as PeerDAS carries the foreseeable L2 development. Accelerated adoption through institutional Rollups, ENS Namechain, or Based Sequencing can overtake the baseline assumption.
 
@@ -575,7 +579,7 @@ A Without Pivot Gas Limit 60M 0.6–0.8 TB
 
 
 <figure class="kapitel-figure">
-<img src="/kapitel/abb-5-5.png" alt="State Growth Scenarios A, B, and C" loading="lazy" />
+<img src="/kapitel/en/abb-5-5.png" alt="State Growth Scenarios A, B, and C" loading="lazy" />
 <figcaption>Figure 5.4-B.1 — State Growth Scenarios. Three projections under different assumptions about network growth and State solution maturity.</figcaption>
 </figure>
 

@@ -127,6 +127,11 @@ The examination finally reveals a property that deliberately does not become a c
 
 The overarching result confirms the meta-pattern that Chapter 2 introduced as the second fundamental principle of the evaluation logic: the degree of fulfillment must match the claim. None of the seven infrastructures fulfills all requirements at maximum degree, and this finding prevents the fallacy that a system must fulfill every criterion maximally in order to qualify as infrastructure. For a system that makes the claim of a neutral, permissionless, censorship-resistant infrastructure, the requirements for neutrality, access, and censorship resistance are higher than for a system without this claim. Ten of the twelve criteria find purchase in established infrastructure, in different form and with a variance that demonstrates their discriminating power. The twelfth proves to be a claim-specific requirement that applies precisely where the reference systems offer no counterpart.
 
+<figure class="kapitel-figure">
+<img src="/kapitel/en/abb-3-1-full.png" alt="The twelve criteria in the mirror of the seven reference infrastructures — overview table" loading="lazy" />
+<figcaption>Figure 3.1 — The Twelve Criteria in the Mirror of the Seven Reference Infrastructures. Where the text says nothing about a system, the cell remains empty. The qualifier Spectrum means that the overall statement counts all located systems, including those at the opposite end.</figcaption>
+</figure>
+
 ## 3.3 Methodological Boundaries and Positioning
 
 The documented derivation and validation of the evaluation criteria is subject to four boundaries that must be transparently named.
