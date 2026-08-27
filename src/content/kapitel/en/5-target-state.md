@@ -406,9 +406,7 @@ Available, but not Integrated
 
 The Trustless RPC Architecture is technically available today. Its effect on the real trust load depends on adoption by wallets and frontends, actors the protocol cannot compel. As of February 2026, none of the three market-dominant wallet solutions, neither MetaMask, Trust Wallet, nor Ledger, integrates Helios as the default for trustless verification.<a href="#fn-123" id="fnref-123"><sup>123</sup></a> The infrastructure is available. Integration into end-user software is outstanding. The diagnosis follows a pattern already seen in the Hyperscaler concentration in 5.3-B. Both phenomena affect operational layers above the protocol. The protocol can facilitate them but cannot dictate how they are populated. They differ in their subject matter. The Hyperscaler concentration concerns the choice of operator infrastructure by validator operators. The RPC provider diagnosis concerns the choice of frontend integration by wallet and dApp developers.
 
-With the distribution of the trust question across three out-of-protocol components, and the resolution of the scaling question through wire protocol hardening, the verification architecture of the scaled network rests entirely on cryptography at the endpoint device. The cryptographic loadbearing layer of Helios in turn relies on the BLS signatures of the Sync Committee, whose security rests on the same ECDLP that was identified in 5.3-A as non-quantum-resistant for threshold for exceeding the ten-mebibyte limit per devp2p message lies, per EIP text, at 83 million Gas. The practical threshold documented in Erigon implementation tests from January 2026 is already approximately 75 million Gas. eth/69 was deployed as a networking update for Fusaka (December 2025). Eth/70 is linked to Glamsterdam (H2 2026 probable). Sources: ethereum/EIPs repository, EIP-7975 specification. erigontech/erigon issue January 2026 on receipt sizes above 75 million Gas.
-
-the IPA commitments of Verkle Trees.<a href="#fn-124" id="fnref-124"><sup>124</sup></a> The verification architecture of Stateless Clients and the cryptographic foundation from 5.3-A thus share the same assumption and face the same migration requirement. 5.3-D unfolds the post-quantum roadmap as a migration that concerns both pillars of the architecture built so far.
+With the distribution of the trust question across three out-of-protocol components, and the resolution of the scaling question through wire protocol hardening, the verification architecture of the scaled network rests entirely on cryptography at the endpoint device. The cryptographic loadbearing layer of Helios in turn relies on the BLS signatures of the Sync Committee, whose security rests on the same ECDLP that was identified in 5.3-A as non-quantum-resistant for the IPA commitments of Verkle Trees.<a href="#fn-124" id="fnref-124"><sup>124</sup></a> The verification architecture of Stateless Clients and the cryptographic foundation from 5.3-A thus share the same assumption and face the same migration requirement. 5.3-D unfolds the post-quantum roadmap as a migration that concerns both pillars of the architecture built so far.
 
 
 ### The Post-Quantum Migration of Verification
@@ -512,43 +510,6 @@ Tiered State: The Reversed Lever
 The failure of State Expiry explains why the only remaining approach takes a fundamentally different path. State Expiry was meant to automatically remove unused State from the active dataset. This proved impossible precisely as long as the protocol cannot distinguish between active and expirable State. Tiered State (RES, ethresear.ch post February 2026) starts at the opposite point: existing State remains entirely untouched. Instead, new, cheaper but more restrictive State types are introduced to channel future growth.<a href="#fn-149" id="fnref-149"><sup>149</sup></a>
 
 The architecture opts for two extremes rather than a middle path and places three State types side by side. Permanent State encompasses accounts, core contracts, and all data that must be available completely and without additional retrieval costs at every block. Temporary Storage is reset to zero at the beginning of each period, intended for short-lived data with a monthly reset cycle. UTXOs drive this principle to the extreme: their expiry period is zero, as they expire immediately upon consumption.<a href="#fn-161" id="fnref-161"><sup>161</sup></a> Existing contract code, existing balances, existing DeFi positions remain in the permanent tier. The growth limitation arises through the incentive structure: new applications choose the more restrictive types once permanent persistence is not required. No deletion of existing data takes place.
-
-Server Hardware 8–16 TB SSD
-
-Consumer Hardware 2–4 TB SSD
-
-16 TB
-
-8
-
-4
-
-2
-
-1 TB
-
-500 GB
-
-430 GiB, Q1 2026
-
-Consumer Threshold Crossed
-
-B Pivot without State Solution EIP-9698 Path 2.7–7.0 TB
-
-C Pivot with Tiered State 1.2–1.5 TB permanent
-
-A Without Pivot Gas Limit 60M 0.6–0.8 TB
-
-2026
-
-2027
-
-2028
-
-2029
-
-2030
-
 
 <figure class="kapitel-figure">
 <img src="/kapitel/en/abb-5-5.png" alt="State Growth Scenarios A, B, and C" loading="lazy" />
@@ -659,13 +620,11 @@ Two questions follow, which diverge in their assessment. The first is economic a
 
 Economically, the protocol above all must sustain the security budget, the reward to stakers that keeps the cost of acquiring an attack share higher than the gain from it. Its level is composed of three quantities: issuance, transaction fees, and burn. Issuance pays for security, fees supplement it, and burn maintains the value of the paid-out ETH through scarcity.
 
-Of the three quantities, the protocol sets only issuance itself, and only for it is the future level open. Every newly created ETH distributes the existing supply across more units, devaluing those already held, which is why the protocol should create only as much as security requires. Under the current rule, however, the distributed quantity grows the more ETH is staked in total, so that emission can grow without limit. The reform discussed under the heading Minimum Viable Issuance changes the rule: once the staked share exceeds a target, the annual return per validator falls, and further stake loses its incentive.<a href="#fn-190" id="fnref-190"><sup>190</sup></a> The reform seeks the share that is high enough for security and low enough to keep emission small. Its status remains open, since research is still debating the right target. Added to this is the fact that the narrative of scarce, deflationary ETH (which the ecosystem calls Ultrasound Money) no longer held in 2024 (and sub-sequently 2025) when the declining burn rate allowed supply to grow again.<a href="#fn-191" id="fnref-191"><sup>191</sup></a> The other two quantities, fees and burn, stand on firmer ground than issuance. On the fee side, Blob Fee Stabilization (EIP-7918) secures a minimum price for the data that Layer 2s deposit on Layer 1.<a href="#fn-192" id="fnref-192"><sup>192</sup></a> It prevents Blob fees from falling toward zero and preserves the fee component for validators. On the burn side, the protocol already burns the base price of every transaction today, and in the target state additionally the MEV. MEV fluctuates heavily, since rare blocks with large liquidations or arbitrages yield several times that of an ordinary block. MEV Burn destroys it via the auction for block determination, so that no single block provides a Proposer with exceptional returns and validator rewards remain steady.<a href="#fn-193" id="fnref-193"><sup>193</sup></a> It counts here on the burn side of the budget. In Section 5.5-B it appears under fairness.
+Of the three quantities, the protocol sets only issuance itself, and only for it is the future level open. Every newly created ETH distributes the existing supply across more units, devaluing those already held, which is why the protocol should create only as much as security requires. Under the current rule, however, the distributed quantity grows the more ETH is staked in total, so that emission can grow without limit. The reform discussed under the heading Minimum Viable Issuance changes the rule: once the staked share exceeds a target, the annual return per validator falls, and further stake loses its incentive.<a href="#fn-190" id="fnref-190"><sup>190</sup></a> The reform seeks the share that is high enough for security and low enough to keep emission small. Its status remains open, since research is still debating the right target. Added to this is the fact that the narrative of scarce, deflationary ETH (which the ecosystem calls Ultrasound Money) no longer held in 2024 (and subsequently 2025) when the declining burn rate allowed supply to grow again.<a href="#fn-191" id="fnref-191"><sup>191</sup></a> The other two quantities, fees and burn, stand on firmer ground than issuance. On the fee side, Blob Fee Stabilization (EIP-7918) secures a minimum price for the data that Layer 2s deposit on Layer 1.<a href="#fn-192" id="fnref-192"><sup>192</sup></a> It prevents Blob fees from falling toward zero and preserves the fee component for validators. On the burn side, the protocol already burns the base price of every transaction today, and in the target state additionally the MEV. MEV fluctuates heavily, since rare blocks with large liquidations or arbitrages yield several times that of an ordinary block. MEV Burn destroys it via the auction for block determination, so that no single block provides a Proposer with exceptional returns and validator rewards remain steady.<a href="#fn-193" id="fnref-193"><sup>193</sup></a> It counts here on the burn side of the budget. In Section 5.5-B it appears under fairness.
 
 Returns exceed operating costs only with efficient validation, and here MaxEB (EIP-7251) takes effect, delivered since the Pectra upgrade in spring 2025. The upgrade raised the maximum Effective Balance of a validator from 32 to 2,048 ETH.<a href="#fn-194" id="fnref-194"><sup>194</sup></a> Large operators can since then consolidate thousands of smaller nodes into fewer larger ones, reducing their costs and steadying their returns. For the economics of staking, node consolidation counts as a stabilizing factor. What consequences the consolidation has for distribution is clarified in the second part.
 
-rium issuance with a target stake ratio as a stationary state in which the security budget balances among stake, fees, and burn. The dispute over the correct target size is open. The “Ultrasound Money” narrative around the deflationary ETH burned through burn no longer held in 2025, after the burn decreased as activity shifted to Layer 2 networks and supply grew again.
-
-From the interplay of the three quantities follows a self-stabilizing state. The staking rate settles at a value at which issuance just covers security. Burn offsets issuance to the extent that the network need not buy its security at ever-higher expense. This is the basis for the high economic loadbearing capacity of the network. An attack on a third of the stake requires acquiring approximately 11.5 million ETH. The buying pressure of such a quantity would drive the price high enough to make the attack uneconomical.<a href="#fn-195" id="fnref-195"><sup>195</sup></a> The threshold holds even if the reform modestly reduces the staked share, because the price driven by acquisition counts more than the quantity to be purchased. Security is thus load-bear-ing, but its dollar value depends on the ETH price and usage volume and is not guaranteed by the protocol alone.
+From the interplay of the three quantities follows a self-stabilizing state. The staking rate settles at a value at which issuance just covers security. Burn offsets issuance to the extent that the network need not buy its security at ever-higher expense. This is the basis for the high economic loadbearing capacity of the network. An attack on a third of the stake requires acquiring approximately 11.5 million ETH. The buying pressure of such a quantity would drive the price high enough to make the attack uneconomical.<a href="#fn-195" id="fnref-195"><sup>195</sup></a> The threshold holds even if the reform modestly reduces the staked share, because the price driven by acquisition counts more than the quantity to be purchased. Security is thus load-bearing, but its dollar value depends on the ETH price and usage volume and is not guaranteed by the protocol alone.
 
 The Unresolved Concentration
 
