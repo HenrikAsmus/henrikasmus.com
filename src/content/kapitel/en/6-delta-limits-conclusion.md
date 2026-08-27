@@ -1,5 +1,5 @@
 ---
-titel: Delta, Limits, and Overall Assessment
+titel: Delta, Limits, and Overall Judgment
 nummer: 6
 befund: "The gap between the current and the target state, the persistent limits of the system, and the limits of the evaluation framework itself. The chapter answers the research question."
 sprache: en
