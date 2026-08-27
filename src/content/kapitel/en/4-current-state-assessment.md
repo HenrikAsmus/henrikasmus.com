@@ -40,7 +40,7 @@ The December 2025 incident at Fusaka provides empirical validation of this desig
 
 ### The EVM as Programmable Execution Environment
 
-What distinguishes Ethereum from a pure payment chain like Bitcoin is the Ethereum Virtual Machine. The EVM is a deterministic 256-bit stack machine: every node in the network executes the same code with the same inputs and necessarily arrives at the same result.<a href="#fn-7" id="fnref-7"><sup>7</sup></a> This determinism property is constitutive of the functioning of the system, because it forms the basis for all nodes being able to agree on the correct state.
+What distinguishes Ethereum from a pure payment chain like Bitcoin is the Ethereum Virtual Machine. The EVM is a deterministic 256-bit stack machine: every node in the network executes the same code with the same inputs and necessarily arrives at the same result.<a href="#fn-7" id="fnref-7"><sup>7</sup></a> This determinism property is constitutive of the functioning of the system, because it is what allows all nodes to agree on the same state.
 
 The EVM operates with a three-tier storage model. The stack is a volatile data structure following the last-in-first-out principle. Memory is a volatile, byte-addressable storage area. Storage is the persistent storage whose contents are anchored in the Merkle Patricia Trie. Storage operations are the most expensive in the entire opcode set, because every written value must be stored by all nodes indefinitely.
 
