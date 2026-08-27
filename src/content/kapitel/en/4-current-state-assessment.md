@@ -238,7 +238,7 @@ The Ethereum Foundation, founded in 2014 as a Swiss foundation, is the oldest an
 
 The concentration of a substantial treasury in a single organization creates a centralization risk in tension with the protocol's decentralized claim, particularly because the Foundation in practice co-determines the direction of protocol development through its financing decisions.
 
-Protocol Guild, a collective financing instrument for core developers with over 190 members, has received more than 50 million US dollars in voluntary donations from the ecosystem since its founding and represents a decentralized counterpoint to EF financing.<a href="#fn-34" id="fnref-34"><sup>34</sup></a> The financing through Protocol Guild is neither protocol-anchored nor long-term plannable, but dependent on the continuing willingness to donate of an ecosystem acting from economic self-interest.
+Protocol Guild, a collective financing instrument for core developers with over 190 members, has received more than 50 million US dollars in voluntary donations from the ecosystem since its founding and represents a decentralized counterpoint to EF financing.<a href="#fn-34" id="fnref-34"><sup>34</sup></a> The financing through Protocol Guild is neither protocol-anchored nor reliably predictable over the long term, but dependent on the continuing willingness to donate of an ecosystem acting from economic self-interest.
 
 ### Upgrades as Risk and Evidence
 
@@ -270,7 +270,7 @@ Four properties, two of them described in this section, cannot be fully operatio
 
 ## 4.7 Dimension I: Structural Foundation
 
-The assessment applies the twelve criteria of the evaluation framework to the described subject. Two of the criteria in this dimension, Security and Trust Load (I.2) and Minimal Viable Guarantees (I.4), are anchored as Critical Conditions.
+The assessment applies the twelve criteria of the evaluation framework to the described subject. Two of the criteria in this dimension, Security and Trust Load (I.2) and Minimal Load-Bearing Guarantees (I.4), are anchored as Critical Conditions.
 
 ### I.1 Functional Irreplaceability
 
@@ -280,7 +280,7 @@ The usage reality shows an anchoring that exceeds the threshold in three dimensi
 
 The shock resilience of this anchoring is empirically documented: in the 2022 market cycle, DeFi TVL collapsed in absolute terms by more than 75 percent, yet Ethereum's relative dominance position remained intact. Constraints are nonetheless documented: the stablecoin volume migration to Solana, L2 autonomy, and the multi-chain drift of institutional actors qualify the exclusivity of the anchoring.
 
-**Functional Irreplaceability: Fulfilled with qualification.** The anchoring exceeds all quantitative thresholds and has passed a stress test, but the emergent character of the anchoring, L2 autonomy, and multi-chain drift qualify the finding.
+**Functional Irreplaceability: Met with Qualification.** The anchoring exceeds all quantitative thresholds and has passed a stress test, but the emergent character of the anchoring, L2 autonomy, and multi-chain drift qualify the finding.
 
 ### I.2 Security and Trust Load
 
@@ -292,7 +292,7 @@ The data on the operational security profile are strong. With 964,768 active val
 
 The residual trust burden reveals a discrepancy between protocol claim and usage reality. Wallets such as MetaMask operate as closed-source components with unilateral update mechanisms. Infura and Alchemy dominate approximately 70 percent of RPC traffic. 91.5 percent of L2 TVL operates on Stage 1 rollups with security council multisigs and centralized sequencers. Cross-L2 transfers require trust-based bridges with cumulative hack damages exceeding 2.8 billion US dollars, or seven-day challenge periods. A typical user accessing an L2 DeFi service via MetaMask traverses four trust layers, none of which is secured by the Ethereum protocol itself.
 
-**Security and Trust Load: Fulfilled with qualification.** The economic security dimension satisfies all technical indicators. The residual trust dimension documents an operational discrepancy between protocol possibility and usage reality.
+**Security and Trust Load: Met with Qualification.** The economic security dimension satisfies all technical indicators. The residual trust dimension documents an operational discrepancy between protocol possibility and usage reality.
 
 ### I.3 Coordination Function
 
@@ -300,9 +300,9 @@ The protocol operationally implements three of the four coordination primitives:
 
 Roughly 100 billion US dollars are coordinated in a permissionless system without an institutional trustee, around the clock, 365 days a year, without maintenance windows. All top-5 rollups by TVL settle on Ethereum and use blob transactions for Data Availability. Cross-L2 composability, however, is the qualitative constraint: atomic composability is structurally absent at the L2 level. Monthly bridge volumes of approximately 11.2 billion US dollars show the scale of coordination demand handled through intermediaries.
 
-**Coordination Function: Fulfilled with qualification.** The coordination capacity is real, quantitatively substantial, and qualitatively unique, but L2 fragmentation undermines the coherence of coordination.
+**Coordination Function: Met with Qualification.** The coordination capacity is real, quantitatively substantial, and qualitatively unique, but L2 fragmentation undermines the coherence of coordination.
 
-### I.4 Minimal Viable Guarantees
+### I.4 Minimal Load-Bearing Guarantees
 
 *This criterion is the second Critical Condition in this dimension.*
 
@@ -312,13 +312,13 @@ The Degradation Mode is the property that distinguishes Ethereum from all seven 
 
 The fourth guarantee, censorship resistance under coordinated attack, does not reach the level of the first three. No protocol mechanism compels a block proposer or builder to include a specific valid transaction. FOCIL (EIP-7805) has the status PLAN. The OFAC compliance rate stands at approximately 15 percent, well below the 50-percent threshold, but this performance rests on market dynamics, not on a protocol guarantee.<a href="#fn-47" id="fnref-47"><sup>47</sup></a>
 
-**Minimal Viable Guarantees: Fulfilled with qualification.** Three of four guarantees are protocol-anchored and operationally proven. The fourth is functionally given, but not secured by the protocol.
+**Minimal Load-Bearing Guarantees: Met with Qualification.** Three of four guarantees are protocol-anchored and operationally proven. The fourth is functionally given, but not secured by the protocol.
 
 ### Synthesis Dimension I
 
-All four criteria stand at "Fulfilled with qualification." The two Critical Conditions (I.2 and I.4) pass the cascade threshold. The pattern characterizing the entire dimension: the architectural foundation is load-bearing, and the constraints lie consistently in the discrepancy between what the protocol enables and what operational reality delivers.
+All four criteria stand at "Met with Qualification." The two Critical Conditions (I.2 and I.4) pass the cascade threshold. The pattern characterizing the entire dimension: the architectural foundation is load-bearing, and the constraints lie consistently in the discrepancy between what the protocol enables and what operational reality delivers.
 
-## 4.8 Dimension II: Qualitative Viability
+## 4.8 Dimension II: Qualitative Load-Bearing Capacity
 
 The second dimension examines whether Ethereum possesses the qualitative properties that substantively carry the infrastructure claim. Neutrality and Censorship Resistance (II.1) is the third and final Critical Condition of the entire evaluation framework.
 
@@ -334,7 +334,7 @@ The structural defect finding lies in builder concentration. Titan with 51.2 per
 
 The geopolitical jurisdictional diversity shows moderate concentration: approximately 39 percent of nodes in the USA, approximately 53 percent in two countries.<a href="#fn-51" id="fnref-51"><sup>51</sup></a> The staking concentration indicators are within acceptable ranges: Lido holds 22.8 to 23 percent of staked ETH, well below the 33-percent blocking minority threshold.<a href="#fn-52" id="fnref-52"><sup>52</sup></a>
 
-**Neutrality and Censorship Resistance: Conditionally fulfilled.** Fulfillment depends on conditions not secured in the current state, in particular the implementation of FOCIL or a functionally equivalent mechanism. This is the weakest single finding of the entire current-state assessment.
+**Neutrality and Censorship Resistance: Conditionally Met.** Fulfillment depends on conditions not secured in the current state, in particular the implementation of FOCIL or a functionally equivalent mechanism. This is the weakest single finding of the entire current-state assessment.
 
 ### II.2 Open Generativity
 
@@ -344,7 +344,7 @@ The entire core development infrastructure stands under liberal open-source lice
 
 The constraint lies in L2 fragmentation: atomic composability that produced the DeFi ecosystem is not present at the L2 level. Flash Loans function only within a single block on a single chain and are structurally impossible across L2 boundaries.
 
-**Open Generativity: Fulfilled with qualification.** The permissionless deployment model and the open toolchain constitute the system's structurally strongest property. L2 composability fragmentation is the documented constraint.
+**Open Generativity: Met with Qualification.** The permissionless deployment model and the open toolchain constitute the system's structurally strongest property. L2 composability fragmentation is the documented constraint.
 
 ### II.3 Independent Verifiability
 
@@ -352,7 +352,7 @@ The deterministic EVM guarantees that every full node computes the identical sta
 
 The growing L2 verification complexity is a constraint: for Optimistic Rollups, security rests on the assumption that at least one honest prover submits a fraud proof within the seven-day deadline. For ZK-Rollups, creating and understanding the proofs requires cryptography expertise substantially beyond standard EVM verification. The Lazarus Group attacks of 2025, with damages of 2.02 billion US dollars, demonstrate that even audited systems remain vulnerable through attack vectors such as private key compromise and oracle manipulation.<a href="#fn-55" id="fnref-55"><sup>55</sup></a>
 
-**Independent Verifiability: Fulfilled with qualification.** The verification offering is protocol-anchored and substantive on the tooling side, but L2 verification complexity is growing, specification gaps exist, and audit culture is not universal.
+**Independent Verifiability: Met with Qualification.** The verification offering is protocol-anchored and substantive on the tooling side, but L2 verification complexity is growing, specification gaps exist, and audit culture is not universal.
 
 ### II.4 Low-Threshold Inclusivity
 
@@ -367,11 +367,11 @@ L2 transaction costs document the strongest improvement. Median costs on the lea
 <figcaption>Figure 4.10: Current-state assessment profile Dimensions I and II. The eight individual assessments with hierarchy level and assessment label. Seven of eight criteria carry the same label. II.1 is the only outlier and simultaneously critical in the cascade.</figcaption>
 </figure>
 
-**Low-Threshold Inclusivity: Fulfilled with qualification.** Participation is substantially inclusive for transactional use on L2, possible but endangered by rising state size for full-node operation, and prohibitively constrained for solo staking by the 32-ETH barrier.
+**Low-Threshold Inclusivity: Met with Qualification.** Participation is substantially inclusive for transactional use on L2, possible but endangered by rising state size for full-node operation, and prohibitively constrained for solo staking by the 32-ETH barrier.
 
 ### Synthesis Dimension II
 
-The assessment profile of the second dimension shows a pronounced asymmetry. The Critical Condition (II.1) stands at "Conditionally fulfilled," the three Qualitative Criteria (II.2, II.3, II.4) stand consistently at "Fulfilled with qualification." The dimension contains both the system's most critical vulnerability (the absent protocol-level neutrality guarantee) and one of its structurally strongest properties (open generativity). The tension between both findings reveals a system that produces maximum openness but leaves the neutrality of that openness operationally to market dynamics.
+The assessment profile of the second dimension shows a pronounced asymmetry. The Critical Condition (II.1) stands at "Conditionally Met," the three Qualitative Criteria (II.2, II.3, II.4) stand consistently at "Met with Qualification." The dimension contains both the system's most critical vulnerability (the absent protocol-level neutrality guarantee) and one of its structurally strongest properties (open generativity). The tension between both findings reveals a system that produces maximum openness but leaves the neutrality of that openness operationally to market dynamics.
 
 ## 4.9 Dimension III: Resilience and Sovereignty
 
@@ -389,7 +389,7 @@ Economic sustainability poses the second long-term question. The L2 migration ha
 
 The post-quantum migration constitutes the third long-term question. The cryptographic foundations (ECDSA, BLS12-381, and KZG commitments) must be migrated to quantum-resistant algorithms in the long term. The migration has the status RES. In the current-state time horizon, the risk is not acute.
 
-**Long-Term Stability: Fulfilled with qualification.** Short- and medium-term stability is operationally documented. Long-term stability depends on developments not secured in the current state.
+**Long-Term Stability: Met with Qualification.** Short- and medium-term stability is operationally documented. Long-term stability depends on developments not secured in the current state.
 
 ### III.2 Adaptive Governance
 
@@ -397,7 +397,7 @@ The EIP process is transparent, selective, and public: of 230 EIPs submitted in 
 
 The Ethereum Foundation as a governance actor is a documented centralization tension. Board-controlled, without protocol-level accountability, and with a treasury estimated at 850 to 950 million US dollars, the EF is the single most influential actor in the ecosystem.<a href="#fn-60" id="fnref-60"><sup>60</sup></a> The issuance reform debate is the active test case for the governance system's capacity to handle controversial decisions: the question has not produced consensus in the current state.
 
-**Adaptive Governance: Fulfilled with qualification.** The governance system is operationally strong and has a track record that no comparable decentralized system can match, but the informality provides no mechanical guarantees for extreme conflicts, and EF centralization stands in tension with the decentralized claim.
+**Adaptive Governance: Met with Qualification.** The governance system is operationally strong and has a track record that no comparable decentralized system can match, but the informality provides no mechanical guarantees for extreme conflicts, and EF centralization stands in tension with the decentralized claim.
 
 ### III.3 Sovereign Portability
 
@@ -407,7 +407,7 @@ The historical Geth dominance above 70 percent (2020–2023) is the documented c
 
 The operational infrastructure layer shows a different picture. The RPC concentration of 70 percent across Infura and Alchemy creates a de facto dependency at the access layer. The L2 proliferation has created new soft lock-ins: zkSync and Starknet use partially proprietary prover technologies.<a href="#fn-62" id="fnref-62"><sup>62</sup></a>
 
-**Sovereign Portability: Fulfilled with qualification.** The protocol layer is proprietary-free to a degree that none of the reference infrastructures achieves. The operational layer shows concentrations and L2 lock-ins that qualify the claim at the usage level.
+**Sovereign Portability: Met with Qualification.** The protocol layer is proprietary-free to a degree that none of the reference infrastructures achieves. The operational layer shows concentrations and L2 lock-ins that qualify the claim at the usage level.
 
 ### III.4 Hardware Agnosticism
 
@@ -417,28 +417,28 @@ Cloud concentration counteracts this protocol property. Approximately 59 percent
 
 The geographic distribution: 39 percent of nodes in the USA, 14.5 percent in Germany, 14 percent in China. Beyond these three countries, more than ten jurisdictions, including Singapore, Canada, Japan, Australia, the Netherlands, and Switzerland, each hold over one percent of nodes. The geographic indicator of the criterion (at least ten countries each with over one percent) is thereby fulfilled.
 
-**Hardware Agnosticism: Fulfilled with qualification.** Protocol-level hardware agnosticism is fully realized, without ASIC dependency, ARM-compatible, and consumer-energy-compatible, but the operational cloud concentration creates a physical dependency that undermines decentralization at the logical layer.
+**Hardware Agnosticism: Met with Qualification.** Protocol-level hardware agnosticism is fully realized, without ASIC dependency, ARM-compatible, and consumer-energy-compatible, but the operational cloud concentration creates a physical dependency that undermines decentralization at the logical layer.
 
 ### Synthesis Dimension III
 
-All four criteria stand at "Fulfilled with qualification." The third dimension shows the gap between current functionality and long-term viability. State growth, the open issuance question, and the pending post-quantum migration are not acute problems threatening today's operation but long-term vectors unfolding over years. The Structural Condition III.1 enters the third cascade step as a weak Structural Condition.
+All four criteria stand at "Met with Qualification." The third dimension shows the gap between current functionality and long-term viability. State growth, the open issuance question, and the pending post-quantum migration are not acute problems threatening today's operation but long-term vectors unfolding over years. The Structural Condition III.1 enters the third cascade step as a weak Structural Condition.
 
 ## 4.10 Overall Synthesis and Current-State Verdict
 
-The twelve individual assessments of Sections 4.7 through 4.9 yield a profile that is as revealing in its consistency as in its single deviation. No criterion achieves "Fulfilled" without qualification. Eleven of twelve criteria stand at "Fulfilled with qualification." One criterion, Neutrality and Censorship Resistance (II.1), stands at "Conditionally fulfilled." None stands at "Open." The numerical profile 0-11-1-0 describes a system that addresses the infrastructure requirements in breadth, but in which operational reality has not yet fully delivered on the protocol-level possibilities.
+The twelve individual assessments of Sections 4.7 through 4.9 yield a profile that is as revealing in its consistency as in its single deviation. No criterion achieves "Fulfilled" without qualification. Eleven of twelve criteria stand at "Met with Qualification." One criterion, Neutrality and Censorship Resistance (II.1), stands at "Conditionally Met." None stands at "Open." The numerical profile 0-11-1-0 describes a system that addresses the infrastructure requirements in breadth, but in which operational reality has not yet fully delivered on the protocol-level possibilities.
 
 <figure class="kapitel-figure">
 <img src="/kapitel/en/abb-4-11-full.png" alt="Current-state profile of all twelve criteria: assessment label by hierarchy level and dimension" loading="lazy" />
-<figcaption>Figure 4.11: Current-state profile of all twelve criteria. Assessment label by hierarchy level and dimension. Zero times Fulfilled, eleven times Fulfilled with qualification, once Conditionally fulfilled, zero times Open.</figcaption>
+<figcaption>Figure 4.11: Current-state profile of all twelve criteria. Assessment label by hierarchy level and dimension. Zero times Fulfilled, eleven times Met with Qualification, once Conditionally Met, zero times Open.</figcaption>
 </figure>
 
-The M3 cascade defined in Chapter 2 determines the overall verdict on the basis of the hierarchical grading of the criteria. The three Critical Conditions form the first examination stage. Security and Trust Load (I.2) and Minimal Viable Guarantees (I.4) stand at "Fulfilled with qualification" and pass the cascade threshold. Neutrality and Censorship Resistance (II.1) does not pass the threshold unconditionally: the builder concentration of 93.3 percent among three actors marks a structural defect, and no protocol mechanism enforces transaction inclusion. The finding is "Conditionally fulfilled," not "Open," meaning the path to fulfillment is discernible but depends on the implementation of FOCIL or a functionally equivalent mechanism. No Critical Condition stands at "Open," which lifts the overall verdict above "Conditionally Suitable." One Critical Condition stands at "Conditionally fulfilled," which sets the cascade to the level "Suitable under substantial conditions."<a href="#fn-64" id="fnref-64"><sup>64</sup></a>
+The M3 cascade defined in Chapter 2 determines the overall verdict on the basis of the hierarchical grading of the criteria. The three Critical Conditions form the first examination stage. Security and Trust Load (I.2) and Minimal Load-Bearing Guarantees (I.4) stand at "Met with Qualification" and pass the cascade threshold. Neutrality and Censorship Resistance (II.1) does not pass the threshold unconditionally: the builder concentration of 93.3 percent among three actors marks a structural defect, and no protocol mechanism enforces transaction inclusion. The finding is "Conditionally Met," not "Open," meaning the path to fulfillment is discernible but depends on the implementation of FOCIL or a functionally equivalent mechanism. No Critical Condition stands at "Open," which lifts the overall verdict above "Conditionally Suitable." One Critical Condition stands at "Conditionally Met," which sets the cascade to the level "Suitable under Substantial Conditions."<a href="#fn-64" id="fnref-64"><sup>64</sup></a>
 
-The three Structural Conditions, Functional Irreplaceability (I.1), Coordination Function (I.3), and Long-Term Stability (III.1), all stand at "Fulfilled with qualification" and are thereby counted as weak, so the third cascade step sets the same cap as the second.
+The three Structural Conditions, Functional Irreplaceability (I.1), Coordination Function (I.3), and Long-Term Stability (III.1), all stand at "Met with Qualification" and are thereby counted as weak, so the third cascade step sets the same cap as the second.
 
-The six Qualitative Criteria differentiate the degree within the achieved suitability level. All six stand at "Fulfilled with qualification." The degree scale from Chapter 2 defines the degree as "Good" when all six Qualitative Criteria stand at least at "Fulfilled with qualification," which is the case here.<a href="#fn-65" id="fnref-65"><sup>65</sup></a>
+The six Qualitative Criteria differentiate the degree within the achieved suitability level. All six stand at "Met with Qualification." The degree scale from Chapter 2 defines the degree as "Good" when all six Qualitative Criteria stand at least at "Met with Qualification," which is the case here.<a href="#fn-65" id="fnref-65"><sup>65</sup></a>
 
-**The overall verdict is: Suitable under substantial conditions, degree Good.**
+**The overall verdict is: Suitable under Substantial Conditions, degree Good.**
 
 The central condition determining the label is the implementation of FOCIL (EIP-7805) or a functionally equivalent mechanism that transforms censorship resistance from an emergent market performance into a protocol guarantee. As long as transaction inclusion depends on the market structure of builders rather than being enforced by the protocol, the neutrality guarantee that the infrastructure claim asserts remains operationally delivered but structurally unsecured.
 
@@ -448,70 +448,70 @@ The current-state verdict defines the starting point for the target-state assess
 
 <div class="fn-list">
 <ol>
-<li id="fn-1">Buterin, Vitalik (2014): A Next-Generation Smart Contract and Decentralized Application Platform. Ethereum Whitepaper. URL: https://ethereum.org/en/whitepaper/ <a href="#fnref-1">â†©</a></li>
-<li id="fn-2">Wood, Gavin (2014/2024): Ethereum: A Secure Decentralised Generalised Transaction Ledger (Yellow Paper). Current version: Berlin Version, 2024. <a href="#fnref-2">â†©</a></li>
-<li id="fn-3">Ethereum Foundation Blog (2022): The Merge. URL: https://blog.ethereum.org/2022/09/15/the-merge. For the energy consumption comparison cf. Digiconomist: Ethereum Energy Consumption Index. Cambridge Centre for Alternative Finance (2022): Cambridge Blockchain Network Sustainability Index. <a href="#fnref-3">â†©</a></li>
-<li id="fn-4">Etherscan: Ethereum Node Tracker. URL: https://etherscan.io/nodetracker (accessed 27 March 2026). <a href="#fnref-4">â†©</a></li>
-<li id="fn-5">Cointelegraph (2025): Ethereum sees 25% validation drop post-Fusaka as Prysm bug affects network participation. December 2025. For historical client market shares cf. clientdiversity.org. <a href="#fnref-5">â†©</a></li>
-<li id="fn-6">Ethernodes: Ethereum Node Distribution. URL: https://ethernodes.org (accessed early 2026). The cloud percentages refer to hosted EL nodes, not the totality of all nodes. <a href="#fnref-6">â†©</a></li>
-<li id="fn-7">Wood, Gavin (2014/2024): Ethereum: A Secure Decentralised Generalised Transaction Ledger (Yellow Paper). Current version: Berlin Version, 2024. <a href="#fnref-7">â†©</a></li>
-<li id="fn-8">Dune Analytics: ERC-4337 Account Abstraction Dashboard (accessed 27 March 2026). For EIP-7702 cf. Ethereum Foundation: Pectra Upgrade Specification. <a href="#fnref-8">â†©</a></li>
-<li id="fn-9">Etherscan / YCharts: Ethereum Chain Data Size (accessed 27 March 2026). The figure of 1,579 GB refers to the full-node size, the state trie comprising 150 to 200 GB in compressed client storage. <a href="#fnref-9">â†©</a></li>
-<li id="fn-10">Etherscan: Ethereum Average Gas Limit Chart. URL: https://etherscan.io/chart/gaslimit (accessed 27 March 2026). The increase occurred through gradual validator signaling over the course of 2025 without requiring a protocol upgrade. <a href="#fnref-10">â†©</a></li>
-<li id="fn-11">Buterin, Vitalik / Conner, Eric / Dudley, Rick / Slipper, Matthew / Norden, Ian / Bakhta, Abdelhamid (2019): EIP-1559: Fee market change for ETH 1.0 chain. Ethereum Improvement Proposal. Activated in the London upgrade, August 2021. <a href="#fnref-11">â†©</a></li>
-<li id="fn-12">Daian, Philip / Goldfeder, Steven / Kell, Tyler / Li, Yunqi / Zhao, Xueyuan / Bentov, Iddo / Breidenbach, Lorenz / Juels, Ari (2020): Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability. In: IEEE Symposium on Security and Privacy (S&P), 2020. DOI: 10.1109/SP40000.2020.00040. <a href="#fnref-12">â†©</a></li>
-<li id="fn-13">Flashbots: MEV-Explore and MEV-Boost Dashboard (accessed 27 March 2026). <a href="#fnref-13">â†©</a></li>
-<li id="fn-14">relayscan.io: Builder and relay market shares (accessed 27 March 2026). <a href="#fnref-14">â†©</a></li>
-<li id="fn-15">relayscan.io: Builder and relay market shares, and MEV Watch (accessed 27 March 2026). <a href="#fnref-15">â†©</a></li>
-<li id="fn-16">beaconcha.in: Ethereum Beacon Chain Explorer (accessed 27 March 2026). The figure of 964,768 reflects the post-Pectra consolidation effect of EIP-7251. <a href="#fnref-16">â†©</a></li>
-<li id="fn-17">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. For the combined Gasper specification cf. Buterin, Vitalik et al. (2020): Combining GHOST and Casper. arXiv:2003.03052. <a href="#fnref-17">â†©</a></li>
-<li id="fn-18">beaconcha.in: Epoch Finality Statistics. The 13 non-finalized epochs occurred on 11 and 12 May 2023. Cf. Etherscan Blog (2023): Battle-Testing Ethereum's Finality. <a href="#fnref-18">â†©</a></li>
-<li id="fn-19">CoinDesk (18 February 2026): Ethereum Staking Rate Reaches 30.8% of Total Supply. The effective APR figure of approximately 2.6 percent reflects the decline arising from the growing validator base under inverse square-root scaling of issuance. <a href="#fnref-19">â†©</a></li>
-<li id="fn-20">beaconcha.in: Ethereum Beacon Chain Explorer (accessed 27 March 2026). The figure of 964,768 reflects the post-Pectra consolidation effect of EIP-7251. <a href="#fnref-20">â†©</a></li>
-<li id="fn-21">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. For the combined Gasper specification cf. Buterin et al. (2020): Combining GHOST and Casper. arXiv:2003.03052. <a href="#fnref-21">â†©</a></li>
-<li id="fn-22">beaconcha.in: Slashing Statistics (accessed 27 March 2026). Cf. Migalabs / CryptoSlate (11 September 2025) for the analysis of the SSV Network/Ankr slashing event. <a href="#fnref-22">â†©</a></li>
-<li id="fn-23">Dune Analytics / CCN (5 March 2026): Lido Staking Market Share. The decline from 32 percent (2023) to 22.8 to 23 percent reflects relative market dynamics. <a href="#fnref-23">â†©</a></li>
-<li id="fn-24">Lido DAO: Tokenholder Update (26 February 2026). DVT adoption and QoQ growth. For the governance decision on self-limitation cf. Lido DAO Snapshot Vote, June 2022. <a href="#fnref-24">â†©</a></li>
-<li id="fn-25">Buterin, Vitalik (2020): A rollup-centric ethereum roadmap. Blogpost, October 2020. URL: https://vitalik.eth.limo/general/2020/10/08/rollup.html <a href="#fnref-25">â†©</a></li>
-<li id="fn-26">EIP-4844: Shard Blob Transactions. Ethereum Improvement Proposal, activated in the Dencun upgrade, March 2024. For cost reduction data cf. L2BEAT: Transaction Costs Dashboard (accessed 27 March 2026). <a href="#fnref-26">â†©</a></li>
-<li id="fn-27">L2BEAT: Stages Framework and Risk Analysis. URL: https://l2beat.com/scaling/summary (accessed 27 March 2026). For Vitalik Buterin's analysis of stage transitions cf. Buterin, Vitalik (2025): Stages as a framework for evaluating rollup maturity. Blogpost. <a href="#fnref-27">â†©</a></li>
-<li id="fn-28">For cumulative bridge hack damages cf. DeFiLlama: Hacks Dashboard and Chainalysis: Crypto Crime Report 2025. <a href="#fnref-28">â†©</a></li>
-<li id="fn-29">CoinGecko / DefiLlama: Stablecoin Market Cap by Chain (accessed 27 March 2026). The figure of 52 to 54 percent refers to Ethereum's share of the total stablecoin market including L2 issuance. <a href="#fnref-29">â†©</a></li>
-<li id="fn-30">GENIUS Act: Guiding and Establishing National Innovation for U.S. Stablecoins Act. U.S. Congress (2025), signed 18 July 2025. <a href="#fnref-30">â†©</a></li>
-<li id="fn-31">EIP-1: EIP Purpose and Guidelines. URL: https://eips.ethereum.org/EIPS/eip-1. For the 2025 EIP statistics cf. Ethereum Magicians Forum and EIPs.ethereum.org (accessed 27 March 2026). <a href="#fnref-31">â†©</a></li>
-<li id="fn-32">The formulation "Rough Consensus and Running Code" originates with David Clark, who coined it at an IETF meeting in 1992. Cf. RFC 7282: On Consensus and Humming in the IETF. Internet Engineering Task Force, 2014. <a href="#fnref-32">â†©</a></li>
-<li id="fn-33">Ethereum Foundation: Report 2024. URL: https://ethereum.foundation/report-2024.pdf. For current treasury estimates cf. Arkham Intelligence: Ethereum Foundation Wallet Tracking (accessed 18 March 2026). <a href="#fnref-33">â†©</a></li>
-<li id="fn-34">Protocol Guild: Documentation and Membership. URL: https://protocol-guild.readthedocs.io (accessed 27 March 2026). <a href="#fnref-34">â†©</a></li>
-<li id="fn-35">Cf. Frischmann 2012 and the presentation in Chapter 2, Section 2.1. <a href="#fnref-35">â†©</a></li>
-<li id="fn-36">Van Schewick, Barbara (2010): Internet Architecture and Innovation. MIT Press. Cf. the reference in Chapter 3, Section 3.1.2. <a href="#fnref-36">â†©</a></li>
-<li id="fn-37">Electric Capital: Developer Report, September 2025. DefiLlama: Ethereum DeFi TVL (accessed 27 March 2026). <a href="#fnref-37">â†©</a></li>
-<li id="fn-38">Cf. Grimmelmann / Windawi 2023, pp. 1097–1129, and the presentation in Chapter 2, Section 2.1. <a href="#fnref-38">â†©</a></li>
-<li id="fn-39">Cf. Frischmann 2012, pp. 61–96, on the characterization of infrastructure as an enabling structure whose value is realized in the activities it makes possible. <a href="#fnref-39">â†©</a></li>
-<li id="fn-40">Data on stablecoin market capitalization on Ethereum: DefiLlama, Stablecoins Dashboard, accessed early 2026. <a href="#fnref-40">â†©</a></li>
-<li id="fn-41">Electric Capital (2025): Developer Report, September 2025. The methodology counts active developers as persons who have contributed code to an Ethereum-related open-source repository within the past 30 days. <a href="#fnref-41">â†©</a></li>
-<li id="fn-42">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. The BFT thresholds are implemented in the Beacon Chain specification and have been operative since the Merge (September 2022). <a href="#fnref-42">â†©</a></li>
-<li id="fn-43">Finality data: beaconcha.in, 27 March 2026. The 13 non-finalized epochs in May 2023 were the result of two consecutive attestation-handling bugs in Prysm and Teku. <a href="#fnref-43">â†©</a></li>
-<li id="fn-44">For comparison of settlement speeds: SWIFT settlement takes 1–3 days, ACH 2–3 days, SEPA transfers typically 1 business day. Ethereum's 12.8-minute finality and atomic composability enable coordination patterns structurally impossible in these systems. <a href="#fnref-44">â†©</a></li>
-<li id="fn-45">The Beacon Chain specification defines an epoch as 32 slots of 12 seconds each. Finality requires the justification and finalization of two consecutive checkpoints by more than two-thirds of the validator set. <a href="#fnref-45">â†©</a></li>
-<li id="fn-46">The technical details of the May 2023 Inactivity Leak event are documented in Section 4.2. The assessment here concerns the infrastructural significance: automated self-healing without external coordination. <a href="#fnref-46">â†©</a></li>
-<li id="fn-47">OFAC compliance data: MEV Watch / relayscan.io, 27 March 2026. The historical trajectory from the 79-percent peak documents the market-driven normalization. <a href="#fnref-47">â†©</a></li>
-<li id="fn-48">Van Loon v. Department of the Treasury, 5th Circuit Court of Appeals, November 2024: immutable smart contracts are not "property" within the meaning of the IEEPA. OFAC delisting of Tornado Cash: 21 March 2025. <a href="#fnref-48">â†©</a></li>
-<li id="fn-49">Builder market shares: relayscan.io, 27 March 2026. HHI calculated as the sum of squared market shares. The DOJ Horizontal Merger Guidelines of 2010 define an HHI above 2,500 as a highly concentrated market. <a href="#fnref-49">â†©</a></li>
-<li id="fn-50">Daian, Philip et al. (2020): Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability. In: IEEE Symposium on Security and Privacy, pp. 910–927. <a href="#fnref-50">â†©</a></li>
-<li id="fn-51">Node distribution data: Ethernodes, early 2026. Cloud concentration estimate: approximately 59 percent of hosted EL nodes on AWS (35.5%), Hetzner (13.8%), and OVHcloud (9.7%). <a href="#fnref-51">â†©</a></li>
-<li id="fn-52">Lido Tokenholder Update, 26 February 2026: 547,968 ETH on DVT (Distributed Validator Technology), +57 percent QoQ. <a href="#fnref-52">â†©</a></li>
-<li id="fn-53">Cf. Van Schewick, Barbara (2010): Internet Architecture and Innovation. MIT Press. Van Schewick's argument that the end-to-end architecture of the Internet enables innovation at the edges is transferable to Ethereum's permissionless smart contract layer. <a href="#fnref-53">â†©</a></li>
-<li id="fn-54">The Yellow Paper (Wood 2014/2024) formally defines the EVM semantics. KEVM (Hildenbrandt et al. 2018) provides a machine-verified formalization in the K Framework. <a href="#fnref-54">â†©</a></li>
-<li id="fn-55">Lazarus Group data: Chainalysis Report, February 2026. The attacks occurred primarily through private key compromise and cross-chain message spoofing at audited protocols. <a href="#fnref-55">â†©</a></li>
-<li id="fn-56">Projections based on documented growth rates and the planned Gas target of 200 million. Cf. Section 4.8 for the data basis and scenario analysis. <a href="#fnref-56">â†©</a></li>
-<li id="fn-57">L2BEAT documents the distribution of staking methods. Solo stakers under one percent: estimate based on Dune Analytics, Q1 2026. <a href="#fnref-57">â†©</a></li>
-<li id="fn-58">Verkle Trees: EIP-6800, status RES, Stagnant. History Expiry: EIP-4444, Phase 1 DEPL since July 2025, Phase 2 PLAN. State Expiry: RES, without implementation commitment. <a href="#fnref-58">â†©</a></li>
-<li id="fn-59">Cf. Mayntz 1993, pp. 97–108. The tension between steering and self-organization that Mayntz identifies as the central research problem manifests in Ethereum's informal governance model as the tension between Rough Consensus and formal authority. <a href="#fnref-59">â†©</a></li>
-<li id="fn-60">Protocol Guild: 190+ members, >$50 million received (as of January 2026). EF treasury estimate: $850–950 million based on the Ethereum Foundation Report 2024 and ETH market developments. <a href="#fnref-60">â†©</a></li>
-<li id="fn-61">Client diversity data: clientdiversity.org / supermajority.info, as of early 2026. Execution Layer distribution: Geth approximately 42 percent, Nethermind approximately 24 percent, Besu approximately 16 percent, Erigon approximately 11 percent, Reth approximately 7 percent. <a href="#fnref-61">â†©</a></li>
-<li id="fn-62">On the L2 lock-in problem: OP Stack (Apache 2.0, Optimism Foundation), Arbitrum Nitro (MIT, Offchain Labs governance), zkSync Era and Starknet (partially proprietary provers). The fragmentation creates a new layer of soft lock-ins that does not exist at the base layer. <a href="#fnref-62">â†©</a></li>
-<li id="fn-63">Cloud concentration estimate: Ethernodes, early 2026. The 59 percent refers to hosted EL nodes. The home-staking share of under 15 percent is an estimate based on the node and cloud distribution from Section 4.1. <a href="#fnref-63">â†©</a></li>
-<li id="fn-64">The cascade logic in the second step was classified in Chapter 2 as a methodological supplement: "Conditionally fulfilled" at a Critical Condition is qualitatively a different state from "Fulfilled with qualification," because the core property of the infrastructure claim is not yet secured at the required level. Cf. Section 2.3 for the definition of verdict categories and the M3 cascade logic. <a href="#fnref-64">â†©</a></li>
-<li id="fn-65">Cf. Section 2.3.3 for the definition of the five verdict categories and the M3 cascade logic. "Suitable under substantial conditions" is the middle category of the spectrum and was defined generically in Chapter 2, independent of which criterion is affected and which system is being assessed. <a href="#fnref-65">â†©</a></li>
+<li id="fn-1">Buterin, Vitalik (2014): A Next-Generation Smart Contract and Decentralized Application Platform. Ethereum Whitepaper. URL: https://ethereum.org/en/whitepaper/ <a href="#fnref-1" class="fn-back">↩</a></li>
+<li id="fn-2">Wood, Gavin (2014/2024): Ethereum: A Secure Decentralised Generalised Transaction Ledger (Yellow Paper). Current version: Berlin Version, 2024. <a href="#fnref-2" class="fn-back">↩</a></li>
+<li id="fn-3">Ethereum Foundation Blog (2022): The Merge. URL: https://blog.ethereum.org/2022/09/15/the-merge. For the energy consumption comparison cf. Digiconomist: Ethereum Energy Consumption Index. Cambridge Centre for Alternative Finance (2022): Cambridge Blockchain Network Sustainability Index. <a href="#fnref-3" class="fn-back">↩</a></li>
+<li id="fn-4">Etherscan: Ethereum Node Tracker. URL: https://etherscan.io/nodetracker (accessed 27 March 2026). <a href="#fnref-4" class="fn-back">↩</a></li>
+<li id="fn-5">Cointelegraph (2025): Ethereum sees 25% validation drop post-Fusaka as Prysm bug affects network participation. December 2025. For historical client market shares cf. clientdiversity.org. <a href="#fnref-5" class="fn-back">↩</a></li>
+<li id="fn-6">Ethernodes: Ethereum Node Distribution. URL: https://ethernodes.org (accessed early 2026). The cloud percentages refer to hosted EL nodes, not the totality of all nodes. <a href="#fnref-6" class="fn-back">↩</a></li>
+<li id="fn-7">Wood, Gavin (2014/2024): Ethereum: A Secure Decentralised Generalised Transaction Ledger (Yellow Paper). Current version: Berlin Version, 2024. <a href="#fnref-7" class="fn-back">↩</a></li>
+<li id="fn-8">Dune Analytics: ERC-4337 Account Abstraction Dashboard (accessed 27 March 2026). For EIP-7702 cf. Ethereum Foundation: Pectra Upgrade Specification. <a href="#fnref-8" class="fn-back">↩</a></li>
+<li id="fn-9">Etherscan / YCharts: Ethereum Chain Data Size (accessed 27 March 2026). The figure of 1,579 GB refers to the full-node size, the state trie comprising 150 to 200 GB in compressed client storage. <a href="#fnref-9" class="fn-back">↩</a></li>
+<li id="fn-10">Etherscan: Ethereum Average Gas Limit Chart. URL: https://etherscan.io/chart/gaslimit (accessed 27 March 2026). The increase occurred through gradual validator signaling over the course of 2025 without requiring a protocol upgrade. <a href="#fnref-10" class="fn-back">↩</a></li>
+<li id="fn-11">Buterin, Vitalik / Conner, Eric / Dudley, Rick / Slipper, Matthew / Norden, Ian / Bakhta, Abdelhamid (2019): EIP-1559: Fee market change for ETH 1.0 chain. Ethereum Improvement Proposal. Activated in the London upgrade, August 2021. <a href="#fnref-11" class="fn-back">↩</a></li>
+<li id="fn-12">Daian, Philip / Goldfeder, Steven / Kell, Tyler / Li, Yunqi / Zhao, Xueyuan / Bentov, Iddo / Breidenbach, Lorenz / Juels, Ari (2020): Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability. In: IEEE Symposium on Security and Privacy (S&P), 2020. DOI: 10.1109/SP40000.2020.00040. <a href="#fnref-12" class="fn-back">↩</a></li>
+<li id="fn-13">Flashbots: MEV-Explore and MEV-Boost Dashboard (accessed 27 March 2026). <a href="#fnref-13" class="fn-back">↩</a></li>
+<li id="fn-14">relayscan.io: Builder and relay market shares (accessed 27 March 2026). <a href="#fnref-14" class="fn-back">↩</a></li>
+<li id="fn-15">relayscan.io: Builder and relay market shares, and MEV Watch (accessed 27 March 2026). <a href="#fnref-15" class="fn-back">↩</a></li>
+<li id="fn-16">beaconcha.in: Ethereum Beacon Chain Explorer (accessed 27 March 2026). The figure of 964,768 reflects the post-Pectra consolidation effect of EIP-7251. <a href="#fnref-16" class="fn-back">↩</a></li>
+<li id="fn-17">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. For the combined Gasper specification cf. Buterin, Vitalik et al. (2020): Combining GHOST and Casper. arXiv:2003.03052. <a href="#fnref-17" class="fn-back">↩</a></li>
+<li id="fn-18">beaconcha.in: Epoch Finality Statistics. The 13 non-finalized epochs occurred on 11 and 12 May 2023. Cf. Etherscan Blog (2023): Battle-Testing Ethereum's Finality. <a href="#fnref-18" class="fn-back">↩</a></li>
+<li id="fn-19">CoinDesk (18 February 2026): Ethereum Staking Rate Reaches 30.8% of Total Supply. The effective APR figure of approximately 2.6 percent reflects the decline arising from the growing validator base under inverse square-root scaling of issuance. <a href="#fnref-19" class="fn-back">↩</a></li>
+<li id="fn-20">beaconcha.in: Ethereum Beacon Chain Explorer (accessed 27 March 2026). The figure of 964,768 reflects the post-Pectra consolidation effect of EIP-7251. <a href="#fnref-20" class="fn-back">↩</a></li>
+<li id="fn-21">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. For the combined Gasper specification cf. Buterin et al. (2020): Combining GHOST and Casper. arXiv:2003.03052. <a href="#fnref-21" class="fn-back">↩</a></li>
+<li id="fn-22">beaconcha.in: Slashing Statistics (accessed 27 March 2026). Cf. Migalabs / CryptoSlate (11 September 2025) for the analysis of the SSV Network/Ankr slashing event. <a href="#fnref-22" class="fn-back">↩</a></li>
+<li id="fn-23">Dune Analytics / CCN (5 March 2026): Lido Staking Market Share. The decline from 32 percent (2023) to 22.8 to 23 percent reflects relative market dynamics. <a href="#fnref-23" class="fn-back">↩</a></li>
+<li id="fn-24">Lido DAO: Tokenholder Update (26 February 2026). DVT adoption and QoQ growth. For the governance decision on self-limitation cf. Lido DAO Snapshot Vote, June 2022. <a href="#fnref-24" class="fn-back">↩</a></li>
+<li id="fn-25">Buterin, Vitalik (2020): A rollup-centric ethereum roadmap. Blogpost, October 2020. URL: https://vitalik.eth.limo/general/2020/10/08/rollup.html <a href="#fnref-25" class="fn-back">↩</a></li>
+<li id="fn-26">EIP-4844: Shard Blob Transactions. Ethereum Improvement Proposal, activated in the Dencun upgrade, March 2024. For cost reduction data cf. L2BEAT: Transaction Costs Dashboard (accessed 27 March 2026). <a href="#fnref-26" class="fn-back">↩</a></li>
+<li id="fn-27">L2BEAT: Stages Framework and Risk Analysis. URL: https://l2beat.com/scaling/summary (accessed 27 March 2026). For Vitalik Buterin's analysis of stage transitions cf. Buterin, Vitalik (2025): Stages as a framework for evaluating rollup maturity. Blogpost. <a href="#fnref-27" class="fn-back">↩</a></li>
+<li id="fn-28">For cumulative bridge hack damages cf. DeFiLlama: Hacks Dashboard and Chainalysis: Crypto Crime Report 2025. <a href="#fnref-28" class="fn-back">↩</a></li>
+<li id="fn-29">CoinGecko / DefiLlama: Stablecoin Market Cap by Chain (accessed 27 March 2026). The figure of 52 to 54 percent refers to Ethereum's share of the total stablecoin market including L2 issuance. <a href="#fnref-29" class="fn-back">↩</a></li>
+<li id="fn-30">GENIUS Act: Guiding and Establishing National Innovation for U.S. Stablecoins Act. U.S. Congress (2025), signed 18 July 2025. <a href="#fnref-30" class="fn-back">↩</a></li>
+<li id="fn-31">EIP-1: EIP Purpose and Guidelines. URL: https://eips.ethereum.org/EIPS/eip-1. For the 2025 EIP statistics cf. Ethereum Magicians Forum and EIPs.ethereum.org (accessed 27 March 2026). <a href="#fnref-31" class="fn-back">↩</a></li>
+<li id="fn-32">The formulation "Rough Consensus and Running Code" originates with David Clark, who coined it at an IETF meeting in 1992. Cf. RFC 7282: On Consensus and Humming in the IETF. Internet Engineering Task Force, 2014. <a href="#fnref-32" class="fn-back">↩</a></li>
+<li id="fn-33">Ethereum Foundation: Report 2024. URL: https://ethereum.foundation/report-2024.pdf. For current treasury estimates cf. Arkham Intelligence: Ethereum Foundation Wallet Tracking (accessed 18 March 2026). <a href="#fnref-33" class="fn-back">↩</a></li>
+<li id="fn-34">Protocol Guild: Documentation and Membership. URL: https://protocol-guild.readthedocs.io (accessed 27 March 2026). <a href="#fnref-34" class="fn-back">↩</a></li>
+<li id="fn-35">Cf. Frischmann 2012 and the presentation in Chapter 2, Section 2.1. <a href="#fnref-35" class="fn-back">↩</a></li>
+<li id="fn-36">Van Schewick, Barbara (2010): Internet Architecture and Innovation. MIT Press. Cf. the reference in Chapter 3, Section 3.1.2. <a href="#fnref-36" class="fn-back">↩</a></li>
+<li id="fn-37">Electric Capital: Developer Report, September 2025. DefiLlama: Ethereum DeFi TVL (accessed 27 March 2026). <a href="#fnref-37" class="fn-back">↩</a></li>
+<li id="fn-38">Cf. Grimmelmann / Windawi 2023, pp. 1097–1129, and the presentation in Chapter 2, Section 2.1. <a href="#fnref-38" class="fn-back">↩</a></li>
+<li id="fn-39">Cf. Frischmann 2012, pp. 61–96, on the characterization of infrastructure as an enabling structure whose value is realized in the activities it makes possible. <a href="#fnref-39" class="fn-back">↩</a></li>
+<li id="fn-40">Data on stablecoin market capitalization on Ethereum: DefiLlama, Stablecoins Dashboard, accessed early 2026. <a href="#fnref-40" class="fn-back">↩</a></li>
+<li id="fn-41">Electric Capital (2025): Developer Report, September 2025. The methodology counts active developers as persons who have contributed code to an Ethereum-related open-source repository within the past 30 days. <a href="#fnref-41" class="fn-back">↩</a></li>
+<li id="fn-42">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. The BFT thresholds are implemented in the Beacon Chain specification and have been operative since the Merge (September 2022). <a href="#fnref-42" class="fn-back">↩</a></li>
+<li id="fn-43">Finality data: beaconcha.in, 27 March 2026. The 13 non-finalized epochs in May 2023 were the result of two consecutive attestation-handling bugs in Prysm and Teku. <a href="#fnref-43" class="fn-back">↩</a></li>
+<li id="fn-44">For comparison of settlement speeds: SWIFT settlement takes 1–3 days, ACH 2–3 days, SEPA transfers typically 1 business day. Ethereum's 12.8-minute finality and atomic composability enable coordination patterns structurally impossible in these systems. <a href="#fnref-44" class="fn-back">↩</a></li>
+<li id="fn-45">The Beacon Chain specification defines an epoch as 32 slots of 12 seconds each. Finality requires the justification and finalization of two consecutive checkpoints by more than two-thirds of the validator set. <a href="#fnref-45" class="fn-back">↩</a></li>
+<li id="fn-46">The technical details of the May 2023 Inactivity Leak event are documented in Section 4.2. The assessment here concerns the infrastructural significance: automated self-healing without external coordination. <a href="#fnref-46" class="fn-back">↩</a></li>
+<li id="fn-47">OFAC compliance data: MEV Watch / relayscan.io, 27 March 2026. The historical trajectory from the 79-percent peak documents the market-driven normalization. <a href="#fnref-47" class="fn-back">↩</a></li>
+<li id="fn-48">Van Loon v. Department of the Treasury, 5th Circuit Court of Appeals, November 2024: immutable smart contracts are not "property" within the meaning of the IEEPA. OFAC delisting of Tornado Cash: 21 March 2025. <a href="#fnref-48" class="fn-back">↩</a></li>
+<li id="fn-49">Builder market shares: relayscan.io, 27 March 2026. HHI calculated as the sum of squared market shares. The DOJ Horizontal Merger Guidelines of 2010 define an HHI above 2,500 as a highly concentrated market. <a href="#fnref-49" class="fn-back">↩</a></li>
+<li id="fn-50">Daian, Philip et al. (2020): Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability. In: IEEE Symposium on Security and Privacy, pp. 910–927. <a href="#fnref-50" class="fn-back">↩</a></li>
+<li id="fn-51">Node distribution data: Ethernodes, early 2026. Cloud concentration estimate: approximately 59 percent of hosted EL nodes on AWS (35.5%), Hetzner (13.8%), and OVHcloud (9.7%). <a href="#fnref-51" class="fn-back">↩</a></li>
+<li id="fn-52">Lido Tokenholder Update, 26 February 2026: 547,968 ETH on DVT (Distributed Validator Technology), +57 percent QoQ. <a href="#fnref-52" class="fn-back">↩</a></li>
+<li id="fn-53">Cf. Van Schewick, Barbara (2010): Internet Architecture and Innovation. MIT Press. Van Schewick's argument that the end-to-end architecture of the Internet enables innovation at the edges is transferable to Ethereum's permissionless smart contract layer. <a href="#fnref-53" class="fn-back">↩</a></li>
+<li id="fn-54">The Yellow Paper (Wood 2014/2024) formally defines the EVM semantics. KEVM (Hildenbrandt et al. 2018) provides a machine-verified formalization in the K Framework. <a href="#fnref-54" class="fn-back">↩</a></li>
+<li id="fn-55">Lazarus Group data: Chainalysis Report, February 2026. The attacks occurred primarily through private key compromise and cross-chain message spoofing at audited protocols. <a href="#fnref-55" class="fn-back">↩</a></li>
+<li id="fn-56">Projections based on documented growth rates and the planned Gas target of 200 million. Cf. Section 4.8 for the data basis and scenario analysis. <a href="#fnref-56" class="fn-back">↩</a></li>
+<li id="fn-57">L2BEAT documents the distribution of staking methods. Solo stakers under one percent: estimate based on Dune Analytics, Q1 2026. <a href="#fnref-57" class="fn-back">↩</a></li>
+<li id="fn-58">Verkle Trees: EIP-6800, status RES, Stagnant. History Expiry: EIP-4444, Phase 1 DEPL since July 2025, Phase 2 PLAN. State Expiry: RES, without implementation commitment. <a href="#fnref-58" class="fn-back">↩</a></li>
+<li id="fn-59">Cf. Mayntz 1993, pp. 97–108. The tension between steering and self-organization that Mayntz identifies as the central research problem manifests in Ethereum's informal governance model as the tension between Rough Consensus and formal authority. <a href="#fnref-59" class="fn-back">↩</a></li>
+<li id="fn-60">Protocol Guild: 190+ members, >$50 million received (as of January 2026). EF treasury estimate: $850–950 million based on the Ethereum Foundation Report 2024 and ETH market developments. <a href="#fnref-60" class="fn-back">↩</a></li>
+<li id="fn-61">Client diversity data: clientdiversity.org / supermajority.info, as of early 2026. Execution Layer distribution: Geth approximately 42 percent, Nethermind approximately 24 percent, Besu approximately 16 percent, Erigon approximately 11 percent, Reth approximately 7 percent. <a href="#fnref-61" class="fn-back">↩</a></li>
+<li id="fn-62">On the L2 lock-in problem: OP Stack (Apache 2.0, Optimism Foundation), Arbitrum Nitro (MIT, Offchain Labs governance), zkSync Era and Starknet (partially proprietary provers). The fragmentation creates a new layer of soft lock-ins that does not exist at the base layer. <a href="#fnref-62" class="fn-back">↩</a></li>
+<li id="fn-63">Cloud concentration estimate: Ethernodes, early 2026. The 59 percent refers to hosted EL nodes. The home-staking share of under 15 percent is an estimate based on the node and cloud distribution from Section 4.1. <a href="#fnref-63" class="fn-back">↩</a></li>
+<li id="fn-64">The cascade logic in the second step was classified in Chapter 2 as a methodological supplement: "Conditionally Met" at a Critical Condition is qualitatively a different state from "Met with Qualification," because the core property of the infrastructure claim is not yet secured at the required level. Cf. Section 2.3 for the definition of verdict categories and the M3 cascade logic. <a href="#fnref-64" class="fn-back">↩</a></li>
+<li id="fn-65">Cf. Section 2.3.3 for the definition of the five verdict categories and the M3 cascade logic. "Suitable under Substantial Conditions" is the middle category of the spectrum and was defined generically in Chapter 2, independent of which criterion is affected and which system is being assessed. <a href="#fnref-65" class="fn-back">↩</a></li>
 </ol>
 </div>

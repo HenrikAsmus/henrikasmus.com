@@ -15,14 +15,14 @@ The current-state profile reads 0-11-1-0: no criterion at "Met," eleven criteria
 
 | Criterion | Current State | Target State | Change |
 |---|---|---|---|
-| I.1 Functional Indispensability | Met with Qualification | Met | ↑ |
+| I.1 Functional Irreplaceability | Met with Qualification | Met | ↑ |
 | I.2 Security and Trust Load | Met with Qualification | Met with Qualification | — |
 | I.3 Coordination Function | Met with Qualification | Met | ↑ |
-| I.4 Minimal Viable Guarantees | Met with Qualification | Met | ↑ |
+| I.4 Minimal Load-Bearing Guarantees | Met with Qualification | Met | ↑ |
 | II.1 Neutrality and Censorship Resistance | Conditionally Met | Met with Qualification | ↑↑ |
 | II.2 Open Generativity | Met with Qualification | Met with Qualification | — |
 | II.3 Independent Verifiability | Met with Qualification | Met with Qualification | — |
-| II.4 Low-Barrier Inclusivity | Met with Qualification | Met with Qualification | — |
+| II.4 Low-Threshold Inclusivity | Met with Qualification | Met with Qualification | — |
 | III.1 Long-Term Stability | Met with Qualification | Met | ↑ |
 | III.2 Adaptive Governance | Met with Qualification | Met | ↑ |
 | III.3 Sovereign Portability | Met with Qualification | Met | ↑ |
@@ -38,21 +38,21 @@ In the current state, neutrality is emergent: no protocol mechanism enforces tra
 
 In the target state, a three-layer system forms the protocol foundation. FOCIL (EIP-7805) enforces inclusion through a 2,000-member committee whose 1-of-N honesty model makes corruption structurally unattractive.<a href="#fn-4" id="fnref-4"><sup>4</sup></a> ePBS (EIP-7732) eliminates relay dependency and separates proposers and builders into distinct, protocol-coordinated roles.<a href="#fn-5" id="fnref-5"><sup>5</sup></a> The Encrypted Mempool addresses pre-inclusion privacy as a research reserve and closes the remaining disclosure channel.<a href="#fn-6" id="fnref-6"><sup>6</sup></a>
 
-The rise is structurally significant because it removes the second cascade cap in the M3 logic. In the current state, one Critical Condition pushed the verdict to "Suitable under Considerable Conditions." In the target state, no Critical Condition remains at "Conditionally Met": the cap falls away, and the overall verdict can rise by one level.
+The rise is structurally significant because it removes the second cascade cap in the M3 logic. In the current state, one Critical Condition pushed the verdict to "Suitable under Substantial Conditions." In the target state, no Critical Condition remains at "Conditionally Met": the cap falls away, and the overall verdict can rise by one level.
 
 ### 6.1-C The Six Improvements at Structural and Qualitative Level
 
 Six criteria rise from "Met with Qualification" to "Met." These rises follow different drivers.
 
-**I.1 Functional Indispensability.** The target-state improvement rests on two mutually reinforcing mechanisms. Native Rollups (EIP-8079) bind L2 execution to L1 at the protocol level: a rollup using native verification cannot migrate to another L1 without fundamentally altering its security model.<a href="#fn-7" id="fnref-7"><sup>7</sup></a> At the same time, reach expands: the L1-zkEVM (EIP-8025) makes L1 blocks lightweight-verifiable, opening usage categories that are structurally inaccessible in the current state. The EVM standard has incorporated all top-10 L2s and is therefore no longer merely a nominal standard.
+**I.1 Functional Irreplaceability.** The target-state improvement rests on two mutually reinforcing mechanisms. Native Rollups (EIP-8079) bind L2 execution to L1 at the protocol level: a rollup using native verification cannot migrate to another L1 without fundamentally altering its security model.<a href="#fn-7" id="fnref-7"><sup>7</sup></a> At the same time, reach expands: the L1-zkEVM (EIP-8025) makes L1 blocks lightweight-verifiable, opening usage categories that are structurally inaccessible in the current state. The EVM standard has incorporated all top-10 L2s and is therefore no longer merely a nominal standard.
 
 **I.3 Coordination Function.** The layered finality stack (Based Preconfirmations, Fast Confirmation Rule, Three-Slot Finality) delivers in the target state a coordination infrastructure across all time horizons that does not exist in the current state.<a href="#fn-8" id="fnref-8"><sup>8</sup></a> Native Rollups structurally raise switching costs: tokenized values secured through EXECUTE verification are systemically anchored in Ethereum.
 
-**I.4 Minimal Viable Guarantees.** The rise rests on three independent mechanisms that operate redundantly. FOCIL guarantees censorship resistance at the protocol level. The Inactivity Leak ensures automated self-healing without external coordination. The layered finality stack delivers economic finalization within two seconds, faster than any clearing infrastructure in the traditional financial system.<a href="#fn-9" id="fnref-9"><sup>9</sup></a>
+**I.4 Minimal Load-Bearing Guarantees.** The rise rests on three independent mechanisms that operate redundantly. FOCIL guarantees censorship resistance at the protocol level. The Inactivity Leak ensures automated self-healing without external coordination. The layered finality stack delivers economic finalization within two seconds, faster than any clearing infrastructure in the traditional financial system.<a href="#fn-9" id="fnref-9"><sup>9</sup></a>
 
 **III.1 Long-Term Stability.** The Tiered State (Active, Hibernated, Dead) addresses the state growth problem structurally, not merely through accelerated decommissioning.<a href="#fn-10" id="fnref-10"><sup>10</sup></a> History Expiry (EIP-4444, Phase 1 DEPL) reduces node storage requirements. The Fusaka upgrade cycle kept to a semi-annual schedule for the first time, a maturity indicator for upgrade coordination.
 
-**III.2 Adaptive Governance.** The strategic pivot (February 2026) is the strongest evidence: a paradigmatic change of direction, from rollup-centric to L1-first, was executed without crisis, without fork, and without withdrawal of authority.<a href="#fn-11" id="fnref-11"><sup>11</sup></a> That is operational proof of governance capacity beyond the track record of tactical forks. The Lean Ethereum process demonstrates the ability to self-slim, not only to add.
+**III.2 Adaptive Governance.** The strategic pivot (February 2026) is the strongest evidence: a paradigmatic change of direction, from rollup-centric to L1-first, was executed without crisis, without fork, and without withdrawal of authority.<a href="#fn-11" id="fnref-11"><sup>11</sup></a> That is operational proof of governance capacity beyond the track record of tactical forks. The Lean Ethereum process demonstrates the ability to pare itself down, not only to add.
 
 **III.3 Sovereign Portability.** The target-state roadmap resolves three documented current-state dependencies: relay dependency through ePBS, L2 proof-system dependency through Native Rollups, and RPC dependency through Stateless Clients and Trustless RPC.<a href="#fn-12" id="fnref-12"><sup>12</sup></a> These three resolutions transform operative soft lock-ins into dependencies eliminated at the protocol level.
 
@@ -66,17 +66,17 @@ Five criteria remain at "Met with Qualification." In four of the five cases, the
 
 **II.3 Independent Verifiability.** The Execution Layer Specification (ELS) as an executable reference implementation is a substantial advance. The qualification lies at a methodological boundary: the formal verification of a complete zkEVM prover exceeds the state of current methods.<a href="#fn-14" id="fnref-14"><sup>14</sup></a> That is not a roadmap gap. It is a limit of the field.
 
-**II.4 Low-Barrier Inclusivity.** The NAA transformation (EIP-7702, EIP-8141) and the PeerDAS bandwidth model substantially improve inclusivity at the user and verifier level. The 32-ETH solo-staking threshold remains unchanged. Rainbow Staking (the only conceptual resolution path) is Research Reserve with no implementation commitment. This is the only criterion for which the current-state deficit goes unaddressed by the target-state roadmap.
+**II.4 Low-Threshold Inclusivity.** The NAA transformation (EIP-7702, EIP-8141) and the PeerDAS bandwidth model substantially improve inclusivity at the user and verifier level. The 32-ETH solo-staking threshold remains unchanged. Rainbow Staking (the only conceptual resolution path) is Research Reserve with no implementation commitment. This is the only criterion for which the current-state deficit goes unaddressed by the target-state roadmap.
 
 **III.4 Hardware Agnosticism.** Protocol-level hardware agnosticism is further improved in the target state by PeerDAS (bandwidth reduction ~85%) and Stateless Clients. Cloud concentration (~59% across three providers) remains unchanged. ePBS and the zkEVM address the protocol layer, not the physical infrastructure layer.
 
 ### 6.1-E The Verdict Shift
 
-The M3 cascade in the target state runs through five steps.<a href="#fn-15" id="fnref-15"><sup>15</sup></a> No Critical Condition stands at "Open": the cascade passes the first step. No Critical Condition stands at "Conditionally Met": the second cap that in the current state pushed the verdict to "Suitable under Considerable Conditions" falls away. The three Structural Conditions (I.1, I.3, III.1) all stand at "Met": the third step sets no cap. I.2 and II.1 stand at "Met with Qualification," not at full "Met": the verdict remains below the unqualified "Suitable." The result is "Suitable with Conditions."
+The M3 cascade in the target state runs through five steps.<a href="#fn-15" id="fnref-15"><sup>15</sup></a> No Critical Condition stands at "Open": the cascade passes the first step. No Critical Condition stands at "Conditionally Met": the second cap that in the current state pushed the verdict to "Suitable under Substantial Conditions" falls away. The three Structural Conditions (I.1, I.3, III.1) all stand at "Met": the third step sets no cap. I.2 and II.1 stand at "Met with Qualification," not at full "Met": the verdict remains below the unqualified "Suitable." The result is "Suitable with Conditions."
 
-The grade is determined separately. The six Qualitative Criteria (I.2, II.1, II.2, II.3, II.4, III.4) all stand at least at "Met with Qualification": the grade remains "Good."<a href="#fn-16" id="fnref-16"><sup>16</sup></a>
+The grade is determined separately. The six Qualitative Criteria (II.2, II.3, II.4, III.2, III.3, III.4) all stand at least at "Met with Qualification": the grade remains "Good."<a href="#fn-16" id="fnref-16"><sup>16</sup></a>
 
-The shift lies in the foundation of suitability, not in its quality. The grade does not change: the system satisfies the Qualitative Criteria at the same strength as in the current state. What changes is the security of the foundation: the transition from "Suitable under Considerable Conditions" to "Suitable with Conditions" means that the core functions of the infrastructure rest on a more protocol-foundational basis in the target state.
+The shift lies in the foundation of suitability, not in its quality. The grade does not change: the system satisfies the Qualitative Criteria at the same strength as in the current state. What changes is the security of the foundation: the transition from "Suitable under Substantial Conditions" to "Suitable with Conditions" means that the core functions of the infrastructure rest on a more protocol-foundational basis in the target state.
 
 ## 6.2 Persistent Limits of the System
 
