@@ -13,7 +13,7 @@ The term encompasses a bundle of properties that goes beyond the designation its
 
 The costs of a mistaken assumption fall on both sides. If the trust proves unfounded, the failure strikes all accumulated positions simultaneously at every level, while the escape routes have already been abandoned in the course of integration and the interconnection achieved can be reversed only at considerable cost. If the rejection proves unfounded, access is lost to a coordination layer that cannot simply be built anew under network effects, and the design of its rules, its conditions of access, and its neutrality guarantees falls to others. Both misjudgments are costly, and neither can be avoided without a standard.
 
-Such a standard does not yet exist. The term "fundamental digital infrastructure" circulates in all these debates as a predicate that is granted or withheld, without anyone ever having determined what properties it requires. The present work first constructs the standard and then applies it to a system that is actively developing.
+Such a standard does not yet exist. The term "fundamental digital infrastructure" circulates in all these debates as a predicate that is granted or withheld, without anyone ever having determined what properties it requires. The present work first constructs the standard and then applies it to a system that is actively being developed.
 
 ## 1.2 Gap
 
@@ -23,7 +23,7 @@ Infrastructure theory has been applied to blockchain without its conceptual appa
 
 Blockchain research possesses a mature toolkit for measurement, but one that targets different properties. Its methods capture the degree of decentralization of a system or whether an organization should adopt this technology.<sup><a href="#fn-2" id="fnref-2">2</a></sup> That decentralization does not coincide with infrastructure suitability is shown by the global financial messaging system SWIFT, which is operated by a single organization and yet counts as fundamental infrastructure of international payments. A method that measures decentralization thus captures a property from whose degree suitability cannot be inferred.
 
-The established practice for assessing infrastructure systems, finally, presupposes what the subject does not offer. Its criteria are directed at an operating organization that takes on investment commitments and is subject to oversight. Chapter 3 examines this presupposition against seven reference infrastructures and shows that it is the rule there, but not a condition of the infrastructure function. A system whose rules emerge from the consent of independent participants and for which no authority guarantees continued existence escapes these criteria, without this implying anything about its suitability.
+The established practice for assessing infrastructure systems, finally, presupposes what the subject does not offer. Its criteria are directed at an operating organization that takes on investment commitments and is subject to oversight. Chapter 3 examines this presupposition against seven reference infrastructures and shows that it is the rule there, but not a condition of the infrastructure function. A system whose rules emerge from the consent of independent participants and for which no authority guarantees continued existence escapes these criteria, though this says nothing about its suitability.
 
 The gap is thus defined. Theory supplies concepts without an evaluative standard, blockchain research supplies standards for different properties, and established practice supplies criteria for a type of system to which the subject does not belong.
 
@@ -55,7 +55,7 @@ Three features of the answer follow from this design. The answer to the research
 
 ## 1.5 Position, Neutrality, and Scope
 
-The work maintains analytical neutrality toward its subject, to which it explicitly commits. Negative findings are as welcome as positive ones, and its procedure is open to inspection. This serves a dual purpose. The end result is a judgment, and the work simultaneously gives the reader the means to judge for themselves. The work therefore remains useful even when the reader does not follow its judgment.
+The work maintains analytical neutrality toward its subject, to which it explicitly commits. Negative findings are as welcome as positive ones, and its procedure is open to inspection. This serves a dual purpose. The end result is a judgment, and the work simultaneously gives the reader the means to judge for themselves. The work therefore remains useful even if the reader does not share its judgment.
 
 It addresses corporate decision-makers, institutional investors, technical architects, political decision-makers, and critical academics who, as a rule, do not know Ethereum from the inside. This choice determines the register of the work. It explains what such an audience needs explained and presupposes no prior knowledge that circulates only within the ecosystem itself. It is self-published and without external peer review, which is acknowledged openly here. Precisely because no reviewing authority stands between the work and its reader, the work makes its procedure transparent at every point and leaves the reader to judge its cogency.
 
