@@ -1,7 +1,7 @@
 ﻿---
-titel: Current State Assessment — Ethereum in Operational State Q1 2026
+titel: Current State Assessment: Ethereum in Operational State Q1 2026
 nummer: 4
-befund: "How does Ethereum perform against the twelve evaluation criteria in operation? This chapter delivers the current-state assessment — the baseline for the target-state comparison."
+befund: "How does Ethereum perform against the twelve evaluation criteria in operation? This chapter delivers the current-state assessment, the baseline for the target-state comparison."
 sprache: en
 ---
 
@@ -34,8 +34,8 @@ The December 2025 incident at Fusaka provides empirical validation of this desig
 39 percent of nodes are located in the USA, 14.5 percent in Germany, and 14 percent in China. Of the hosted Execution Layer nodes, 59 percent run on three cloud providers: AWS with 35.5 percent, Hetzner with 13.8 percent, and OVHcloud with 9.7 percent.<a href="#fn-6" id="fnref-6"><sup>6</sup></a>
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-1-full.png" alt="Ethereum's layer model — Consensus Layer, Execution Layer, and Data Availability Layer" loading="lazy" />
-<figcaption>Figure 4.1 — Ethereum's layer model. Consensus Layer and Execution Layer, connected via the Engine API, plus the data availability layer. Five independent implementations per layer, in five languages, from five teams.</figcaption>
+<img src="/kapitel/en/abb-4-1-full.png" alt="Ethereum's layer model: Consensus Layer, Execution Layer, and Data Availability Layer" loading="lazy" />
+<figcaption>Figure 4.1: Ethereum's layer model. Consensus Layer and Execution Layer, connected via the Engine API, plus the data availability layer. Five independent implementations per layer, in five languages, from five teams.</figcaption>
 </figure>
 
 ### The EVM as Programmable Execution Environment
@@ -44,15 +44,15 @@ What distinguishes Ethereum from a pure payment chain like Bitcoin is the Ethere
 
 The EVM operates with a three-tier storage model. The stack is a volatile data structure following the last-in-first-out principle. Memory is a volatile, byte-addressable storage area. Storage is the persistent storage whose contents are anchored in the Merkle Patricia Trie. Storage operations are the most expensive in the entire opcode set, because every written value must be stored by all nodes indefinitely.
 
-Smart contracts are programs executed on the EVM. They are deployed on the network as bytecode and are thereafter immutable. Deployment is permissionless: the only prerequisite is Gas fees paid to the network. The execution architecture is sequential — all transactions within a block are processed strictly in order. At a slot time of 12 seconds and the current Gas Limit of 60,000,000, Ethereum processes on Layer 1 an average of 15 to 30 transactions per second.
+Smart contracts are programs executed on the EVM. They are deployed on the network as bytecode and are thereafter immutable. Deployment is permissionless: the only prerequisite is Gas fees paid to the network. The execution architecture is sequential: all transactions within a block are processed strictly in order. At a slot time of 12 seconds and the current Gas Limit of 60,000,000, Ethereum processes on Layer 1 an average of 15 to 30 transactions per second.
 
 Ethereum operates as a fully transparent system. Every transaction, every account balance, and every smart contract state is visible to every network participant. There are no native privacy mechanisms at the protocol level. Neither sender nor recipient nor transaction amount is obscured. This transparency is a consequence of the verification architecture, which requires all nodes to be able to replicate the same state. It generates a property that is a strength for some use cases, above all auditability and traceability, and a fundamental constraint for others, in particular institutional actors with data protection requirements and users with privacy needs.
 
-Within a block, the EVM enables atomic composability: arbitrarily many smart contract interactions can be chained within a single transaction, and the entire chain is either fully executed or fully reversed. Flash Loans illustrate this property: a user can in a single transaction borrow millions of US dollars, deploy the borrowed funds in an arbitrage operation, and repay the loan — without collateral and without an intermediary. This property forms the basis for the Decentralized Finance ecosystem.
+Within a block, the EVM enables atomic composability: arbitrarily many smart contract interactions can be chained within a single transaction, and the entire chain is either fully executed or fully reversed. Flash Loans illustrate this property: a user can in a single transaction borrow millions of US dollars, deploy the borrowed funds in an arbitrage operation, and repay the loan, without collateral and without an intermediary. This property forms the basis for the Decentralized Finance ecosystem.
 
 ### Account Abstraction
 
-Ethereum has historically recognized two types of accounts. Externally Owned Accounts are controlled by a single cryptographic key. Contract Accounts are controlled by code running on the EVM. EIP-7702, activated with the Pectra upgrade on 7 May 2025, addresses usability barriers at the protocol level by allowing standard accounts to temporarily adopt the logic of a smart contract. Session keys, social recovery, and Gas sponsoring become implementable at the protocol level. The EIP is deployed and active on the Mainnet; integration into the major wallet applications is in progress. The adoption dynamics can be read from the older ERC-4337 standard: over 25.5 million smart accounts and 132 million UserOperations document the demand for programmable accounts.<a href="#fn-8" id="fnref-8"><sup>8</sup></a>
+Ethereum has historically recognized two types of accounts. Externally Owned Accounts are controlled by a single cryptographic key. Contract Accounts are controlled by code running on the EVM. EIP-7702, activated with the Pectra upgrade on 7 May 2025, addresses usability barriers at the protocol level by allowing standard accounts to temporarily adopt the logic of a smart contract. Session keys, social recovery, and Gas sponsoring become implementable at the protocol level. The EIP is deployed and active on the Mainnet, and integration into the major wallet applications is in progress. The adoption dynamics can be read from the older ERC-4337 standard: over 25.5 million smart accounts and 132 million UserOperations document the demand for programmable accounts.<a href="#fn-8" id="fnref-8"><sup>8</sup></a>
 
 ### State as State Database
 
@@ -61,8 +61,8 @@ Everything that Ethereum as a system stores resides in a data structure called t
 The State amounts to 150 to 200 GB in the compressed storage form of the clients. The total size of a full node is 1,579 GB.<a href="#fn-9" id="fnref-9"><sup>9</sup></a> The hardware requirements for operating a full node include at least 2 TB SSD storage, 16 GB RAM, and a stable internet connection with at least 25 megabits per second. The permanent growth of State is the central long-term problem of the Ethereum architecture: every deployed contract, every new wallet, every stored storage slot accumulates permanently on all full nodes, without inactive entries expiring or being compressed.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-2-full.png" alt="The Merkle Patricia Trie — four nested tries and the World State Root" loading="lazy" />
-<figcaption>Figure 4.2 — The Merkle Patricia Trie. Four nested tries and the World State Root anchored in the block header. A Merkle Proof demonstrates with logarithmic effort that a state entry is present or absent — this is the foundation of independent verifiability.</figcaption>
+<img src="/kapitel/en/abb-4-2-full.png" alt="The Merkle Patricia Trie: four nested tries and the World State Root" loading="lazy" />
+<figcaption>Figure 4.2: The Merkle Patricia Trie. Four nested tries and the World State Root anchored in the block header. A Merkle Proof demonstrates with logarithmic effort that a state entry is present or absent, forming the foundation of independent verifiability.</figcaption>
 </figure>
 
 ## 4.2 The Transaction Lifecycle
@@ -75,44 +75,44 @@ The lifecycle of a transaction begins with the user, who creates a signed messag
 
 Every operation on the EVM consumes a defined quantity of Gas. The cost structure reflects the actual burden: a simple addition costs 3 Gas, a Keccak-256 hash 36 Gas, loading a storage value 2,100 Gas, and a write operation into persistent storage 22,100 Gas. The Gas Limit per block stands at 60,000,000 and was doubled in the course of 2025 through validator signaling without a hard fork.<a href="#fn-10" id="fnref-10"><sup>10</sup></a>
 
-The fee model EIP-1559, active since August 2021, divides the transaction fee into two components.<a href="#fn-11" id="fnref-11"><sup>11</sup></a> The Base Fee is determined algorithmically and adjusts dynamically to block utilization: if the preceding block consumed more than half its Gas Limit, the Base Fee rises by up to 12.5 percent. If utilization falls below that, it falls by the same maximum factor. The Base Fee is burned — cumulatively since August 2021, over 4.6 million ETH have been removed from circulation. The Priority Fee is freely chosen by the user and flows to the block's proposer.
+The fee model EIP-1559, active since August 2021, divides the transaction fee into two components.<a href="#fn-11" id="fnref-11"><sup>11</sup></a> The Base Fee is determined algorithmically and adjusts dynamically to block utilization: if the preceding block consumed more than half its Gas Limit, the Base Fee rises by up to 12.5 percent. If utilization falls below that, it falls by the same maximum factor. The Base Fee is burned. Cumulatively since August 2021, over 4.6 million ETH have been removed from circulation. The Priority Fee is freely chosen by the user and flows to the block's proposer.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-3-full.png" alt="The fee market under EIP-1559 — Base Fee and Priority Fee, their objectives, and the adjustment rule" loading="lazy" />
-<figcaption>Figure 4.3 — The fee market under EIP-1559. Base Fee and Priority Fee, their objectives, and the rule by which the Base Fee adjusts.</figcaption>
+<img src="/kapitel/en/abb-4-3-full.png" alt="The fee market under EIP-1559: Base Fee and Priority Fee, their objectives, and the adjustment rule" loading="lazy" />
+<figcaption>Figure 4.3: The fee market under EIP-1559. Base Fee and Priority Fee, their objectives, and the rule by which the Base Fee adjusts.</figcaption>
 </figure>
 
 ### Propagation in the Peer-to-Peer Network
 
-The signed transaction is propagated via the peer-to-peer network. There is no single central mempool — each node maintains a local view of the transactions it has received from its peers. This decentralized mempool architecture creates an informational asymmetry that is constitutive for the MEV phenomenon: builders who have privileged connections to more nodes or receive private order flows have a more complete view of pending transactions than average nodes.
+The signed transaction is propagated via the peer-to-peer network. There is no single central mempool. Each node maintains a local view of the transactions it has received from its peers. This decentralized mempool architecture creates an informational asymmetry that is constitutive for the MEV phenomenon: builders who have privileged connections to more nodes or receive private order flows have a more complete view of pending transactions than average nodes.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-4-full.png" alt="The mempool views — each node knows a different subset of pending transactions" loading="lazy" />
-<figcaption>Figure 4.4 — The mempool views. Each node maintains its own view of pending transactions. Which ones it sees depends on network topology, propagation times, and individual filtering rules. From this inequality of views arises the informational asymmetry constitutive for the MEV phenomenon.</figcaption>
+<img src="/kapitel/en/abb-4-4-full.png" alt="The mempool views: each node knows a different subset of pending transactions" loading="lazy" />
+<figcaption>Figure 4.4: The mempool views. Each node maintains its own view of pending transactions. Which ones it sees depends on network topology, propagation times, and individual filtering rules. From this inequality of views arises the informational asymmetry constitutive for the MEV phenomenon.</figcaption>
 </figure>
 
 ### Block Building and MEV
 
 Specialized block builders collect transactions from public mempools and private order flows and construct blocks optimized for the extraction of Maximal Extractable Value.<a href="#fn-12" id="fnref-12"><sup>12</sup></a> MEV arises from the fact that the ordering of transactions within a block influences the economic outcome: arbitrage transactions between decentralized exchanges, liquidations in lending protocols, and sandwich attacks are the most common MEV forms. The cumulative MEV extraction since the Merge is estimated at 1.5 to 2 billion US dollars, with approximately 93 percent flowing as bids to the validators.<a href="#fn-13" id="fnref-13"><sup>13</sup></a>
 
-The market structure of block production as of 27 March 2026 shows considerable concentration: Titan Builder controls 51.2 percent of blocks, BuilderNet 25.7 percent, and Quasar 16.4 percent.<a href="#fn-14" id="fnref-14"><sup>14</sup></a> Three builder addresses control 93.3 percent of Ethereum block production. The Herfindahl-Hirschman Index stands at 3,554 — substantially exceeding the DOJ threshold of 2,500 for highly concentrated markets.
+The market structure of block production as of 27 March 2026 shows considerable concentration: Titan Builder controls 51.2 percent of blocks, BuilderNet 25.7 percent, and Quasar 16.4 percent.<a href="#fn-14" id="fnref-14"><sup>14</sup></a> Three builder addresses control 93.3 percent of Ethereum block production. The Herfindahl-Hirschman Index stands at 3,554, substantially exceeding the DOJ threshold of 2,500 for highly concentrated markets.
 
 ### Proposer-Builder Separation
 
-The architectural response to separating block production from block validation is Proposer-Builder Separation. Builders send completed blocks with bids to Relays — off-chain intermediaries such as Ultra Sound Relay, Titan Relay, or BloXroute — that act as trusted intermediaries between builders and validators. The proposer selected for the slot blindly selects the highest bid and proposes the associated block without knowing its contents. 90 percent of blocks use MEV-Boost, the sidecar software connecting validators to this builder marketplace.
+The architectural response to separating block production from block validation is Proposer-Builder Separation. Builders send completed blocks with bids to Relays (off-chain intermediaries such as Ultra Sound Relay, Titan Relay, or BloXroute) that act as trusted intermediaries between builders and validators. The proposer selected for the slot blindly selects the highest bid and proposes the associated block without knowing its contents. 90 percent of blocks use MEV-Boost, the sidecar software connecting validators to this builder marketplace.
 
 15 percent of blocks run through Relays that operate explicitly OFAC-compliant.<a href="#fn-15" id="fnref-15"><sup>15</sup></a> In November 2022, 79 percent of blocks ran through OFAC-compliant Relays. The decline to 15 percent occurred without protocol intervention, driven by market dynamics. FOCIL (EIP-7805), a validator-committee-based inclusion list system, is intended to replace this emergent censorship resistance with a protocol guarantee and carries status PLAN.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-5-full.png" alt="Proposer-Builder Separation — the path of a block from the Builder via the Relay to the Proposer" loading="lazy" />
-<figcaption>Figure 4.5 — Proposer-Builder Separation. The path of a block from the Builder via the Relay to the Proposer, who blindly selects the highest bid. The Relays are off-chain intermediaries and thus the only point in the chain requiring trust.</figcaption>
+<img src="/kapitel/en/abb-4-5-full.png" alt="Proposer-Builder Separation: the path of a block from the Builder via the Relay to the Proposer" loading="lazy" />
+<figcaption>Figure 4.5: Proposer-Builder Separation. The path of a block from the Builder via the Relay to the Proposer, who blindly selects the highest bid. The Relays are off-chain intermediaries and thus the only point in the chain requiring trust.</figcaption>
 </figure>
 
 ### Consensus and Finality
 
 The proposer selected for a slot proposes the block to the network, and the 964,768 active validators attest via the Gasper protocol whether they recognize the block as valid.<a href="#fn-16" id="fnref-16"><sup>16</sup></a> Gasper is a combination of two complementary mechanisms.<a href="#fn-17" id="fnref-17"><sup>17</sup></a>
 
-Casper FFG, the Friendly Finality Gadget, is a Byzantine Fault Tolerant finalization protocol. The network is divided into epochs of 32 slots each, with each slot lasting 12 seconds. When validators representing together more than two thirds of the total staked ETH attest a supermajority link between source and target, the target checkpoint is marked as justified. When the subsequent checkpoint is likewise justified, the previous checkpoint is finalized. This two-epoch cascade explains the finalization time of 12.8 minutes: 64 slots at 12 seconds each. A finalized block is cryptographically and economically irreversible, because a reversion would require more than one third of the total staked ETH to be slashed — a sum amounting to approximately 26 billion US dollars.
+Casper FFG, the Friendly Finality Gadget, is a Byzantine Fault Tolerant finalization protocol. The network is divided into epochs of 32 slots each, with each slot lasting 12 seconds. When validators representing together more than two thirds of the total staked ETH attest a supermajority link between source and target, the target checkpoint is marked as justified. When the subsequent checkpoint is likewise justified, the previous checkpoint is finalized. This two-epoch cascade explains the finalization time of 12.8 minutes: 64 slots at 12 seconds each. A finalized block is cryptographically and economically irreversible, because a reversion would require more than one third of the total staked ETH to be slashed, amounting to approximately 26 billion US dollars.
 
 LMD-GHOST handles the complementary task of real-time block selection between finalization points. Starting from the last finalized checkpoint, the algorithm follows at each fork the subtree that has accumulated the most stake weight.
 
@@ -121,8 +121,8 @@ Each attestation a validator submits contains three simultaneous votes: the head
 The empirical record of the consensus mechanism since the Merge is remarkably stable. Of 287,000 produced epochs, 13 were not finalized, a finality rate of over 99.99 percent.<a href="#fn-18" id="fnref-18"><sup>18</sup></a> All 13 non-finalized epochs occurred in May 2023. That incident was simultaneously the first and to date only Mainnet test of the Inactivity Leak, an automatic degradation mode activated when finalization is absent for more than four epochs. Self-healing took 96 minutes, without any external intervention being required.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-6-full.png" alt="The attestation — three votes in a single message entering two different consensus mechanisms" loading="lazy" />
-<figcaption>Figure 4.6 — The attestation. Three votes in a single message entering two different consensus mechanisms. The head vote feeds into LMD-GHOST; source vote and target vote feed into Casper FFG.</figcaption>
+<img src="/kapitel/en/abb-4-6-full.png" alt="The attestation: three votes in a single message entering two different consensus mechanisms" loading="lazy" />
+<figcaption>Figure 4.6: The attestation. Three votes in a single message entering two different consensus mechanisms. The head vote feeds into LMD-GHOST, source vote and target vote into Casper FFG.</figcaption>
 </figure>
 
 ### Settlement and State Update
@@ -139,7 +139,7 @@ Why do 964,768 validators stake their capital in a system that can confiscate th
 
 ### Economic Incentives and Consolidation
 
-Validators receive rewards for correct behavior from two sources: protocol issuance and MEV rewards. The reward structure weights the correct target vote at 40.6 percent of total weight, source vote and head vote at 21.9 percent each, block production at 12.5 percent, and sync committee participation at 3.1 percent. Issuance scales inversely with the square root of the total staked ETH — the effective staking rate stands at approximately 2.6 percent, down from approximately 13 percent when the staking share was still low.<a href="#fn-19" id="fnref-19"><sup>19</sup></a> Between 30 and 31 percent of the ETH total supply of 120,693,582 ETH are staked.
+Validators receive rewards for correct behavior from two sources: protocol issuance and MEV rewards. The reward structure weights the correct target vote at 40.6 percent of total weight, source vote and head vote at 21.9 percent each, block production at 12.5 percent, and sync committee participation at 3.1 percent. Issuance scales inversely with the square root of the total staked ETH. The effective staking rate stands at approximately 2.6 percent, down from approximately 13 percent when the staking share was still low.<a href="#fn-19" id="fnref-19"><sup>19</sup></a> Between 30 and 31 percent of the ETH total supply of 120,693,582 ETH are staked.
 
 The Pectra upgrade triggered a structural shift in the validator landscape. EIP-7251 raised the maximum effective balance per validator from 32 to 2,048 ETH, and large staking providers used this opportunity to consolidate many individual 32-ETH validators into a few high-balance validators.<a href="#fn-20" id="fnref-20"><sup>20</sup></a> The total number of active validators fell from 1.07 million to 964,768, without any change in the quantity of staked ETH.
 
@@ -149,13 +149,13 @@ The central security threshold of the system is the 34-percent blocking minority
 
 Slashing protects the consensus protocol against two specific forms of attack: equivocation (double-signing) and surround voting. The penalty structure scales with correlation: a single validator double-signing due to a configuration error is mildly penalized. A coordinated group slashed simultaneously experiences a penalty making the attack economically ruinous.
 
-The empirical record confirms a system operating through deterrence. Over more than five years of the Beacon Chain, 525 validators have been slashed out of over 2.2 million ever created — a rate of 0.024 percent.<a href="#fn-22" id="fnref-22"><sup>22</sup></a> Malicious attacks are not documented in the entire Slashing history.
+The empirical record confirms a system operating through deterrence. Over more than five years of the Beacon Chain, 525 validators have been slashed out of over 2.2 million ever created, a rate of 0.024 percent.<a href="#fn-22" id="fnref-22"><sup>22</sup></a> Malicious attacks are not documented in the entire Slashing history.
 
 ### Staking Distribution
 
-Liquid Staking dominates with 31.1 percent of staked ETH. Staking through centralized exchanges accounts for 24 percent. Staking Pools hold 16 percent. Solo stakers hold less than 1 percent — the minimum deposit of 32 ETH corresponds at the reference date price to approximately 67,000 US dollars.
+Liquid Staking dominates with 31.1 percent of staked ETH. Staking through centralized exchanges accounts for 24 percent. Staking Pools hold 16 percent. Solo stakers hold less than 1 percent. The minimum deposit of 32 ETH corresponds at the reference date price to approximately 67,000 US dollars.
 
-Lido, the largest Liquid Staking protocol, holds 22.8 to 23 percent of staked ETH, declining from approximately 32 percent in 2023.<a href="#fn-23" id="fnref-23"><sup>23</sup></a> The DVT integration of 547,968 ETH with a quarter-on-quarter growth of 57 percent reduces the single-point-of-failure risk in the operator set.<a href="#fn-24" id="fnref-24"><sup>24</sup></a> Lido currently stands below the critical 33-percent threshold. The cumulative staking concentration of the three largest providers — Lido, Coinbase, and Binance — stands at 40 to 45 percent of staked ETH.
+Lido, the largest Liquid Staking protocol, holds 22.8 to 23 percent of staked ETH, declining from approximately 32 percent in 2023.<a href="#fn-23" id="fnref-23"><sup>23</sup></a> The DVT integration of 547,968 ETH with a quarter-on-quarter growth of 57 percent reduces the single-point-of-failure risk in the operator set.<a href="#fn-24" id="fnref-24"><sup>24</sup></a> Lido currently stands below the critical 33-percent threshold. The cumulative staking concentration of the three largest providers (Lido, Coinbase, and Binance) stands at 40 to 45 percent of staked ETH.
 
 ### Three Tensions of the Security Economy
 
@@ -179,7 +179,7 @@ Since early 2026, this division of labor has been supplemented by a strategic sh
 
 Blobs, introduced through EIP-4844 in the Dencun upgrade of March 2024, are 128 KB temporary data packets held on Beacon nodes for approximately 18 days and then automatically deleted.<a href="#fn-26" id="fnref-26"><sup>26</sup></a> The cost reduction since the introduction of Blobs was substantial: transaction costs on leading Layer-2 systems fell after Dencun by 80 to 95 percent. In operational terms, a simple token transaction on Arbitrum, Base, or Optimism costs a median of less than 0.01 US dollars.
 
-All five leading Layer-2 systems by total value secured — Arbitrum One, Base, OP Mainnet, Starknet, and zkSync Era — use Ethereum Blobs as their primary data availability layer, reflecting the preference for stronger security guarantees of the base layer even when cheaper alternatives are available.
+All five leading Layer-2 systems by total value secured (Arbitrum One, Base, OP Mainnet, Starknet, and zkSync Era) use Ethereum Blobs as their primary data availability layer, reflecting the preference for stronger security guarantees of the base layer even when cheaper alternatives are available.
 
 ### How a Rollup Works
 
@@ -188,8 +188,8 @@ A Rollup delegates transaction execution to an independent system but anchors th
 The verification of State Roots follows one of two approaches. Optimistic Rollups assume the submitted states are correct and grant a seven-day challenge period in which any participant can submit a Fraud Proof. Security rests on the 1-of-N honest verifier assumption. ZK-Rollups mathematically prove the correctness of the submitted state before its acceptance through a validity proof that a verifier contract on Layer 1 checks in constant time. Arbitrum One, Base, and OP Mainnet are Optimistic Rollups. Starknet and zkSync Era are ZK-based.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-7-full.png" alt="The rollup-centric architecture — Layer 1 carries settlement and data availability, Rollups carry execution" loading="lazy" />
-<figcaption>Figure 4.7 — The rollup-centric architecture. Layer 1 carries settlement and data availability, Rollups carry execution. Two confirmation stages: the sequencer confirms in seconds without a finality guarantee; the full guarantees of the base layer are inherited only upon L1 finalization.</figcaption>
+<img src="/kapitel/en/abb-4-7-full.png" alt="The rollup-centric architecture: Layer 1 carries settlement and data availability, Rollups carry execution" loading="lazy" />
+<figcaption>Figure 4.7: The rollup-centric architecture. Layer 1 carries settlement and data availability, Rollups carry execution. Two confirmation stages: the sequencer confirms in seconds without a finality guarantee, while the full guarantees of the base layer are inherited only upon L1 finalization.</figcaption>
 </figure>
 
 ### The L2 Ecosystem in Operational State
@@ -201,8 +201,8 @@ The L2BEAT Stage framework measures the degree of decentralization of Rollups on
 Arbitrum One (Stage 1, 17.5 billion USD), Base (Stage 1, 11 billion USD), and OP Mainnet (Stage 1) share the Optimism proof infrastructure. Starknet has reached Stage 1 with the Stwo proof system. zkSync Era remains at Stage 0. Stage 2 exists only for immutable projects with minimal transaction volume such as Aztec v1 (2.95 million USD). Exit windows vary drastically: 17 days at Arbitrum, but zero days at Base and OP Mainnet.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-8-full.png" alt="The L2BEAT Stage Framework — the requirements of the three tiers and the Rollups that achieve them" loading="lazy" />
-<figcaption>Figure 4.8 — The L2BEAT Stage Framework. The requirements of the three tiers and the Rollups that achieve them, with secured value. Stage 2 is reached only by an immutable project with a fraction of the value that Arbitrum One carries.</figcaption>
+<img src="/kapitel/en/abb-4-8-full.png" alt="The L2BEAT Stage Framework: the requirements of the three tiers and the Rollups that achieve them" loading="lazy" />
+<figcaption>Figure 4.8: The L2BEAT Stage Framework. The requirements of the three tiers and the Rollups that achieve them, with secured value. Stage 2 is reached only by an immutable project with a fraction of the value that Arbitrum One carries.</figcaption>
 </figure>
 
 ### Broken Cross-L2 Composability
@@ -213,7 +213,7 @@ The Superchain initiative, which brings together 34 OP-Stack-based chains and re
 
 ### Stablecoin Anchoring and Substitution Risk
 
-Ethereum dominates global stablecoin issuance with a market share of 52 to 54 percent, corresponding to a volume of approximately 166 billion US dollars.<a href="#fn-29" id="fnref-29"><sup>29</sup></a> USDC, USDT, and DAI are primarily issued on Ethereum, and DeFi integration creates an anchoring depth that goes beyond mere issuance. Since December 2025, USDC transaction volume on Solana has been higher than on Ethereum — showing that transaction activity migrates wherever the user experience is most favorable and fastest.
+Ethereum dominates global stablecoin issuance with a market share of 52 to 54 percent, corresponding to a volume of approximately 166 billion US dollars.<a href="#fn-29" id="fnref-29"><sup>29</sup></a> USDC, USDT, and DAI are primarily issued on Ethereum, and DeFi integration creates an anchoring depth that goes beyond mere issuance. Since December 2025, USDC transaction volume on Solana has been higher than on Ethereum, showing that transaction activity migrates wherever the user experience is most favorable and fastest.
 
 The GENIUS Act, signed on 18 July 2025 as the first US federal law for stablecoins, regulates stablecoin issuers with regard to reserve requirements, transparency obligations, and licensing, but does not address the protocol layer.<a href="#fn-30" id="fnref-30"><sup>30</sup></a> The law regulates Circle and Tether as issuers, but regulates neither Ethereum as a protocol nor the smart contracts managing USDC and USDT on the base layer.
 
@@ -223,13 +223,13 @@ How does a system without central authority continue to develop? This section de
 
 ### The EIP Process
 
-Ethereum Improvement Proposals are the formal standardization mechanism for protocol changes, inspired by Python's PEP system and Bitcoin's BIPs.<a href="#fn-31" id="fnref-31"><sup>31</sup></a> The process follows a defined sequence: Draft, Review, Last Call, Final. In 2025, 230 EIPs were submitted, of which 37 were accepted — an acceptance rate of 16 percent.
+Ethereum Improvement Proposals are the formal standardization mechanism for protocol changes, inspired by Python's PEP system and Bitcoin's BIPs.<a href="#fn-31" id="fnref-31"><sup>31</sup></a> The process follows a defined sequence: Draft, Review, Last Call, Final. In 2025, 230 EIPs were submitted, of which 37 were accepted, an acceptance rate of 16 percent.
 
-EIP Editors check formal correctness. Substantive decisions are made in the AllCoreDevs Calls — biweekly video conferences of the client developer teams publicly streamed, recorded, and documented. The procedure is transparent, documented, and selective, but operates without formal authority: no body can force a decision, no voting mechanism can bind a majority. Ethereum has deliberately not implemented on-chain governance. The decision-making principle follows the model that the Internet has shaped: Rough Consensus and Running Code, a formulation of the Internet Engineering Task Force.<a href="#fn-32" id="fnref-32"><sup>32</sup></a>
+EIP Editors check formal correctness. Substantive decisions are made in the AllCoreDevs Calls, biweekly video conferences of the client developer teams publicly streamed, recorded, and documented. The procedure is transparent, documented, and selective, but operates without formal authority: no body can force a decision, no voting mechanism can bind a majority. Ethereum has deliberately not implemented on-chain governance. The decision-making principle follows the model that the Internet has shaped: Rough Consensus and Running Code, a formulation of the Internet Engineering Task Force.<a href="#fn-32" id="fnref-32"><sup>32</sup></a>
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-9-full.png" alt="The Ethereum governance process — formal status of a proposal and the instances where decisions actually lie" loading="lazy" />
-<figcaption>Figure 4.9 — The Ethereum governance process. The formal status of a proposal and the instances where decisions actually lie. No body can force a decision, no voting mechanism binds a majority. Ethereum has deliberately not implemented on-chain governance. In 2025, over 230 EIPs were submitted, 37 accepted.</figcaption>
+<img src="/kapitel/en/abb-4-9-full.png" alt="The Ethereum governance process: formal status of a proposal and the instances where decisions actually lie" loading="lazy" />
+<figcaption>Figure 4.9: The Ethereum governance process. The formal status of a proposal and the instances where decisions actually lie. No body can force a decision, no voting mechanism binds a majority. Ethereum has deliberately not implemented on-chain governance. In 2025, over 230 EIPs were submitted, 37 accepted.</figcaption>
 </figure>
 
 ### The Ethereum Foundation and Decentralized Financing
@@ -242,11 +242,11 @@ Protocol Guild, a collective financing instrument for core developers with over 
 
 ### Upgrades as Risk and Evidence
 
-The DAO fork of 2016 remains the only case in which the community undertook a state intervention, and it has never been repeated. The four post-Merge upgrades — Shapella, Dencun, Pectra, and Fusaka — all proceeded without chain splits.
+The DAO fork of 2016 remains the only case in which the community undertook a state intervention, and it has never been repeated. The four post-Merge upgrades (Shapella, Dencun, Pectra, and Fusaka) all proceeded without chain splits.
 
 Complexity accumulation is a growing risk: Pectra bundled 11 EIPs in a single release. Each EIP must be correctly implemented in ten independent implementations, and the December 2025 Prysm bug at Fusaka was a direct consequence of the interaction between new protocol elements and existing client implementations.
 
-The governance system's capacity to respond to acute security incidents has historical precedents. In September 2016, a targeted denial-of-service attack against the Geth client forced two emergency hard forks within weeks — Tangerine Whistle and Spurious Dragon. The limit of this capacity lies in the absence of a pause mechanism: if a critical bug is deployed at the protocol level, no party can halt the network.
+The governance system's capacity to respond to acute security incidents has historical precedents. In September 2016, a targeted denial-of-service attack against the Geth client forced two emergency hard forks within weeks: Tangerine Whistle and Spurious Dragon. The limit of this capacity lies in the absence of a pause mechanism: if a critical bug is deployed at the protocol level, no party can halt the network.
 
 ## 4.6 Emergent Properties: What the Architecture Enables
 
@@ -254,7 +254,7 @@ The properties that underpin the infrastructure claim cannot be located in any s
 
 The first emergent property is **Permissionless Deployment**. From the interplay of the EVM as an open execution environment, permissionless access to the network, and the Gas market as the sole access requirement, a system emerges in which any actor can deploy code without having to seek authorization. Frischmann's argument that open access to infrastructure is economically more efficient than restriction through private property rights finds a technical implementation here.<a href="#fn-35" id="fnref-35"><sup>35</sup></a> The EVM generates an analogous dynamic to the end-to-end architecture of the Internet that van Schewick described: it lowers innovation barriers at the edges of the network.<a href="#fn-36" id="fnref-36"><sup>36</sup></a> The 31,869 active developers documented by the Electric Capital Developer Report for September 2025 and the DeFi Total Value Locked of approximately 100 billion US dollars on Ethereum L1 and L2 quantify the economic scope of productive activities built on this infrastructure.<a href="#fn-37" id="fnref-37"><sup>37</sup></a>
 
-The second emergent property is **atomic composability**. Protocols can build on one another without needing to conclude bilateral agreements, because compatibility is established at the level of the shared execution environment. DeFi as an ecosystem is the result of this property — an emergent layer of productive activity that builds on the infrastructure without having been planned or anticipated by it. This is Frischmann's concept of the input character of infrastructure in its most precise form. The strength of composability lies in its permissionlessness. At the Layer-2 level, this composability is broken, as Section 4.4 documented.
+The second emergent property is **atomic composability**. Protocols can build on one another without needing to conclude bilateral agreements, because compatibility is established at the level of the shared execution environment. DeFi as an ecosystem is the result of this property: an emergent layer of productive activity that builds on the infrastructure without having been planned or anticipated by it. This is Frischmann's concept of the input character of infrastructure in its most precise form. The strength of composability lies in its permissionlessness. At the Layer-2 level, this composability is broken, as Section 4.4 documented.
 
 The third emergent property is **independent verifiability of the system state**. From the interplay of the multi-client architecture, the Merkle Patricia Trie, and the peer-to-peer network, the possibility arises of verifying the entire system state without trusting an intermediary. Technically, this verification is possible on consumer hardware at a total cost of 500 to 1,500 US dollars. Operationally, approximately 70 percent of users rely on RPC providers such as Infura and Alchemy, which act as centralized intermediaries.
 
@@ -270,7 +270,7 @@ Four properties, two of them described in this section, cannot be fully operatio
 
 ## 4.7 Dimension I: Structural Foundation
 
-The assessment applies the twelve criteria of the evaluation framework to the described subject. Two of the criteria in this dimension — Security and Trust Load (I.2) and Minimal Viable Guarantees (I.4) — are anchored as Critical Conditions.
+The assessment applies the twelve criteria of the evaluation framework to the described subject. Two of the criteria in this dimension, Security and Trust Load (I.2) and Minimal Viable Guarantees (I.4), are anchored as Critical Conditions.
 
 ### I.1 Functional Irreplaceability
 
@@ -286,9 +286,9 @@ The shock resilience of this anchoring is empirically documented: in the 2022 ma
 
 *This criterion is anchored as a Critical Condition: a finding of "Open" would cap the overall verdict at "Conditionally Suitable."*
 
-The Casper FFG architecture anchors economic security in a mathematically binding way: validators who double-sign or attest to contradictory checkpoints lose their stake through Slashing. The three critical thresholds of BFT mathematics — 33 percent as the blocking minority, 51 percent for reorgs before finality, and 66 percent as the supermajority — are implemented in the protocol and not deactivatable.<a href="#fn-42" id="fnref-42"><sup>42</sup></a>
+The Casper FFG architecture anchors economic security in a mathematically binding way: validators who double-sign or attest to contradictory checkpoints lose their stake through Slashing. The three critical thresholds of BFT mathematics (33 percent as the blocking minority, 51 percent for reorgs before finality, and 66 percent as the supermajority) are implemented in the protocol and not deactivatable.<a href="#fn-42" id="fnref-42"><sup>42</sup></a>
 
-The data on the operational security profile are strong. With 964,768 active validators and approximately 30 percent of the ETH total supply staked, the static cost of a 34-percent attack amounts to roughly 26 billion US dollars. The finality rate exceeds 99.99 percent: of roughly 287,000 epochs since the Merge, only 13 were not finalized — all in May 2023.<a href="#fn-43" id="fnref-43"><sup>43</sup></a>
+The data on the operational security profile are strong. With 964,768 active validators and approximately 30 percent of the ETH total supply staked, the static cost of a 34-percent attack amounts to roughly 26 billion US dollars. The finality rate exceeds 99.99 percent: of roughly 287,000 epochs since the Merge, only 13 were not finalized, all in May 2023.<a href="#fn-43" id="fnref-43"><sup>43</sup></a>
 
 The residual trust burden reveals a discrepancy between protocol claim and usage reality. Wallets such as MetaMask operate as closed-source components with unilateral update mechanisms. Infura and Alchemy dominate approximately 70 percent of RPC traffic. 91.5 percent of L2 TVL operates on Stage 1 rollups with security council multisigs and centralized sequencers. Cross-L2 transfers require trust-based bridges with cumulative hack damages exceeding 2.8 billion US dollars, or seven-day challenge periods. A typical user accessing an L2 DeFi service via MetaMask traverses four trust layers, none of which is secured by the Ethereum protocol itself.
 
@@ -296,7 +296,7 @@ The residual trust burden reveals a discrepancy between protocol claim and usage
 
 ### I.3 Coordination Function
 
-The protocol operationally implements three of the four coordination primitives: Settlement as finalized, irreversible transaction processing after approximately 12.8 minutes; Execution as deterministic smart contract processing with atomic composability; and Data Availability as KZG-commitment-based blob availability for L2 rollups since Dencun. The fourth primitive — protocol-side verification of arbitrary off-chain computations — has the status RES and is not part of the current-state assessment.<a href="#fn-44" id="fnref-44"><sup>44</sup></a>
+The protocol operationally implements three of the four coordination primitives: Settlement (finalized, irreversible transaction processing after approximately 12.8 minutes), Execution (deterministic smart contract processing with atomic composability), and Data Availability (KZG-commitment-based blob availability for L2 rollups since Dencun). The fourth primitive, protocol-side verification of arbitrary off-chain computations, has the status RES and is not part of the current-state assessment.<a href="#fn-44" id="fnref-44"><sup>44</sup></a>
 
 Roughly 100 billion US dollars are coordinated in a permissionless system without an institutional trustee, around the clock, 365 days a year, without maintenance windows. All top-5 rollups by TVL settle on Ethereum and use blob transactions for Data Availability. Cross-L2 composability, however, is the qualitative constraint: atomic composability is structurally absent at the L2 level. Monthly bridge volumes of approximately 11.2 billion US dollars show the scale of coordination demand handled through intermediaries.
 
@@ -308,9 +308,9 @@ Roughly 100 billion US dollars are coordinated in a permissionless system withou
 
 The time-to-finality is 12.8 minutes, calculated from two epochs of 32 slots at 12 seconds each, and thus falls below the threshold of 15 minutes.<a href="#fn-45" id="fnref-45"><sup>45</sup></a> Liveness is documented by a finality rate above 99.99 percent, with not a single failure occurring since May 2023.
 
-The Degradation Mode is the property that distinguishes Ethereum from all seven reference infrastructures analyzed in Chapter 3. The Inactivity Leak was tested on Mainnet in May 2023: the protocol responded automatically, inactive validators progressively lost stake, and self-healing occurred after approximately 96 minutes — without manual intervention, without coordination outside the protocol, and without interruption to block production.<a href="#fn-46" id="fnref-46"><sup>46</sup></a> When DNS root server networks or SWIFT nodes fail, recovery depends on external coordination. Ethereum's Inactivity Leak requires none of this.
+The Degradation Mode is the property that distinguishes Ethereum from all seven reference infrastructures analyzed in Chapter 3. The Inactivity Leak was tested on Mainnet in May 2023: the protocol responded automatically, inactive validators progressively lost stake, and self-healing occurred after approximately 96 minutes, without manual intervention, without coordination outside the protocol, and without interruption to block production.<a href="#fn-46" id="fnref-46"><sup>46</sup></a> When DNS root server networks or SWIFT nodes fail, recovery depends on external coordination. Ethereum's Inactivity Leak requires none of this.
 
-The fourth guarantee — censorship resistance under coordinated attack — does not reach the level of the first three. No protocol mechanism compels a block proposer or builder to include a specific valid transaction. FOCIL (EIP-7805) has the status PLAN. The OFAC compliance rate stands at approximately 15 percent — well below the 50-percent threshold — but this performance rests on market dynamics, not on a protocol guarantee.<a href="#fn-47" id="fnref-47"><sup>47</sup></a>
+The fourth guarantee, censorship resistance under coordinated attack, does not reach the level of the first three. No protocol mechanism compels a block proposer or builder to include a specific valid transaction. FOCIL (EIP-7805) has the status PLAN. The OFAC compliance rate stands at approximately 15 percent, well below the 50-percent threshold, but this performance rests on market dynamics, not on a protocol guarantee.<a href="#fn-47" id="fnref-47"><sup>47</sup></a>
 
 **Minimal Viable Guarantees: Fulfilled with qualification.** Three of four guarantees are protocol-anchored and operationally proven. The fourth is functionally given, but not secured by the protocol.
 
@@ -330,17 +330,17 @@ The protocol anchors neutrality through Permissionless Participation, content-ne
 
 The OFAC compliance rate of approximately 15 percent of blocks falls well below the 50-percent threshold and documents a positive trajectory from the 79-percent peak in November 2022. The Van Loon v. Treasury ruling of November 2024 and the OFAC delisting of Tornado Cash in March 2025 reduced regulatory pressure.<a href="#fn-48" id="fnref-48"><sup>48</sup></a>
 
-The structural defect finding lies in builder concentration. Titan with 51.2 percent, BuilderNet with 25.7 percent, and Quasar with 16.4 percent together control 93.3 percent of all blocks at a Herfindahl-Hirschman Index of approximately 3,554 — substantially exceeding the DOJ threshold of 2,500.<a href="#fn-49" id="fnref-49"><sup>49</sup></a> If Titan and BuilderNet coordinate, they control 76.9 percent of block production — sufficient for de facto censorship of the majority of all MEV-Boost blocks. This indicator stands at "Open" and is the only Open finding of the entire current-state assessment.<a href="#fn-50" id="fnref-50"><sup>50</sup></a>
+The structural defect finding lies in builder concentration. Titan with 51.2 percent, BuilderNet with 25.7 percent, and Quasar with 16.4 percent together control 93.3 percent of all blocks at a Herfindahl-Hirschman Index of approximately 3,554, substantially exceeding the DOJ threshold of 2,500.<a href="#fn-49" id="fnref-49"><sup>49</sup></a> If Titan and BuilderNet coordinate, they control 76.9 percent of block production, sufficient for de facto censorship of the majority of all MEV-Boost blocks. This indicator stands at "Open" and is the only Open finding of the entire current-state assessment.<a href="#fn-50" id="fnref-50"><sup>50</sup></a>
 
 The geopolitical jurisdictional diversity shows moderate concentration: approximately 39 percent of nodes in the USA, approximately 53 percent in two countries.<a href="#fn-51" id="fnref-51"><sup>51</sup></a> The staking concentration indicators are within acceptable ranges: Lido holds 22.8 to 23 percent of staked ETH, well below the 33-percent blocking minority threshold.<a href="#fn-52" id="fnref-52"><sup>52</sup></a>
 
-**Neutrality and Censorship Resistance: Conditionally fulfilled.** Fulfillment depends on conditions not secured in the current state — in particular the implementation of FOCIL or a functionally equivalent mechanism. This is the weakest single finding of the entire current-state assessment.
+**Neutrality and Censorship Resistance: Conditionally fulfilled.** Fulfillment depends on conditions not secured in the current state, in particular the implementation of FOCIL or a functionally equivalent mechanism. This is the weakest single finding of the entire current-state assessment.
 
 ### II.2 Open Generativity
 
 The architecture implements Permissionless Deployment in full: any Ethereum address can deploy smart contracts without a whitelist, approval requirement, or registration obligation. Atomic composability enables interaction patterns such as Flash Loans that have no equivalent in any traditional system. The ERC standard family has established itself as an emergent interoperability mechanism without any central authority.
 
-The entire core development infrastructure stands under liberal open-source licenses (MIT, Apache 2.0): Foundry, Hardhat, Ethers.js, Slither, and Echidna. No single provider controls the toolchain or can restrict access. Van Schewick showed for the Internet that open tools and open protocols together generate the innovation dynamic — the same pattern holds for Ethereum at the smart contract layer.<a href="#fn-53" id="fnref-53"><sup>53</sup></a>
+The entire core development infrastructure stands under liberal open-source licenses (MIT, Apache 2.0): Foundry, Hardhat, Ethers.js, Slither, and Echidna. No single provider controls the toolchain or can restrict access. Van Schewick showed for the Internet that open tools and open protocols together generate the innovation dynamic, and the same pattern holds for Ethereum at the smart contract layer.<a href="#fn-53" id="fnref-53"><sup>53</sup></a>
 
 The constraint lies in L2 fragmentation: atomic composability that produced the DeFi ecosystem is not present at the L2 level. Flash Loans function only within a single block on a single chain and are structurally impossible across L2 boundaries.
 
@@ -363,19 +363,19 @@ The 32-ETH minimum deposit for solo staking is the deficit shaping the entire in
 L2 transaction costs document the strongest improvement. Median costs on the leading L2s have fallen below 0.01 US dollars per transaction after EIP-4844. Usability without cryptographic prior knowledge has improved substantially through EIP-7702 (Pectra), but the UX transformation is not yet complete.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-10-full.png" alt="Current-state assessment profile Dimensions I and II — the eight individual assessments with hierarchy level and assessment label" loading="lazy" />
-<figcaption>Figure 4.10 — Current-state assessment profile Dimensions I and II. The eight individual assessments with hierarchy level and assessment label. Seven of eight criteria carry the same label. II.1 is the only outlier and simultaneously critical in the cascade.</figcaption>
+<img src="/kapitel/en/abb-4-10-full.png" alt="Current-state assessment profile Dimensions I and II: the eight individual assessments with hierarchy level and assessment label" loading="lazy" />
+<figcaption>Figure 4.10: Current-state assessment profile Dimensions I and II. The eight individual assessments with hierarchy level and assessment label. Seven of eight criteria carry the same label. II.1 is the only outlier and simultaneously critical in the cascade.</figcaption>
 </figure>
 
 **Low-Threshold Inclusivity: Fulfilled with qualification.** Participation is substantially inclusive for transactional use on L2, possible but endangered by rising state size for full-node operation, and prohibitively constrained for solo staking by the 32-ETH barrier.
 
 ### Synthesis Dimension II
 
-The assessment profile of the second dimension shows a pronounced asymmetry. The Critical Condition (II.1) stands at "Conditionally fulfilled," the three Qualitative Criteria (II.2, II.3, II.4) stand consistently at "Fulfilled with qualification." The dimension contains both the system's most critical vulnerability — the absent protocol-level neutrality guarantee — and one of its structurally strongest properties — open generativity. The tension between both findings reveals a system that produces maximum openness but leaves the neutrality of that openness operationally to market dynamics.
+The assessment profile of the second dimension shows a pronounced asymmetry. The Critical Condition (II.1) stands at "Conditionally fulfilled," the three Qualitative Criteria (II.2, II.3, II.4) stand consistently at "Fulfilled with qualification." The dimension contains both the system's most critical vulnerability (the absent protocol-level neutrality guarantee) and one of its structurally strongest properties (open generativity). The tension between both findings reveals a system that produces maximum openness but leaves the neutrality of that openness operationally to market dynamics.
 
 ## 4.9 Dimension III: Resilience and Sovereignty
 
-The third dimension shifts the time horizon: away from the question of whether Ethereum is suitable today, toward the question of whether it can remain suitable — stable across decades, adaptable without destabilization, free of proprietary dependencies, and operable on generic hardware. No Critical Condition lies in this dimension.
+The third dimension shifts the time horizon away from the question of whether Ethereum is suitable today and toward the question of whether it can remain suitable: stable across decades, adaptable without destabilization, free of proprietary dependencies, and operable on generic hardware. No Critical Condition lies in this dimension.
 
 ### III.1 Long-Term Stability
 
@@ -387,13 +387,13 @@ State growth is the critical long-term factor. The full-node size of 1,579 GB gr
 
 Economic sustainability poses the second long-term question. The L2 migration has shifted the equilibrium between issuance and burning: as L2s absorb the majority of transaction activity, L1 fee revenue declines. The issuance reform debate is active and unresolved.
 
-The post-quantum migration constitutes the third long-term question. The cryptographic foundations — ECDSA, BLS12-381, and KZG commitments — must be migrated to quantum-resistant algorithms in the long term. The migration has the status RES. In the current-state time horizon, the risk is not acute.
+The post-quantum migration constitutes the third long-term question. The cryptographic foundations (ECDSA, BLS12-381, and KZG commitments) must be migrated to quantum-resistant algorithms in the long term. The migration has the status RES. In the current-state time horizon, the risk is not acute.
 
 **Long-Term Stability: Fulfilled with qualification.** Short- and medium-term stability is operationally documented. Long-term stability depends on developments not secured in the current state.
 
 ### III.2 Adaptive Governance
 
-The EIP process is transparent, selective, and public: of 230 EIPs submitted in 2025, 37 were accepted. The hard fork track record demonstrates operational capability: all post-Merge forks were completed without chain splits. Mayntz showed for large technical systems that the tension between steering and self-organization is a central research problem — in Ethereum's informal governance model it manifests as the tension between Rough Consensus and formal authority.<a href="#fn-59" id="fnref-59"><sup>59</sup></a>
+The EIP process is transparent, selective, and public: of 230 EIPs submitted in 2025, 37 were accepted. The hard fork track record demonstrates operational capability: all post-Merge forks were completed without chain splits. Mayntz showed for large technical systems that the tension between steering and self-organization is a central research problem. In Ethereum's informal governance model it manifests as the tension between Rough Consensus and formal authority.<a href="#fn-59" id="fnref-59"><sup>59</sup></a>
 
 The Ethereum Foundation as a governance actor is a documented centralization tension. Board-controlled, without protocol-level accountability, and with a treasury estimated at 850 to 950 million US dollars, the EF is the single most influential actor in the ecosystem.<a href="#fn-60" id="fnref-60"><sup>60</sup></a> The issuance reform debate is the active test case for the governance system's capacity to handle controversial decisions: the question has not produced consensus in the current state.
 
@@ -413,11 +413,11 @@ The operational infrastructure layer shows a different picture. The RPC concentr
 
 The transition from Proof of Work to Proof of Stake eliminated ASIC dependency and reduced energy consumption by 99.95 percent. A validator node requires approximately 100 watts. All ten clients run natively on ARM-64 and x86-64 architectures. The protocol has no hardware preference: a validator on consumer hardware has the same voting weight as a validator on a datacenter server.
 
-Cloud concentration counteracts this protocol property. Approximately 59 percent of hosted Execution Layer nodes run on three cloud providers — AWS with 35.5 percent, Hetzner with 13.8 percent, and OVHcloud with 9.7 percent. The AWS outage of October 2025 demonstrated that the network could absorb the failure of an AWS region without losing finality, but the corridor between normal operation and finality loss narrowed temporarily. Home staking stands at under 15 percent of staked ETH.<a href="#fn-63" id="fnref-63"><sup>63</sup></a>
+Cloud concentration counteracts this protocol property. Approximately 59 percent of hosted Execution Layer nodes run on three cloud providers: AWS with 35.5 percent, Hetzner with 13.8 percent, and OVHcloud with 9.7 percent. The AWS outage of October 2025 demonstrated that the network could absorb the failure of an AWS region without losing finality, but the corridor between normal operation and finality loss narrowed temporarily. Home staking stands at under 15 percent of staked ETH.<a href="#fn-63" id="fnref-63"><sup>63</sup></a>
 
-The geographic distribution: 39 percent of nodes in the USA, 14.5 percent in Germany, 14 percent in China. Beyond these three countries, more than ten jurisdictions — including Singapore, Canada, Japan, Australia, the Netherlands, and Switzerland — each hold over one percent of nodes. The geographic indicator of the criterion (at least ten countries each with over one percent) is thereby fulfilled.
+The geographic distribution: 39 percent of nodes in the USA, 14.5 percent in Germany, 14 percent in China. Beyond these three countries, more than ten jurisdictions, including Singapore, Canada, Japan, Australia, the Netherlands, and Switzerland, each hold over one percent of nodes. The geographic indicator of the criterion (at least ten countries each with over one percent) is thereby fulfilled.
 
-**Hardware Agnosticism: Fulfilled with qualification.** Protocol-level hardware agnosticism is fully realized — without ASIC dependency, ARM-compatible, and consumer-energy-compatible — but the operational cloud concentration creates a physical dependency that undermines decentralization at the logical layer.
+**Hardware Agnosticism: Fulfilled with qualification.** Protocol-level hardware agnosticism is fully realized, without ASIC dependency, ARM-compatible, and consumer-energy-compatible, but the operational cloud concentration creates a physical dependency that undermines decentralization at the logical layer.
 
 ### Synthesis Dimension III
 
@@ -425,44 +425,44 @@ All four criteria stand at "Fulfilled with qualification." The third dimension s
 
 ## 4.10 Overall Synthesis and Current-State Verdict
 
-The twelve individual assessments of Sections 4.7 through 4.9 yield a profile that is as revealing in its consistency as in its single deviation. No criterion achieves "Fulfilled" without qualification. Eleven of twelve criteria stand at "Fulfilled with qualification." One — Neutrality and Censorship Resistance (II.1) — stands at "Conditionally fulfilled." None stands at "Open." The numerical profile 0-11-1-0 describes a system that addresses the infrastructure requirements in breadth, but in which operational reality has not yet fully delivered on the protocol-level possibilities.
+The twelve individual assessments of Sections 4.7 through 4.9 yield a profile that is as revealing in its consistency as in its single deviation. No criterion achieves "Fulfilled" without qualification. Eleven of twelve criteria stand at "Fulfilled with qualification." One criterion, Neutrality and Censorship Resistance (II.1), stands at "Conditionally fulfilled." None stands at "Open." The numerical profile 0-11-1-0 describes a system that addresses the infrastructure requirements in breadth, but in which operational reality has not yet fully delivered on the protocol-level possibilities.
 
 <figure class="kapitel-figure">
-<img src="/kapitel/en/abb-4-11-full.png" alt="Current-state profile of all twelve criteria — assessment label by hierarchy level and dimension" loading="lazy" />
-<figcaption>Figure 4.11 — Current-state profile of all twelve criteria. Assessment label by hierarchy level and dimension. Zero times Fulfilled, eleven times Fulfilled with qualification, once Conditionally fulfilled, zero times Open.</figcaption>
+<img src="/kapitel/en/abb-4-11-full.png" alt="Current-state profile of all twelve criteria: assessment label by hierarchy level and dimension" loading="lazy" />
+<figcaption>Figure 4.11: Current-state profile of all twelve criteria. Assessment label by hierarchy level and dimension. Zero times Fulfilled, eleven times Fulfilled with qualification, once Conditionally fulfilled, zero times Open.</figcaption>
 </figure>
 
-The M3 cascade defined in Chapter 2 determines the overall verdict on the basis of the hierarchical grading of the criteria. The three Critical Conditions form the first examination stage. Security and Trust Load (I.2) and Minimal Viable Guarantees (I.4) stand at "Fulfilled with qualification" and pass the cascade threshold. Neutrality and Censorship Resistance (II.1) does not pass the threshold unconditionally: the builder concentration of 93.3 percent among three actors marks a structural defect, and no protocol mechanism enforces transaction inclusion. The finding is "Conditionally fulfilled," not "Open" — meaning the path to fulfillment is discernible, but depends on the implementation of FOCIL or a functionally equivalent mechanism. No Critical Condition stands at "Open," which lifts the overall verdict above "Conditionally Suitable." One Critical Condition stands at "Conditionally fulfilled," which sets the cascade to the level "Suitable under substantial conditions."<a href="#fn-64" id="fnref-64"><sup>64</sup></a>
+The M3 cascade defined in Chapter 2 determines the overall verdict on the basis of the hierarchical grading of the criteria. The three Critical Conditions form the first examination stage. Security and Trust Load (I.2) and Minimal Viable Guarantees (I.4) stand at "Fulfilled with qualification" and pass the cascade threshold. Neutrality and Censorship Resistance (II.1) does not pass the threshold unconditionally: the builder concentration of 93.3 percent among three actors marks a structural defect, and no protocol mechanism enforces transaction inclusion. The finding is "Conditionally fulfilled," not "Open," meaning the path to fulfillment is discernible but depends on the implementation of FOCIL or a functionally equivalent mechanism. No Critical Condition stands at "Open," which lifts the overall verdict above "Conditionally Suitable." One Critical Condition stands at "Conditionally fulfilled," which sets the cascade to the level "Suitable under substantial conditions."<a href="#fn-64" id="fnref-64"><sup>64</sup></a>
 
-The three Structural Conditions — Functional Irreplaceability (I.1), Coordination Function (I.3), and Long-Term Stability (III.1) — all stand at "Fulfilled with qualification" and are thereby counted as weak, so the third cascade step sets the same cap as the second.
+The three Structural Conditions, Functional Irreplaceability (I.1), Coordination Function (I.3), and Long-Term Stability (III.1), all stand at "Fulfilled with qualification" and are thereby counted as weak, so the third cascade step sets the same cap as the second.
 
-The six Qualitative Criteria differentiate the degree within the achieved suitability level. All six stand at "Fulfilled with qualification." The degree scale from Chapter 2 defines the degree as "Good" when all six Qualitative Criteria stand at least at "Fulfilled with qualification" — which is the case here.<a href="#fn-65" id="fnref-65"><sup>65</sup></a>
+The six Qualitative Criteria differentiate the degree within the achieved suitability level. All six stand at "Fulfilled with qualification." The degree scale from Chapter 2 defines the degree as "Good" when all six Qualitative Criteria stand at least at "Fulfilled with qualification," which is the case here.<a href="#fn-65" id="fnref-65"><sup>65</sup></a>
 
 **The overall verdict is: Suitable under substantial conditions, degree Good.**
 
 The central condition determining the label is the implementation of FOCIL (EIP-7805) or a functionally equivalent mechanism that transforms censorship resistance from an emergent market performance into a protocol guarantee. As long as transaction inclusion depends on the market structure of builders rather than being enforced by the protocol, the neutrality guarantee that the infrastructure claim asserts remains operationally delivered but structurally unsecured.
 
-A pattern runs through all twelve assessments, and it can be stated in one sentence: the discrepancy between what the protocol enables and what operational reality delivers is the basic pattern of the current state. Ethereum offers, at the protocol level, the prerequisites of a fundamental infrastructure — from economic security through open generativity to cryptographic verifiability, from atomic coordination to automated self-healing. The operational usage reality has not fully realized these possibilities: the trust stack generates institutional dependencies, L2 fragmentation undermines composability, builder concentration threatens neutrality, state growth threatens long-term decentralization, and governance operates without mechanical guarantees for extreme conflicts.
+A pattern runs through all twelve assessments, and it can be stated in one sentence: the discrepancy between what the protocol enables and what operational reality delivers is the basic pattern of the current state. Ethereum offers, at the protocol level, the prerequisites of a fundamental infrastructure: from economic security through open generativity to cryptographic verifiability, from atomic coordination to automated self-healing. The operational usage reality has not fully realized these possibilities: the trust stack generates institutional dependencies, L2 fragmentation undermines composability, builder concentration threatens neutrality, state growth threatens long-term decentralization, and governance operates without mechanical guarantees for extreme conflicts.
 
-The current-state verdict defines the starting point for the target-state assessment. Chapter 5 will examine whether the Ethereum roadmap addresses the identified constraints and whether the target-state profile can shift the overall verdict. The question is not whether Ethereum is suitable as infrastructure — the current-state verdict confirms fundamental suitability under conditions — but whether the roadmap can deliver on the conditions to which suitability is tied.
+The current-state verdict defines the starting point for the target-state assessment. Chapter 5 will examine whether the Ethereum roadmap addresses the identified constraints and whether the target-state profile can shift the overall verdict. The question is not whether Ethereum is suitable as infrastructure (the current-state verdict confirms fundamental suitability under conditions) but whether the roadmap can deliver on the conditions to which suitability is tied.
 
 <div class="fn-list">
 <ol>
 <li id="fn-1">Buterin, Vitalik (2014): A Next-Generation Smart Contract and Decentralized Application Platform. Ethereum Whitepaper. URL: https://ethereum.org/en/whitepaper/ <a href="#fnref-1">â†©</a></li>
 <li id="fn-2">Wood, Gavin (2014/2024): Ethereum: A Secure Decentralised Generalised Transaction Ledger (Yellow Paper). Current version: Berlin Version, 2024. <a href="#fnref-2">â†©</a></li>
-<li id="fn-3">Ethereum Foundation Blog (2022): The Merge. URL: https://blog.ethereum.org/2022/09/15/the-merge. For the energy consumption comparison cf. Digiconomist: Ethereum Energy Consumption Index; Cambridge Centre for Alternative Finance (2022): Cambridge Blockchain Network Sustainability Index. <a href="#fnref-3">â†©</a></li>
+<li id="fn-3">Ethereum Foundation Blog (2022): The Merge. URL: https://blog.ethereum.org/2022/09/15/the-merge. For the energy consumption comparison cf. Digiconomist: Ethereum Energy Consumption Index. Cambridge Centre for Alternative Finance (2022): Cambridge Blockchain Network Sustainability Index. <a href="#fnref-3">â†©</a></li>
 <li id="fn-4">Etherscan: Ethereum Node Tracker. URL: https://etherscan.io/nodetracker (accessed 27 March 2026). <a href="#fnref-4">â†©</a></li>
 <li id="fn-5">Cointelegraph (2025): Ethereum sees 25% validation drop post-Fusaka as Prysm bug affects network participation. December 2025. For historical client market shares cf. clientdiversity.org. <a href="#fnref-5">â†©</a></li>
 <li id="fn-6">Ethernodes: Ethereum Node Distribution. URL: https://ethernodes.org (accessed early 2026). The cloud percentages refer to hosted EL nodes, not the totality of all nodes. <a href="#fnref-6">â†©</a></li>
 <li id="fn-7">Wood, Gavin (2014/2024): Ethereum: A Secure Decentralised Generalised Transaction Ledger (Yellow Paper). Current version: Berlin Version, 2024. <a href="#fnref-7">â†©</a></li>
 <li id="fn-8">Dune Analytics: ERC-4337 Account Abstraction Dashboard (accessed 27 March 2026). For EIP-7702 cf. Ethereum Foundation: Pectra Upgrade Specification. <a href="#fnref-8">â†©</a></li>
-<li id="fn-9">Etherscan / YCharts: Ethereum Chain Data Size (accessed 27 March 2026). The figure of 1,579 GB refers to the full-node size; the state trie comprises 150 to 200 GB in compressed client storage. <a href="#fnref-9">â†©</a></li>
+<li id="fn-9">Etherscan / YCharts: Ethereum Chain Data Size (accessed 27 March 2026). The figure of 1,579 GB refers to the full-node size, the state trie comprising 150 to 200 GB in compressed client storage. <a href="#fnref-9">â†©</a></li>
 <li id="fn-10">Etherscan: Ethereum Average Gas Limit Chart. URL: https://etherscan.io/chart/gaslimit (accessed 27 March 2026). The increase occurred through gradual validator signaling over the course of 2025 without requiring a protocol upgrade. <a href="#fnref-10">â†©</a></li>
 <li id="fn-11">Buterin, Vitalik / Conner, Eric / Dudley, Rick / Slipper, Matthew / Norden, Ian / Bakhta, Abdelhamid (2019): EIP-1559: Fee market change for ETH 1.0 chain. Ethereum Improvement Proposal. Activated in the London upgrade, August 2021. <a href="#fnref-11">â†©</a></li>
 <li id="fn-12">Daian, Philip / Goldfeder, Steven / Kell, Tyler / Li, Yunqi / Zhao, Xueyuan / Bentov, Iddo / Breidenbach, Lorenz / Juels, Ari (2020): Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability. In: IEEE Symposium on Security and Privacy (S&P), 2020. DOI: 10.1109/SP40000.2020.00040. <a href="#fnref-12">â†©</a></li>
 <li id="fn-13">Flashbots: MEV-Explore and MEV-Boost Dashboard (accessed 27 March 2026). <a href="#fnref-13">â†©</a></li>
 <li id="fn-14">relayscan.io: Builder and relay market shares (accessed 27 March 2026). <a href="#fnref-14">â†©</a></li>
-<li id="fn-15">relayscan.io: Builder and relay market shares; MEV Watch (accessed 27 March 2026). <a href="#fnref-15">â†©</a></li>
+<li id="fn-15">relayscan.io: Builder and relay market shares, and MEV Watch (accessed 27 March 2026). <a href="#fnref-15">â†©</a></li>
 <li id="fn-16">beaconcha.in: Ethereum Beacon Chain Explorer (accessed 27 March 2026). The figure of 964,768 reflects the post-Pectra consolidation effect of EIP-7251. <a href="#fnref-16">â†©</a></li>
 <li id="fn-17">Buterin, Vitalik / Griffith, Virgil (2019): Casper the Friendly Finality Gadget. arXiv:1710.09437. For the combined Gasper specification cf. Buterin, Vitalik et al. (2020): Combining GHOST and Casper. arXiv:2003.03052. <a href="#fnref-17">â†©</a></li>
 <li id="fn-18">beaconcha.in: Epoch Finality Statistics. The 13 non-finalized epochs occurred on 11 and 12 May 2023. Cf. Etherscan Blog (2023): Battle-Testing Ethereum's Finality. <a href="#fnref-18">â†©</a></li>
