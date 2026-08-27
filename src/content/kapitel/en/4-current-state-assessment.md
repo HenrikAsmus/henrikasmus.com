@@ -1,5 +1,5 @@
 ﻿---
-titel: Current State Assessment: Ethereum in Operational State Q1 2026
+titel: "Current State Assessment: Ethereum in Operational State Q1 2026"
 nummer: 4
 befund: "How does Ethereum perform against the twelve evaluation criteria in operation? This chapter delivers the current-state assessment, the baseline for the target-state comparison."
 sprache: en
