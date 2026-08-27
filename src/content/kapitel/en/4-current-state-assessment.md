@@ -46,6 +46,8 @@ The EVM operates with a three-tier storage model. The stack is a volatile data s
 
 Smart contracts are programs executed on the EVM. They are deployed on the network as bytecode and are thereafter immutable. Deployment is permissionless: the only prerequisite is Gas fees paid to the network. The execution architecture is sequential — all transactions within a block are processed strictly in order. At a slot time of 12 seconds and the current Gas Limit of 60,000,000, Ethereum processes on Layer 1 an average of 15 to 30 transactions per second.
 
+Ethereum operates as a fully transparent system. Every transaction, every account balance, and every smart contract state is visible to every network participant. There are no native privacy mechanisms at the protocol level. Neither sender nor recipient nor transaction amount is obscured. This transparency is a consequence of the verification architecture, which requires all nodes to be able to replicate the same state. It generates a property that is a strength for some use cases, above all auditability and traceability, and a fundamental constraint for others, in particular institutional actors with data protection requirements and users with privacy needs.
+
 Within a block, the EVM enables atomic composability: arbitrarily many smart contract interactions can be chained within a single transaction, and the entire chain is either fully executed or fully reversed. Flash Loans illustrate this property: a user can in a single transaction borrow millions of US dollars, deploy the borrowed funds in an arbitrage operation, and repay the loan — without collateral and without an intermediary. This property forms the basis for the Decentralized Finance ecosystem.
 
 ### Account Abstraction
