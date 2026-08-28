@@ -3,3 +3,24 @@ node_modules/
 .astro/
 .env
 .env.*
+
+# Vercel local config
+.vercel/
+
+# Claude Code config
+.claude/
+
+# Work artifacts (raw PDF extracts, scripts, screenshots)
+ch*_de_raw.txt
+ch*_en_raw.txt
+ch*_de_pdf.txt
+ch*_en_pdf.txt
+convert_*.py
+*.bak
+screenshot-*.png
+v1e-*.png
+card-figur*.png
+h-4x.png
+h-crossbar.png
+h-zoom.png
+home-figur.png
