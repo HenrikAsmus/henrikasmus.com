@@ -34,9 +34,11 @@ const description = Astro.props.description ?? defaultDescription;
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://loadassumptions.xyz/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://loadassumptions.xyz/og.png" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
