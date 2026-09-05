@@ -1,7 +1,7 @@
----
+﻿---
 titel: Einleitung
 nummer: 1
-befund: "Ethereum wird als Infrastruktur bezeichnet — von Beratungshäusern, Regulierern, institutionellen Investoren. Ein Maßstab für diese Zuschreibung fehlt. Die Arbeit bestimmt die Lücke, formuliert die Forschungsfrage und beantwortet sie zweimal: für den heutigen Zustand und für den Zustand bei vollständig umgesetzter Roadmap."
+befund: "Beratungshäuser, Regulatoren und institutionelle Investoren nennen Ethereum Infrastruktur. Für diese Zuschreibung wurde nie ein Maßstab gesetzt, weshalb sie unwiderlegbar ist und Kapital sich bereits so bewegt, als wäre die Sache entschieden. J.P. Morgan hat im Mai 2026 einen tokenisierten Geldmarktfonds auf dem Netzwerk aufgelegt."
 sprache: de
 ---
 

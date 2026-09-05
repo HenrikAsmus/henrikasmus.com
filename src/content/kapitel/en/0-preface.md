@@ -1,7 +1,7 @@
----
+﻿---
 titel: Preface
 nummer: 0
-befund: "The author steps out of the investor perspective and asks what the cryptographic system he has been following for four years is actually built on. The answer requires a representative: Ethereum, the first programmable Layer 1, measured against the research question of whether its architecture meets the requirements of fundamental digital infrastructure."
+befund: "Four years of following the market, then 10 October 2025: nineteen billion dollars in leveraged positions gone in a day, more than one and a half million accounts wiped out. The question that outlived it was not whether the price was right. It was what any of this rests on."
 sprache: en
 ---
 

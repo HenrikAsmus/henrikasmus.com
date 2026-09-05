@@ -1,7 +1,7 @@
----
+﻿---
 titel: Delta, Limits, and Overall Judgment
 nummer: 6
-befund: "The gap between the current and the target state, the persistent limits of the system, and the limits of the evaluation framework itself. The chapter answers the research question."
+befund: "Seven criteria improve, five stay where they are, none deteriorates. The entire distance between the two verdicts hangs on one of them. Everything else is refinement."
 sprache: en
 ---
 

@@ -1,7 +1,7 @@
----
+﻿---
 titel: Der Zielzustand
 nummer: 5
-befund: "Was würde aus Ethereum, wenn seine Roadmap vollständig umgesetzt wäre? Die Arbeit beschreibt den angestrebten Zustand, bewertet ihn an denselben zwölf Kriterien und kommt zum SOLL-Urteil."
+befund: "Bei vollständig umgesetzter Roadmap wird das Profil zu 6-6-0-0: sechs Kriterien erfüllt, sechs mit Einschränkung erfüllt, keines bedingt, keines offen. Eine Urteilsstufe über heute, bei gleichem Grad. Der Zugewinn kommt aus dem Fundament, weil Zensurresistenz ihre Schwelle nimmt, und nicht aus den qualitativen Kriterien, die sich kaum bewegen."
 sprache: de
 ---
 

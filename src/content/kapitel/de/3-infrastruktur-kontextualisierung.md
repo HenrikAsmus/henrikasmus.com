@@ -1,7 +1,7 @@
----
+﻿---
 titel: Infrastruktur-Kontextualisierung
 nummer: 3
-befund: "Die zwölf Kriterien werden an sieben etablierten Infrastrukturen erprobt: Stromnetz, Internet, Straßennetz, SWIFT, GPS, Cloud-Infrastruktur und Rechtssystem. Was ein Kriterium an diesen Systemen nicht übersteht, fällt."
+befund: "Gehalten gegen Stromnetz, Internet, Straßennetz, SWIFT, GPS, Cloud-Infrastruktur und Rechtssystem greifen zehn der zwölf Kriterien und trennen die Systeme voneinander. Hardware-Agnostik findet in keinem der sieben ein Gegenstück, weil keines davon ein erlaubnisfreies dezentrales Netzwerk ist. Dieses Fehlen ist selbst der Befund."
 sprache: de
 ---
 

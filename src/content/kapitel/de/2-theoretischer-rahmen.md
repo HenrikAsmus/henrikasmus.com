@@ -1,7 +1,7 @@
----
+﻿---
 titel: Theoretischer Rahmen und Methodik
 nummer: 2
-befund: "Was macht eine Infrastruktur zu einer fundamentalen? Die Arbeit leitet zwölf Kriterien aus der Infrastrukturtheorie ab, ordnet sie in drei Dimensionen und legt das Bewertungsverfahren vollständig offen."
+befund: "Zwölf Kriterien, hergeleitet aus Frischmanns Ökonomie geteilter Ressourcen, Stars Ethnografie unsichtbarer Systeme und der Tradition großer technischer Systeme. Drei Dimensionen, drei Hierarchiestufen, eine vierstufige Skala und eine Kaskade, die entscheidet, welche Lücke das Gesamturteil deckelt und welche nicht. Dieser Rahmen ist das, was von der Arbeit bleibt, mehr noch als das Urteil, das er erzeugt."
 sprache: de
 ---
 

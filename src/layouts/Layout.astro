@@ -11,12 +11,12 @@ interface Props {
 const { title, lang, canonicalDE, canonicalEN, breit = false, overview = false } = Astro.props;
 const base = 'https://loadassumptions.xyz';
 const backHref = lang === 'de' ? '/lastannahmen/' : '/en/load-assumptions/';
-const backLabel = lang === 'de' ? '← Übersicht' : '← Overview';
+const backLabel = lang === 'de' ? 'Übersicht' : 'Overview';
 const homeHref = lang === 'de' ? '/' : '/en/';
 const canonicalUrl = lang === 'de' ? `${base}${canonicalDE}` : `${base}${canonicalEN}`;
 const defaultDescription = lang === 'de'
-  ? 'Ethereum als fundamentale digitale Infrastruktur — Masterarbeit von Henrik Asmus'
-  : 'Ethereum as Fundamental Digital Infrastructure — Master\'s thesis by Henrik Asmus';
+  ? 'Ethereum als fundamentale digitale Infrastruktur — Unabhängige Studie von Henrik Asmus'
+  : 'Ethereum as Fundamental Digital Infrastructure — Independent study by Henrik Asmus';
 const description = Astro.props.description ?? defaultDescription;
 ---
 <!doctype html>

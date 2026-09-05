@@ -1,7 +1,7 @@
----
+﻿---
 titel: The Target State
 nummer: 5
-befund: "What would Ethereum become if its roadmap were fully implemented? The study describes the target state, evaluates it against the same twelve criteria, and arrives at a target-state assessment."
+befund: "With the roadmap fully implemented the profile becomes 6-6-0-0: six criteria met, six met with qualification, none conditional, none open. One verdict level above today, at the same grade. The lift comes from the foundation, from censorship resistance clearing its threshold, and not from the qualitative criteria, which barely move."
 sprache: en
 ---
 

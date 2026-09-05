@@ -1,7 +1,7 @@
----
+﻿---
 titel: Introduction
 nummer: 1
-befund: "Ethereum is called infrastructure, cited by consulting firms, regulators, and institutional investors. A standard for this claim has never been established. The study identifies the gap, states the research question, and answers it twice: for the current state and for the state that full roadmap implementation would produce."
+befund: "Consultancies, regulators and institutional investors call Ethereum infrastructure. No one has ever set a standard for that claim, which is why it cannot be contested — and why capital is already moving as though the matter were settled. J.P. Morgan launched a tokenized money market fund on the network in May 2026."
 sprache: en
 ---
 

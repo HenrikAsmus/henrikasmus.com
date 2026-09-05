@@ -1,7 +1,7 @@
----
+﻿---
 titel: Implikationen
 nummer: 7
-befund: "Was folgt aus dem Urteil für jene, die auf dem System aufbauen, ihm vertrauen oder es regulieren? Der letzte Teil tritt aus der bewertenden Rolle heraus und denkt die Antwort zu ihren Konsequenzen weiter."
+befund: "Die Forschungsfrage ist beantwortet: in beiden Zuständen geeignet, in beiden unter Bedingungen. Wer auf dem Netzwerk baut, Geld dahinter setzt oder es reguliert, handelt unter einer Annahme von Dauerhaftigkeit, für die es keinen Prüfmaßstab gab. Dieses Kapitel sagt, worauf sie tatsächlich ruht."
 sprache: de
 ---
 

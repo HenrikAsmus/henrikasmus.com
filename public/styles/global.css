@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/PlayfairDisplay-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Geist';
   src: url('/fonts/Geist-ext-400.woff2') format('woff2');
   font-weight: 400;
@@ -54,11 +62,30 @@
   color-scheme: light only;
   --c-text:     #121517;
   --c-body:     #61686E;
-  --c-sub:      #8A9197;
-  --c-meta:     #AAB1B6;
-  --c-pdf:      #9BA2A8;
-  --c-inactive: #A9B0B5;
+  --c-sub:      #61686E;      /* war #8A9197 — 5.65:1 */
+  --c-meta:     #6F767C;      /* war #AAB1B6 — 4.61:1 */
+  --c-pdf:      #6F767C;      /* war #9BA2A8 — 4.61:1 */
+  --c-inactive: #6F767C;      /* war #A9B0B5 — 4.61:1 */
   --c-divider:  #DFE3E6;
+
+  /* Typografische Skala — Verhältnis 1,25 */
+  --t-meta:    12px;   /* Marker, Labels */
+  --t-small:   15px;   /* Fußnoten, Bildunterschriften, TOC */
+  --t-body:    19px;   /* Fließtext */
+  --t-h3:      23px;
+  --t-h2:      29px;
+  --t-h1:      46px;   /* Kapiteltitel */
+  --t-display: 72px;   /* Werktitel Startseite */
+
+  /* Zeilenhöhe */
+  --lh-tight: 1.25;    /* Überschriften */
+  --lh-text:  1.65;    /* Fließtext */
+  --lh-small: 1.4;     /* Apparat */
+
+  /* Laufweite */
+  --ls-display: -0.01em;   /* nur ab --t-h2 aufwärts */
+  --ls-normal:  0;
+  --ls-caps:    0.06em;    /* nur für Versal-Labels */
 }
 
 html {
@@ -104,8 +131,8 @@ html {
 .lang-switcher {
   display: flex;
   align-items: center;
-  font-size: 13px;
-  letter-spacing: -0.005em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   line-height: 1;
 }
 
@@ -133,9 +160,9 @@ html {
 /* ── Name block ─────────────────────────────────────────── */
 
 .name {
-  font-size: 38px;
+  font-size: var(--t-h1);
   font-weight: 500;
-  letter-spacing: -0.032em;
+  letter-spacing: var(--ls-display);
   line-height: 1.05;
   color: var(--c-text);
 }
@@ -177,10 +204,10 @@ html {
 }
 
 .subtitle {
-  font-size: 15px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.008em;
-  line-height: 1.55;
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-small);
   color: var(--c-sub);
   margin-top: 14px;
 }
@@ -188,9 +215,9 @@ html {
 /* ── Section heading ────────────────────────────────────── */
 
 .rubrik {
-  font-size: 13px;
+  font-size: var(--t-meta);
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   margin-top: 80px;
 }
@@ -202,21 +229,21 @@ html {
 }
 
 .werk-titel-1 {
-  font-size: 21px;
+  font-size: var(--t-h2);
   font-weight: 500;
-  letter-spacing: -0.032em;
-  line-height: 1.22;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
   color: var(--c-text);
   display: block;
 }
 
 .werk-titel-2 {
-  font-size: 21px;
+  font-size: var(--t-h2);
   font-weight: 500;
-  letter-spacing: -0.032em;
-  line-height: 1.22;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
   display: block;
-  background: linear-gradient(100deg, #78828A 0%, #C3CACF 50%, #78828A 100%);
+  background: linear-gradient(90deg, #5F666C, #6F767C, #5F666C);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -225,28 +252,29 @@ html {
 @media (max-width: 639px) {
   .werk-titel-1,
   .werk-titel-2 {
-    font-size: 19px;
+    font-size: 23px;
   }
 }
 
 /* ── Meta ───────────────────────────────────────────────── */
 
 .meta {
-  font-size: 13px;
+  font-size: var(--t-meta);
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   margin-top: 16px;
+  line-height: var(--lh-small);
 }
 
 /* ── Body text ──────────────────────────────────────────── */
 
 .fliesstext {
   max-width: 540px;
-  font-size: 15px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.007em;
-  line-height: 1.72;
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-text);
   color: var(--c-body);
   margin-top: 20px;
 }
@@ -261,9 +289,9 @@ html {
 }
 
 .werk-links a {
-  font-size: 14px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.008em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-text);
   text-decoration: none;
 }
@@ -286,9 +314,9 @@ html {
 }
 
 .kontakt a {
-  font-size: 15px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.008em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-text);
   text-decoration: none;
 }
@@ -307,9 +335,9 @@ html {
 }
 
 .back-link a {
-  font-size: 14px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.008em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-pdf);
   text-decoration: none;
 }
@@ -332,31 +360,31 @@ html {
 /* ── Chapter page ───────────────────────────────────────── */
 
 .kapitel-nr {
-  font-size: 13px;
+  font-size: var(--t-meta);
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   margin-bottom: 12px;
 }
 
 .kapitel-titel {
-  font-size: 26px;
+  font-size: var(--t-h2);
   font-weight: 500;
-  letter-spacing: -0.032em;
-  line-height: 1.18;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
   color: var(--c-text);
   margin-bottom: 48px;
 }
 
 @media (max-width: 639px) {
-  .kapitel-titel { font-size: 21px; }
+  .kapitel-titel { font-size: 23px; }
 }
 
 .kapitel-body {
-  font-size: 17px;
+  font-size: var(--t-body);
   font-weight: 400;
-  letter-spacing: -0.007em;
-  line-height: 1.72;
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-text);
   color: var(--c-body);
 }
 
@@ -369,21 +397,30 @@ html {
 }
 
 .kapitel-body h2 {
-  font-size: 15px;
+  font-size: var(--t-h2);
   font-weight: 500;
-  letter-spacing: -0.012em;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
   color: var(--c-text);
   margin-top: 2.5em;
   margin-bottom: 0.75em;
 }
 
 .kapitel-body h3 {
-  font-size: 14px;
+  font-size: var(--t-h3);
   font-weight: 500;
-  letter-spacing: -0.008em;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
   color: var(--c-text);
   margin-top: 2em;
   margin-bottom: 0.5em;
+}
+
+/* Echte Kursive via Playfair Display */
+.kapitel-body em,
+.kapitel-body i {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
 }
 
 /* Footnote anchors in text */
@@ -400,14 +437,88 @@ html {
   }
 }
 
+/* Lists */
+.kapitel-body ul,
+.kapitel-body ol {
+  margin: 1.2em 0 1.4em 1.6em;
+  line-height: var(--lh-text);
+}
+
+.kapitel-body li {
+  margin-bottom: 0.4em;
+}
+
+.kapitel-body li:last-child {
+  margin-bottom: 0;
+}
+
+/* Definition list */
+.kapitel-body dl {
+  margin: 1.2em 0 1.4em;
+}
+
+.kapitel-body dt {
+  font-weight: 500;
+  color: var(--c-text);
+  margin-top: 0.8em;
+}
+
+.kapitel-body dd {
+  margin-left: 1.6em;
+  margin-top: 0.2em;
+}
+
+/* Block quote */
+.kapitel-body blockquote {
+  margin: 1.4em 0;
+  padding: 0 0 0 1.2em;
+  border-left: 2px solid var(--c-divider);
+  color: var(--c-body);
+}
+
+/* Horizontal rule */
+.kapitel-body hr {
+  border: none;
+  border-top: 1px solid var(--c-divider);
+  margin: 2.5em 0;
+}
+
+/* Table */
+.kapitel-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+  margin: 1.4em 0;
+  line-height: var(--lh-small);
+}
+
+.kapitel-body th {
+  font-weight: 500;
+  color: var(--c-text);
+  text-align: left;
+  padding: 6px 12px 6px 0;
+  border-bottom: 1px solid var(--c-text);
+}
+
+.kapitel-body td {
+  color: var(--c-body);
+  padding: 6px 12px 6px 0;
+  border-bottom: 1px solid var(--c-divider);
+  vertical-align: top;
+}
+
+.kapitel-body tr:last-child td {
+  border-bottom: none;
+}
+
 /* Footnote list */
 .fn-list {
   margin-top: 4em;
-  font-size: 13px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.005em;
-  line-height: 1.65;
-  color: var(--c-meta);
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-text);
+  color: var(--c-body);
 }
 
 .fn-list ol {
@@ -438,9 +549,9 @@ html {
 }
 
 .kapitel-weiter {
-  font-size: 14px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.008em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-text);
   text-decoration: none;
 }
@@ -466,28 +577,28 @@ html {
 
 .verzeichnis-label {
   display: block;
-  font-size: 13px;
+  font-size: var(--t-meta);
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   margin-bottom: 4px;
 }
 
 .verzeichnis-name {
   display: block;
-  font-size: 17px;
+  font-size: var(--t-body);
   font-weight: 500;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--ls-normal);
   line-height: 1.25;
   color: var(--c-text);
   margin-bottom: 8px;
 }
 
 .verzeichnis-befund {
-  font-size: 14px;
+  font-size: var(--t-small);
   font-weight: 400;
-  letter-spacing: -0.007em;
-  line-height: 1.65;
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-text);
   color: var(--c-body);
   margin: 0;
 }
@@ -526,8 +637,8 @@ html {
   margin-bottom: -1px;
   cursor: pointer;
   font-family: inherit;
-  font-size: 13px;
-  letter-spacing: -0.005em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   padding: 10px 16px 10px 0;
   margin-right: 8px;
@@ -580,8 +691,8 @@ html {
 
 .pdf-dl-lang {
   display: block;
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-caps);
   text-transform: uppercase;
   color: var(--c-meta);
   margin-bottom: 7px;
@@ -589,18 +700,18 @@ html {
 
 .pdf-dl-name {
   display: block;
-  font-size: 15px;
+  font-size: var(--t-small);
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--ls-normal);
   color: var(--c-text);
 }
 
 .pdf-dl-meta {
   display: block;
-  font-size: 12px;
+  font-size: var(--t-meta);
   color: var(--c-meta);
   margin-top: 4px;
-  letter-spacing: -0.003em;
+  letter-spacing: var(--ls-normal);
 }
 
 /* ── Reading progress bar ────────────────────────────── */
@@ -643,8 +754,8 @@ html {
 }
 
 .sidebar-back {
-  font-size: 12px;
-  letter-spacing: -0.003em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   text-decoration: none;
   flex-shrink: 0;
@@ -661,9 +772,9 @@ html {
 
 .sidebar-toc a {
   display: block;
-  font-size: 11.5px;
-  letter-spacing: -0.003em;
-  line-height: 1.5;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-small);
   color: var(--c-meta);
   text-decoration: none;
   padding: 5px 8px 5px 10px;
@@ -687,8 +798,8 @@ html {
 }
 
 .kapitel-mobile-back {
-  font-size: 12px;
-  letter-spacing: -0.003em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   text-decoration: none;
   display: none;
@@ -712,8 +823,8 @@ html {
 /* ── Sidebar home + context + ⌘K hint ──────────────────── */
 
 .sidebar-home {
-  font-size: 11px;
-  letter-spacing: 0.005em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   text-decoration: none;
   flex-shrink: 0;
@@ -735,15 +846,15 @@ html {
 }
 
 .sidebar-ctx-nr {
-  font-size: 10px;
-  letter-spacing: 0.07em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-caps);
   text-transform: uppercase;
   color: var(--c-meta);
 }
 
 .sidebar-ctx-ttl {
-  font-size: 11.5px;
-  letter-spacing: -0.006em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   line-height: 1.42;
   color: var(--c-text);
   font-weight: 500;
@@ -756,7 +867,7 @@ html {
 }
 
 .cmd-key {
-  font-size: 10.5px;
+  font-size: var(--t-meta);
   letter-spacing: 0.02em;
   color: var(--c-meta);
   border: 1px solid var(--c-divider);
@@ -805,8 +916,8 @@ html {
   border-bottom: 1px solid var(--c-divider);
   outline: none;
   font-family: inherit;
-  font-size: 14px;
-  letter-spacing: -0.005em;
+  font-size: var(--t-small);
+  letter-spacing: var(--ls-normal);
   color: var(--c-text);
   padding: 16px 20px;
   background: transparent;
@@ -834,16 +945,16 @@ html {
 .cmd-item:focus { background: #f5f6f7; }
 
 .cmd-item-nr {
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-caps);
   color: var(--c-meta);
   flex-shrink: 0;
   min-width: 60px;
 }
 
 .cmd-item-ttl {
-  font-size: 13.5px;
-  letter-spacing: -0.007em;
+  font-size: var(--t-small);
+  letter-spacing: var(--ls-normal);
   color: var(--c-text);
   line-height: 1.45;
 }
@@ -854,8 +965,8 @@ html {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 12px;
-  letter-spacing: -0.003em;
+  font-size: var(--t-meta);
+  letter-spacing: var(--ls-normal);
   color: var(--c-meta);
   margin-bottom: 22px;
 }
@@ -873,7 +984,7 @@ html {
 
 /* ── Chapter body max-width ─────────────────────────────── */
 
-.kapitel-main .kapitel-body { max-width: 680px; }
+.kapitel-main .kapitel-body { max-width: 640px; }
 
 /* ── Chapter figures ─────────────────────────────────────── */
 
@@ -888,10 +999,10 @@ html {
 }
 
 .kapitel-figure figcaption {
-  font-size: 13px;
+  font-size: var(--t-meta);
   font-weight: 400;
-  letter-spacing: -0.005em;
-  line-height: 1.6;
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-small);
   color: var(--c-meta);
   margin-top: 0.75em;
 }
