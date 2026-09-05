@@ -1,7 +1,7 @@
 ﻿---
 titel: Vorwort
 nummer: 0
-befund: "Vier Jahre Markt, dann der 10. Oktober 2025: neunzehn Milliarden Dollar an gehebelten Positionen an einem Tag liquidiert, über anderthalb Millionen Konten ausgelöscht. Die Frage, die das überdauert hat, war nicht, ob der Preis stimmt. Sondern worauf das alles steht."
+befund: "Der Autor tritt aus der Investoren-Perspektive heraus und fragt, worauf das kryptographische System, das er vier Jahre begleitet hat, im Kern beruht. Die Antwort erfordert einen Repräsentanten: Ethereum, die erste programmierbare Layer 1, gemessen an der Forschungsfrage, ob ihre Architektur die Anforderungen an eine fundamentale digitale Infrastruktur erfüllt."
 sprache: de
 ---
 

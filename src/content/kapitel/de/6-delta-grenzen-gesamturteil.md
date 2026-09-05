@@ -1,7 +1,7 @@
 ﻿---
 titel: Delta, Grenzen und Gesamturteil
 nummer: 6
-befund: "Sieben Kriterien verbessern sich, fünf bleiben, keines verschlechtert sich. Der gesamte Abstand zwischen beiden Urteilen hängt an einem einzigen davon. Alles andere ist Feinarbeit."
+befund: "Die Differenz zwischen IST- und SOLL-Zustand, die persistenten Grenzen des Systems und die Grenzen des Bewertungsrahmens selbst. Das Kapitel beantwortet die Forschungsfrage."
 sprache: de
 ---
 

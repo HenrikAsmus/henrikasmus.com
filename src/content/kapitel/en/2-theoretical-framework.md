@@ -1,7 +1,7 @@
 ﻿---
 titel: Theoretical Framework and Methodology
 nummer: 2
-befund: "Twelve criteria, derived from Frischmann's economics of shared resources, Star's ethnography of invisible systems and the tradition of large technical systems. Three dimensions, three hierarchy levels, a four-step scale, and a cascade that decides which shortfall caps the overall verdict and which one does not. This framework, more than the verdict it produces, is what the study leaves behind."
+befund: "What makes infrastructure fundamental? The study derives twelve criteria from infrastructure theory, organises them into three dimensions, and documents the evaluation procedure in full."
 sprache: en
 ---
 

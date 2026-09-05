@@ -1,7 +1,7 @@
 ﻿---
 titel: Infrastructure Contextualization
 nummer: 3
-befund: "Held against the power grid, the internet, road networks, SWIFT, GPS, cloud infrastructure and the legal system, ten of the twelve criteria find purchase and separate the systems from one another. Hardware Agnosticism finds no counterpart in any of the seven, because none of them is a permissionless decentralised network. That absence is itself the finding."
+befund: "The twelve criteria are tested against seven established infrastructures: the power grid, the internet, road networks, SWIFT, GPS, cloud infrastructure, and the legal system. What a criterion does not survive here is discarded."
 sprache: en
 ---
 

@@ -1,7 +1,7 @@
 ﻿---
 titel: "Current State Assessment: Ethereum in Operational State Q1 2026"
 nummer: 4
-befund: "Reference date 27 March 2026. Not a single criterion fully met, eleven met with qualification, one below that line. Neutrality and Censorship Resistance fails on a builder concentration of 93.3 percent across three actors and the absence of any protocol mechanism that enforces inclusion. Profile 0-11-1-0. Verdict: suitable under substantial conditions, grade good."
+befund: "How does Ethereum perform against the twelve evaluation criteria in operation? This chapter delivers the current-state assessment, the baseline for the target-state comparison."
 sprache: en
 ---
 

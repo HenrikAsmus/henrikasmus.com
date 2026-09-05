@@ -1,7 +1,7 @@
 ﻿---
 titel: Implications
 nummer: 7
-befund: "The research question is answered: suitable in both states, conditional in both. Those who build on the network, put money behind it or regulate it have been acting on an assumption of permanence that had no standard to be tested against. This chapter says what that assumption actually rests on."
+befund: "What does the assessment mean for those who build on the system, trust it, or regulate it? The final chapter steps outside the evaluative role and traces the consequences of the answer."
 sprache: en
 ---
 

@@ -1,7 +1,7 @@
 ﻿---
 titel: Der Istzustand — Ethereum im operativen Zustand Q1 2026
 nummer: 4
-befund: "Stichtag 27. März 2026. Kein einziges Kriterium vollständig erfüllt, elf mit Einschränkung erfüllt, eines darunter. Neutralität und Zensurresistenz scheitert an einer Builder-Konzentration von 93,3 Prozent auf drei Akteure und daran, dass kein Protokollmechanismus Einbeziehung erzwingt. Profil 0-11-1-0. Urteil: geeignet unter wesentlichen Bedingungen, Grad gut."
+befund: "Wie schlägt sich Ethereum im Betrieb gegen die zwölf Bewertungskriterien? Das Kapitel liefert die IST-Bewertung — Ausgangspunkt für den Zielzustands-Vergleich."
 sprache: de
 ---
 
